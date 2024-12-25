@@ -13,5 +13,13 @@
     "nuxt": "^3.14.1592",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "module": "index.ts",
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@types/bun": "^1.1.14"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
   }
 }
