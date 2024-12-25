@@ -1,3 +1,14 @@
-# Ignore artifacts:
-build
-coverage
+.nuxt/
+.github/
+.husky/
+assets/
+content/
+img/
+public/
+dist/
+
+
+.output
+.gitignore
+README.md
+*.json
