@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.vue": "vue"
+  },
+  "volar.completion.autoImportComponent": true,
+  "volar.completion.preferredTagNameCase": "pascal",
+  "volar.completion.preferredAttrNameCase": "kebab"
+} 
