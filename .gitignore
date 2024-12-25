@@ -3,8 +3,9 @@
 .data
 .nuxt
 .nitro
-.cache
-dist
+.cache 
+dist 
+.vscode
 
 # Node dependencies
 node_modules
