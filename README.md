@@ -6,5 +6,7 @@
   - Vue3
 - 💅 Styling
   - Tailwind CSS
+- 🎨 UI Components
+  - shadcn-vue (Radix Vue + Tailwind CSS 기반의 재사용 가능한 컴포넌트)
 - 📦 Javascript Runtime
   - Bun
