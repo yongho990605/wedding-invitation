@@ -2,14 +2,9 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/eslint'],
+  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon'],
   shadcn: {
     prefix: '',
     componentDir: './components/ui'
-  },
-  eslint: {
-    config: {
-      standalone: true
-    }
   }
 })
