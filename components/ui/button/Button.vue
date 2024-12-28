@@ -1,22 +1,19 @@
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn(buttonVariants({ variant, size }), props.class)">
-    <slot />
-  </Primitive>
+  <button v-if="!!icon" :type>
+    <Icon :name="icon ?? ''" :class="cn(buttonIconVariants({ size }), props.class)" />
+  </button>
+
+  <button v-else :type :class="cn(buttonVariants({ color, rounded, size }), props.class)">
+    <slot>{{ label }}</slot>
+  </button>
 </template>
 
 <script setup lang="ts">
-import { Primitive, type PrimitiveProps } from 'radix-vue'
-import type { HTMLAttributes } from 'vue'
 import { cn } from '~/lib/utils'
-import { type ButtonVariants, buttonVariants } from '.'
+import { buttonVariants, buttonIconVariants } from '.'
+import type { ButtonProps } from './types'
 
-interface Props extends PrimitiveProps {
-  variant?: ButtonVariants['variant']
-  size?: ButtonVariants['size']
-  class?: HTMLAttributes['class']
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  as: 'button'
+const props = withDefaults(defineProps<ButtonProps>(), {
+  type: 'button'
 })
 </script>
