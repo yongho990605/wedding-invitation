@@ -6,6 +6,9 @@
 .cache 
 dist 
 .vscode
+ 
+# test page
+pages/test
 
 # Node dependencies
 node_modules
