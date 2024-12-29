@@ -1,5 +1,8 @@
 <template>
-  <Primitive :as="component()" :class="!icon && cn(buttonVariants({ color, rounded, size }), props.class)" :as-child>
+  <Primitive
+    :as="component()"
+    :class="icon ? 'cursor-pointer' : cn(buttonVariants({ color, rounded, size }), props.class)"
+    :as-child>
     <Icon v-if="!!icon" :name="icon ?? ''" :class="cn(buttonIconVariants({ size }), props.class)" />
     <div v-else>
       <slot>{{ label }}</slot>
