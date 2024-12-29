@@ -11,7 +11,7 @@ export const buttonVariants = cva('flex items-center justify-center gap-2 whites
     },
     color: {
       slate: 'bg-slate-400 text-slate-900 active:bg-slate-500 hover:bg-slate-300',
-      rose: 'bg-rose-400 text-white'
+      rose: 'bg-[#D89299] text-white'
     },
     rounded: { true: 'rounded-full', false: 'rounded' }
   },
@@ -22,7 +22,7 @@ export const buttonVariants = cva('flex items-center justify-center gap-2 whites
   }
 })
 
-export const buttonIconVariants = cva('text-slate-600', {
+export const buttonIconVariants = cva('text-[#54514E]', {
   variants: {
     size: { sm: 'h-5 w-5', md: 'h-6 w-6', lg: 'h-7 w-7' }
   },
