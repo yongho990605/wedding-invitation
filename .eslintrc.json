@@ -1,6 +1,6 @@
 {
   "extends": [
-    "@nuxtjs/eslint-config-typescript",
+    "@nuxtjs/eslint-config-typescript", 
     "prettier"
   ],
   "parserOptions": {
@@ -36,6 +36,7 @@
           "order": "asc"
         }
       }
-    ]
+    ], 
+    "no-underscore-dangle": "off"
   }
 }
