@@ -28,6 +28,7 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/tailwindcss": "6.12.2",
     "@types/bun": "^1.1.14",
+    "@vueuse/nuxt": "12.2.0",
     "eslint": "8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",

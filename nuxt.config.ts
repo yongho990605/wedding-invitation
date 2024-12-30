@@ -15,7 +15,13 @@ export default defineNuxtConfig({
     }
   },
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
+    '@nuxt/icon',
+    '@nuxt/image',
+    '@vueuse/nuxt'
+  ],
   components: {
     dirs: [{ path: '~/components', pathPrefix: false }]
   },
