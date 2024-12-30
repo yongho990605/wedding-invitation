@@ -12,6 +12,12 @@ export default defineNuxtConfig({
         { name: 'og:title', content: '장용호 💗 최원비' },
         { name: 'og:description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
         { name: 'og:image', content: '/image1.jpg' }
+      ],
+      script: [
+        {
+          src: 'https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=rm6dda6xag',
+          defer: true
+        }
       ]
     }
   },
