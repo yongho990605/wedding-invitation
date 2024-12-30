@@ -5,13 +5,14 @@
 <script setup lang="ts">
 const mapRef = ref<HTMLElement | null>(null)
 const map = ref<any>(null)
+const weddingHoleLatLng = { lat: 35.1484573066235, lng: 126.837917039111 }
 
 // 지도 초기화 함수
 const initMap = () => {
   if (!mapRef.value || !window.naver) return
 
   const mapOptions = {
-    center: new window.naver.maps.LatLng(37.5666805, 126.9784147), // 위도, 경도 값을 결혼식장 좌표로 변경하세요
+    center: new window.naver.maps.LatLng(weddingHoleLatLng.lat, weddingHoleLatLng.lng),
     zoom: 15,
     zoomControl: true,
     zoomControlOptions: {
@@ -24,7 +25,7 @@ const initMap = () => {
   // 마커 추가
   // eslint-disable-next-line no-new
   new window.naver.maps.Marker({
-    position: new window.naver.maps.LatLng(37.5666805, 126.9784147), // 위도, 경도 값을 결혼식장 좌표로 변경하세요
+    position: new window.naver.maps.LatLng(weddingHoleLatLng.lat, weddingHoleLatLng.lng),
     map: map.value
   })
 }
