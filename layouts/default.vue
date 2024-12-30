@@ -33,7 +33,7 @@
           <Button as="NuxtLink" :to="{ name: 'index' }" icon="flowbite:home-outline" />
         </HeaderContent>
         <HeaderContent>
-          <h2 class="hakgyoansim-gaeulsopung text-2xl font-bold text-[#E58AAB]">용호💗원비</h2>
+          <h2 class="font-hakgyoansim-gaeulsopung text-2xl font-bold text-[#E58AAB]">용호💗원비</h2>
         </HeaderContent>
         <HeaderContent>
           <div class="flex gap-3">
@@ -42,6 +42,7 @@
         </HeaderContent>
       </Header>
       <slot />
+      <Footer />
     </div>
   </div>
 </template>
@@ -54,11 +55,3 @@ const accordionContents = [
   { label: '신부 최원비', to: { name: 'introduce-bride' } }
 ]
 </script>
-
-<style scoped>
-@import url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimGaeulsopung/HakgyoansimGaeulsopung.css');
-
-.hakgyoansim-gaeulsopung {
-  font-family: 'Hakgyoansim Gaeulsopung', sans-serif;
-}
-</style>
