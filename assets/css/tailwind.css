@@ -3,20 +3,11 @@
 @import url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimGaeulsopung/HakgyoansimGaeulsopung.css');
 
 @tailwind base;
-@tailwind components;
+@tailwind components; 
 @tailwind utilities;
 
 @layer base {
   :root {
     font-family: "Pretendard Variable", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   } 
-}
-
-@layer utilities { 
-  .font-gyeonggi-batang {
-    font-family: 'Gyeonggi Batang', serif;
-  }
-  .font-hakgyoansim-gaeulsopung {
-    font-family: 'Hakgyoansim Gaeulsopung', sans-serif;
-  }
 }

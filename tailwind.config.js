@@ -6,6 +6,10 @@ module.exports = {
   safelist: ['dark'],
 
   theme: {
+    fontFamily: {
+      'gyeonggi-batang': ['Gyeonggi Batang', 'serif'],
+      'hakgyoansim-gaeulsopung': ['Hakgyoansim Gaeulsopung', 'sans-serif']
+    },
     container: {
       center: true,
       padding: '2rem',
