@@ -1,5 +1,6 @@
 <template>
   <Primitive
+    v-bind="props"
     :as="component()"
     :class="icon ? 'cursor-pointer' : cn(buttonVariants({ color, rounded, size }), props.class)"
     :as-child>
