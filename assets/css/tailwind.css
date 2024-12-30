@@ -1,5 +1,6 @@
 @import url('https://cdn.jsdelivr.net/gh/fonts-archive/GyeonggiBatang/GyeonggiBatang.css');
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+@import url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimGaeulsopung/HakgyoansimGaeulsopung.css');
 
 @tailwind base;
 @tailwind components;
@@ -11,13 +12,11 @@
   } 
 }
 
-@layer utilities {
+@layer utilities { 
   .font-gyeonggi-batang {
     font-family: 'Gyeonggi Batang', serif;
   }
+  .font-hakgyoansim-gaeulsopung {
+    font-family: 'Hakgyoansim Gaeulsopung', sans-serif;
+  }
 }
-
-
-
-
- 
