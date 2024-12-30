@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
+      - uses: oven-sh/setup-bun@v2
+        with: 
+          bun-version: 1.0.11
       # Pick your own package manager and build script
       - run: bun install
       - run: bun x nuxt build --preset github_pages
