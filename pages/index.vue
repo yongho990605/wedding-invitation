@@ -52,7 +52,7 @@
     </div>
     <div class="font-gyeonggi-batang border-b border-[#EEEEEE] px-4 py-10 text-[clamp(1.25rem,5vw,1.75rem)]">앨범</div>
     <div class="flex flex-col items-center justify-center divide-y px-4 py-10">
-      <div class="flex w-full flex-col items-center justify-center gap-4 pb-4">
+      <div id="location" class="flex w-full flex-col items-center justify-center gap-4 pb-4">
         <span class="font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]">오시는 길</span>
         <div class="flex flex-col items-center justify-center gap-2">
           <p
