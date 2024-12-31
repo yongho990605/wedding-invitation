@@ -19,9 +19,7 @@ export default defineNuxtConfig({
           defer: true
         }
       ]
-    },
-    baseURL: process.env.NUXT_PUBLIC_BASE_URL || 'https://yongho990605.github.io/wedding-invitation/',
-    buildAssetsDir: 'assets'
+    }
   },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt'],
   components: {
@@ -32,10 +30,16 @@ export default defineNuxtConfig({
     componentDir: './components/ui'
   },
   image: {
-    provider: 'ipx',
-    dir: 'public',
-    domains: ['yongho990605.github.io'],
-    format: ['webp', 'jpg', 'png'],
-    staticFilename: '[publicPath]/[name]-[hash][ext]'
+    prerender: {
+      enabled: false
+    },
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536
+    }
   }
 })

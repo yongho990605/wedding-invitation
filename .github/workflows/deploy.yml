@@ -8,17 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - uses: actions/checkout@v4
       - run: corepack enable 
       - uses: oven-sh/setup-bun@v2 
         with: 
           bun-version: 1.0.11
-      # 이미지 디렉토리 복사 단계 추가
-      - name: Copy images to public directory
-        run: |
-          mkdir -p public
-          cp -r assets/images/* public/ || true
       # BASE_URL 환경변수 설정
       - name: Set environment variables
         run: |
