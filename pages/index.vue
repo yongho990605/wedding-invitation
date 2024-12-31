@@ -65,7 +65,9 @@
             <a href="tel:062-380-7000" class="cursor-pointer font-semibold hover:text-[#E58AAB]">062-380-7000</a>
           </p>
         </div>
-        <NaverMap class="h-[20rem]" />
+        <ClientOnly>
+          <NaverMap class="h-[20rem]" />
+        </ClientOnly>
       </div>
       <div class="flex w-full flex-col items-center justify-center divide-y pt-4">
         <span class="font-gyeonggi-batang pb-5 pt-3 text-[clamp(1.25rem,5vw,1.75rem)]">전세버스 안내</span>

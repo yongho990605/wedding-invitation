@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
   app: {
-    baseURL: 'https://yongho990605.github.io/wedding-invitation/',
     head: {
       title: '장용호 💗 최원비',
       meta: [

@@ -4,11 +4,11 @@
       <HeaderHamburgerMenu
         v-model:open="isOpen"
         :items="[
-          { label: '처음으로', to: { name: 'index' } },
+          { label: '처음으로', to: ROUTE.INDEX },
           { slot: 'introduce-accordion' },
-          { label: '갤러리', to: { name: 'gallery' }, class: '-mt-5' },
-          { label: '축하메세지', to: { path: '/', hash: '#congratulations' } },
-          { label: '오시는길', to: { path: '/', hash: '#location' } }
+          { label: '갤러리', to: ROUTE.GALLERY, class: '-mt-5' },
+          { label: '축하메세지', to: ROUTE.CONGRATULATIONS },
+          { label: '오시는길', to: ROUTE.LOCATION }
         ]">
         <template #introduce-accordion>
           <Accordion type="single" collapsible>
@@ -30,7 +30,7 @@
       </HeaderHamburgerMenu>
       <Header>
         <HeaderContent>
-          <Button as="NuxtLink" :to="{ name: 'index' }" icon="flowbite:home-outline" />
+          <Button as="NuxtLink" :to="ROUTE.INDEX" icon="flowbite:home-outline" />
         </HeaderContent>
         <HeaderContent>
           <h2 class="font-hakgyoansim-gaeulsopung text-2xl font-bold text-[#E58AAB]">용호💗원비</h2>
@@ -48,10 +48,12 @@
 </template>
 
 <script setup lang="ts">
+import { ROUTE } from '~/constants'
+
 const isOpen = ref(false)
 
 const accordionContents = [
-  { label: '신랑 장용호', to: { name: 'introduce-groom' } },
-  { label: '신부 최원비', to: { name: 'introduce-bride' } }
+  { label: '신랑 장용호', to: ROUTE.INTRODUCE.GROOM },
+  { label: '신부 최원비', to: ROUTE.INTRODUCE.BRIDE }
 ]
 </script>
