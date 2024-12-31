@@ -19,7 +19,8 @@ export default defineNuxtConfig({
           defer: true
         }
       ]
-    }
+    },
+    buildAssetsDir: 'assets'
   },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt'],
   components: {
@@ -28,5 +29,11 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: '',
     componentDir: './components/ui'
+  },
+  image: {
+    provider: 'ipx',
+    dir: 'public',
+    domains: ['yongho990605.github.io'],
+    format: ['webp', 'jpg', 'png']
   }
 })

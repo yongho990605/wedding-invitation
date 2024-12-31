@@ -2,7 +2,7 @@
   <div class="flex flex-col bg-white">
     <div class="relative h-fit w-full">
       <div class="absolute left-0 top-1/2 z-10 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
-      <img loading="lazy" src="/image1.jpg" class="w-full" />
+      <NuxtImg src="/image1.jpg" class="w-full" />
       <div class="absolute top-[71%] z-20 flex w-full flex-col px-1">
         <div class="flex justify-center gap-[clamp(0.375rem,1vw,0.75rem)] font-gyeonggi-batang">
           <span class="text-[clamp(1.25rem,5vw,1.75rem)] font-bold">장용호</span>
@@ -14,8 +14,7 @@
     </div>
     <div
       class="relative flex flex-col items-center justify-center pb-[clamp(1.875rem,3vw,3.75rem)] pt-[clamp(0.6rem,22vw,8rem)]">
-      <img
-        loading="lazy"
+      <NuxtImg
         src="/spinning-scroll.png"
         class="absolute -top-[clamp(1rem,2.5vw,1.4rem)] z-30 flex h-[clamp(4.625rem,20vw,8rem)] w-[clamp(4.625rem,20vw,8rem)] justify-center" />
       <div class="flex flex-col items-center justify-center pb-7">
