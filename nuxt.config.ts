@@ -20,7 +20,7 @@ export default defineNuxtConfig({
         }
       ]
     },
-    baseURL: import.meta.env.NUXT_PUBLIC_BASE_URL || '/wedding-invitation/'
+    baseURL: import.meta.env.NUXT_PUBLIC_BASE_URL || 'https://yongho990605.github.io/wedding-invitation/'
   },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt'],
   components: {
