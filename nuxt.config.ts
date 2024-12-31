@@ -19,7 +19,8 @@ export default defineNuxtConfig({
           defer: true
         }
       ]
-    }
+    },
+    baseURL: process.env.NUXT_PUBLIC_BASE_URL || '/wedding-invitation/'
   },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt'],
   components: {
@@ -28,10 +29,5 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: '',
     componentDir: './components/ui'
-  },
-  nitro: {
-    prerender: {
-      failOnError: false
-    }
   }
 })
