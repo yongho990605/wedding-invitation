@@ -20,6 +20,7 @@ export default defineNuxtConfig({
         }
       ]
     },
+    baseURL: process.env.NUXT_PUBLIC_BASE_URL || '/',
     buildAssetsDir: 'assets'
   },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt'],
@@ -34,6 +35,7 @@ export default defineNuxtConfig({
     provider: 'ipx',
     dir: 'public',
     domains: ['yongho990605.github.io'],
-    format: ['webp', 'jpg', 'png']
+    format: ['webp', 'jpg', 'png'],
+    staticFilename: '[publicPath]/[name]-[hash][ext]'
   }
 })
