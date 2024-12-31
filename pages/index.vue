@@ -2,9 +2,9 @@
   <div class="flex flex-col bg-white">
     <div class="relative h-fit w-full">
       <div class="absolute left-0 top-1/2 z-10 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
-      <NuxtImg src="/image1.jpg" class="w-full" />
+      <img loading="lazy" src="/image1.jpg" class="w-full" />
       <div class="absolute top-[71%] z-20 flex w-full flex-col px-1">
-        <div class="font-gyeonggi-batang flex justify-center gap-[clamp(0.375rem,1vw,0.75rem)]">
+        <div class="flex justify-center gap-[clamp(0.375rem,1vw,0.75rem)] font-gyeonggi-batang">
           <span class="text-[clamp(1.25rem,5vw,1.75rem)] font-bold">장용호</span>
           <span class="mt-[clamp(0.5rem,3vw,1rem)] text-[clamp(1rem,2.5vw,1.4rem)]">그리고</span>
           <span class="text-[clamp(1.25rem,5vw,1.75rem)] font-bold">최원비</span>
@@ -14,14 +14,15 @@
     </div>
     <div
       class="relative flex flex-col items-center justify-center pb-[clamp(1.875rem,3vw,3.75rem)] pt-[clamp(0.6rem,22vw,8rem)]">
-      <NuxtImg
+      <img
+        loading="lazy"
         src="/spinning-scroll.png"
         class="absolute -top-[clamp(1rem,2.5vw,1.4rem)] z-30 flex h-[clamp(4.625rem,20vw,8rem)] w-[clamp(4.625rem,20vw,8rem)] justify-center" />
       <div class="flex flex-col items-center justify-center pb-7">
         <span class="font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)] font-bold">D-day</span>
         <div class="mb-7 mt-5">Time stamp</div>
         <div
-          class="font-gyeonggi-batang flex flex-col items-center justify-center gap-2 text-[clamp(0.9375rem,5vw,1.25rem)]">
+          class="flex flex-col items-center justify-center gap-2 font-gyeonggi-batang text-[clamp(0.9375rem,5vw,1.25rem)]">
           <p>광주 라붐웨딩홀 1층 리즈홀</p>
           <p>2025. 02. 22. 토요일 오후 2:00</p>
         </div>
@@ -30,7 +31,7 @@
     <div
       id="congratulations"
       class="flex flex-col items-center justify-center bg-gradient-to-bl from-[#E8E3F5] to-[#F8E2DC] p-4 sm:p-6 md:p-8">
-      <Card class="font-gyeonggi-batang w-full divide-y p-5 sm:p-6 md:p-8">
+      <Card class="w-full divide-y p-5 font-gyeonggi-batang sm:p-6 md:p-8">
         <CardHeader class="pb-4 sm:pb-6 md:pb-8">
           <p class="text-[clamp(1.4rem,3vw,2.8rem)]">소중한 결실의 순간,</p>
           <p class="text-[clamp(2rem,5vw,4rem)]">당신을 초대합니다.</p>
@@ -50,7 +51,7 @@
         </CardContent>
       </Card>
     </div>
-    <div class="font-gyeonggi-batang border-b border-[#EEEEEE] px-4 py-10 text-[clamp(1.25rem,5vw,1.75rem)]">앨범</div>
+    <div class="border-b border-[#EEEEEE] px-4 py-10 font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]">앨범</div>
     <div class="flex flex-col items-center justify-center divide-y px-4 py-10">
       <div id="location" class="flex w-full flex-col items-center justify-center gap-4 pb-4">
         <span class="font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]">오시는 길</span>
@@ -70,7 +71,7 @@
         </ClientOnly>
       </div>
       <div class="flex w-full flex-col items-center justify-center divide-y pt-4">
-        <span class="font-gyeonggi-batang pb-5 pt-3 text-[clamp(1.25rem,5vw,1.75rem)]">전세버스 안내</span>
+        <span class="pb-5 pt-3 font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]">전세버스 안내</span>
         <Accordion type="single" collapsible class="w-full">
           <AccordionItem
             v-for="({ departureFrom, pickupLocation }, i) in accordionItems"

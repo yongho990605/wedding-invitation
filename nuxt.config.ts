@@ -11,7 +11,7 @@ export default defineNuxtConfig({
         { name: 'description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
         { name: 'og:title', content: '장용호 💗 최원비' },
         { name: 'og:description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
-        { name: 'og:image', content: process.env.NUXT_PUBLIC_BASE_URL + 'image1.jpg' }
+        { name: 'og:image', content: './image1.jpg' }
       ],
       script: [
         {
@@ -19,9 +19,7 @@ export default defineNuxtConfig({
           defer: true
         }
       ]
-    },
-    baseURL: process.env.NUXT_PUBLIC_BASE_URL || '/',
-    buildAssetsDir: 'assets'
+    }
   },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt'],
   components: {
