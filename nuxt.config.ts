@@ -34,5 +34,10 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: '',
     componentDir: './components/ui'
+  },
+  nitro: {
+    prerender: {
+      failOnError: false
+    }
   }
 })
