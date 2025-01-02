@@ -15,7 +15,7 @@
     <div
       class="relative flex flex-col items-center justify-center pb-[clamp(1.875rem,3vw,3.75rem)] pt-[clamp(0.6rem,22vw,8rem)]">
       <NuxtImg
-        src="/s3//spinning-scroll.png"
+        src="/s3/spinning-scroll.png"
         class="absolute -top-[clamp(1rem,2.5vw,1.4rem)] z-30 flex h-[clamp(4.625rem,20vw,8rem)] w-[clamp(4.625rem,20vw,8rem)] justify-center" />
       <div class="flex flex-col items-center justify-center pb-7">
         <span class="font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)] font-bold">D-day</span>
