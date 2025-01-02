@@ -36,7 +36,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-vue": "^9.32.0",
-    "nuxt": "^3.14.1",
+    "nuxt": "3.14.1592",
     "prettier": "3.4.2",
     "prettier-plugin-tailwindcss": "0.6.9",
     "typescript": "5.3.3"
