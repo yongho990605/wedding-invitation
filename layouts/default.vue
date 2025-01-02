@@ -4,17 +4,17 @@
       <HeaderHamburgerMenu
         v-model:open="isOpen"
         :items="[
-          { label: '처음으로', to: ROUTE.INDEX },
+          { label: '처음으로', to: { name: 'index' } },
           { slot: 'introduce-accordion' },
-          { label: '갤러리', to: ROUTE.GALLERY, class: '-mt-5' },
-          { label: '축하메세지', to: ROUTE.CONGRATULATIONS },
-          { label: '오시는길', to: ROUTE.LOCATION }
+          { label: '갤러리', to: { name: 'gallery' }, class: '-mt-5' },
+          { label: '축하메세지', to: { name: 'congratulations' } },
+          { label: '오시는길', to: { name: 'location' } }
         ]">
         <template #introduce-accordion>
           <Accordion type="single" collapsible>
             <AccordionItem
               value="introduce"
-              class="font-gyeonggi-batang w-full items-center justify-center gap-5 text-[clamp(1.25rem,5vw,1.75rem)]">
+              class="w-full items-center justify-center gap-5 font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]">
               <AccordionTrigger class="mb-5 gap-[clamp(0.5rem,5vw,2rem)]">신랑 · 신부 소개</AccordionTrigger>
               <AccordionContent
                 v-for="content in accordionContents"
@@ -30,7 +30,7 @@
       </HeaderHamburgerMenu>
       <Header>
         <HeaderContent>
-          <Button as="NuxtLink" :to="ROUTE.INDEX" icon="flowbite:home-outline" />
+          <Button as="NuxtLink" :to="{ name: 'index' }" icon="flowbite:home-outline" />
         </HeaderContent>
         <HeaderContent>
           <h2 class="font-hakgyoansim-gaeulsopung text-2xl font-bold text-[#E58AAB]">용호💗원비</h2>
@@ -48,12 +48,10 @@
 </template>
 
 <script setup lang="ts">
-import { ROUTE } from '~/constants'
-
 const isOpen = ref(false)
 
 const accordionContents = [
-  { label: '신랑 장용호', to: ROUTE.INTRODUCE.GROOM },
-  { label: '신부 최원비', to: ROUTE.INTRODUCE.BRIDE }
+  { label: '신랑 장용호', to: { name: 'introduce-groom' } },
+  { label: '신부 최원비', to: { name: 'introduce-bride' } }
 ]
 </script>
