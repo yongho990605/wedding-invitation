@@ -2,6 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
+  runtimeConfig: {
+    public: {
+      s3: 'https://pub-0d22b53f49a545f394cf32145169f0dd.r2.dev/'
+    }
+  },
   app: {
     rootId: 'wedding-invitation',
     head: {
@@ -29,5 +34,11 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: '',
     componentDir: './components/ui'
+  },
+  image: {
+    domains: ['pub-0d22b53f49a545f394cf32145169f0dd.r2.dev'],
+    alias: {
+      s3: 'https://pub-0d22b53f49a545f394cf32145169f0dd.r2.dev/'
+    }
   }
 })
