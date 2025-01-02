@@ -2,11 +2,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
-  runtimeConfig: {
-    public: {
-      baseURL: import.meta.env.NUXT_PUBLIC_BASE_URL || 'https://yongho990605.github.io/wedding-invitation/'
-    }
-  },
   app: {
     baseURL: import.meta.env.NUXT_PUBLIC_BASE_URL || '/wedding-invitation/',
     rootId: 'wedding-invitation',
