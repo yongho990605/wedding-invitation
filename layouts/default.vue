@@ -32,7 +32,7 @@
         <HeaderContent>
           <Button variant="ghost">
             <NuxtLink class="cursor-pointer" :to="{ name: 'index' }">
-              <Icon name="flowbite:home-outline" size="1.5rem" class="text-[#333333]" />
+              <Icon name="flowbite:home-outline" size="1.7rem" class="text-[#333333]" />
             </NuxtLink>
           </Button>
         </HeaderContent>
@@ -42,7 +42,7 @@
         <HeaderContent>
           <div class="flex gap-3">
             <Button variant="ghost" @click="isOpen = true">
-              <Icon name="heroicons:bars-3-bottom-right" size="1.5rem" class="text-[#333333]" />
+              <Icon name="heroicons:bars-3-bottom-right" size="1.7rem" class="text-[#333333]" />
             </Button>
           </div>
         </HeaderContent>
