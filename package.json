@@ -1,7 +1,8 @@
 {
-  "name": "nuxt-app",
-  "private": true,
+  "name": "wedding-invitation",
+  "private": true, 
   "type": "module",
+  "homepage": "https://yongho990605.github.io/wedding-invitation/",
   "scripts": {
     "build": "nuxt build --preset github_pages",
     "dev": "nuxt dev",
