@@ -1,5 +1,5 @@
 <template>
-  <Primitive v-bind="props" :class="cn(buttonVariants({ color, rounded, size }), props.class)" :as-child>
+  <Primitive v-bind="props" :class="cn(buttonVariants({ color, rounded, size, variant }), props.class)" :as-child>
     <slot>{{ label }}</slot>
   </Primitive>
 </template>

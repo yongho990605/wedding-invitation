@@ -10,15 +10,21 @@ export const buttonVariants = cva('flex items-center justify-center gap-2 whites
       lg: 'h-10 px-4 py-1.5 text-lg'
     },
     color: {
-      slate: 'bg-slate-400 text-slate-900 active:bg-slate-500 hover:bg-slate-300',
+      slate: 'bg-slate-400 text-slate-900',
       rose: 'bg-[#D89299] text-white'
     },
-    rounded: { true: 'rounded-full', false: 'rounded' }
+    rounded: { true: 'rounded-full', false: 'rounded' },
+    variant: {
+      ghost: 'bg-transparent',
+      outline: 'bg-transparent border border-slate-400',
+      solid: ''
+    }
   },
   defaultVariants: {
     size: 'md',
     color: 'slate',
-    rounded: false
+    rounded: false,
+    variant: 'solid'
   }
 })
 

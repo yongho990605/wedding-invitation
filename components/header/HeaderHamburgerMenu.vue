@@ -1,7 +1,9 @@
 <template>
   <div v-show="open" class="absolute left-0 top-0 z-50 h-screen w-full bg-[#F1E9E9E5]">
     <div class="relative flex h-full w-full flex-col items-center justify-center gap-10">
-      <Button icon="heroicons:x-mark" class="absolute right-4 top-4" @click="open = false" />
+      <Button class="absolute right-4 top-4" variant="ghost" @click="open = false">
+        <Icon name="heroicons:x-mark" size="1.5rem" class="text-[rgb(51,51,51)]" />
+      </Button>
       <template v-for="item in items" :key="item.label">
         <slot :name="item.slot">
           <NuxtLink

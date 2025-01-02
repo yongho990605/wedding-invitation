@@ -7,6 +7,7 @@ import type { HTMLAttributes } from 'vue'
 export interface ButtonProps extends PrimitiveProps {
   size?: ButtonVariants['size']
   color?: ButtonVariants['color']
+  variant?: ButtonVariants['variant']
   rounded?: boolean
   label?: string
   type?: HTMLButtonElement['type']
