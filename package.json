@@ -1,6 +1,6 @@
 {
   "name": "wedding-invitation",
-  "private": true, 
+  "private": true,
   "type": "module",
   "homepage": "https://yongho990605.github.io/wedding-invitation/",
   "scripts": {
@@ -16,6 +16,7 @@
     "@vueuse/core": "^12.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "embla-carousel-autoplay": "^8.5.1",
     "embla-carousel-vue": "^8.5.1",
     "lucide-vue-next": "^0.469.0",
     "radix-vue": "^1.9.11",
