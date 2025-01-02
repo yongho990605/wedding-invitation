@@ -23,6 +23,11 @@ export default defineNuxtConfig({
       ]
     }
   },
+  nitro: {
+    prerender: {
+      ignore: ['/gallery', '/introduce']
+    }
+  },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt'],
   components: {
     dirs: [{ path: '~/components', pathPrefix: false }]
