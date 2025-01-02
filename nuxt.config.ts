@@ -4,10 +4,11 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   runtimeConfig: {
     public: {
-      baseURL: process.env.NUXT_PUBLIC_BASE_URL || 'https://yongho990605.github.io/wedding-invitation/'
+      baseURL: import.meta.env.NUXT_PUBLIC_BASE_URL || 'https://yongho990605.github.io/wedding-invitation/'
     }
   },
   app: {
+    baseURL: import.meta.env.NUXT_PUBLIC_BASE_URL || '/wedding-invitation/',
     rootId: 'wedding-invitation',
     head: {
       title: '장용호 💗 최원비',
@@ -34,10 +35,5 @@ export default defineNuxtConfig({
   shadcn: {
     prefix: '',
     componentDir: './components/ui'
-  },
-  nitro: {
-    prerender: {
-      failOnError: false
-    }
   }
 })
