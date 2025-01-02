@@ -7,8 +7,8 @@
           { label: '처음으로', to: { name: 'index' } },
           { slot: 'introduce-accordion' },
           { label: '갤러리', to: { name: 'gallery' }, class: '-mt-5' },
-          { label: '축하메세지', to: { name: 'congratulations' } },
-          { label: '오시는길', to: { name: 'location' } }
+          { label: '축하메세지', to: { name: 'index', hash: '#congratulations' } },
+          { label: '오시는길', to: { name: 'index', hash: '#location' } }
         ]">
         <template #introduce-accordion>
           <Accordion type="single" collapsible>
@@ -30,14 +30,20 @@
       </HeaderHamburgerMenu>
       <Header>
         <HeaderContent>
-          <Button as="NuxtLink" :to="{ name: 'index' }" icon="flowbite:home-outline" />
+          <Button class="w-full">
+            <NuxtLink class="cursor-pointer" :to="{ name: 'index' }">
+              <Icon name="flowbite:home-outline" />
+            </NuxtLink>
+          </Button>
         </HeaderContent>
         <HeaderContent>
           <h2 class="font-hakgyoansim-gaeulsopung text-2xl font-bold text-[#E58AAB]">용호💗원비</h2>
         </HeaderContent>
         <HeaderContent>
           <div class="flex gap-3">
-            <Button icon="heroicons:bars-3-bottom-right" @click="isOpen = true" />
+            <Button @click="isOpen = true">
+              <Icon name="heroicons:bars-3-bottom-right" />
+            </Button>
           </div>
         </HeaderContent>
       </Header>

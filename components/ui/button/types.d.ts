@@ -11,6 +11,5 @@ export interface ButtonProps extends PrimitiveProps {
   label?: string
   type?: HTMLButtonElement['type']
   class?: HTMLAttributes['class']
-  icon?: string
   to?: RouteLocationRaw
 }

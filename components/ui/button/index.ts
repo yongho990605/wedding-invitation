@@ -22,11 +22,4 @@ export const buttonVariants = cva('flex items-center justify-center gap-2 whites
   }
 })
 
-export const buttonIconVariants = cva('text-[#54514E]', {
-  variants: {
-    size: { sm: 'h-5 w-5', md: 'h-6 w-6', lg: 'h-7 w-7' }
-  },
-  defaultVariants: { size: 'lg' }
-})
-
 export type ButtonVariants = VariantProps<typeof buttonVariants>

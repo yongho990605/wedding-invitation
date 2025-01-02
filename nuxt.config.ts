@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
   app: {
-    baseURL: import.meta.env.NUXT_PUBLIC_BASE_URL || '/wedding-invitation/',
     rootId: 'wedding-invitation',
     head: {
       title: '장용호 💗 최원비',
@@ -21,11 +20,6 @@ export default defineNuxtConfig({
           defer: true
         }
       ]
-    }
-  },
-  nitro: {
-    prerender: {
-      ignore: ['/gallery', '/introduce']
     }
   },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt'],
