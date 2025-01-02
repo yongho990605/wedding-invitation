@@ -7,7 +7,7 @@
           { label: '처음으로', to: { name: 'index' } },
           { slot: 'introduce-accordion' },
           { label: '갤러리', to: { name: 'gallery' }, class: '-mt-5' },
-          { label: '축하메세지', to: { name: 'index', hash: '#congratulations' } },
+          { label: '초대 인사말', to: { name: 'index', hash: '#invite' } },
           { label: '오시는길', to: { name: 'index', hash: '#location' } }
         ]">
         <template #introduce-accordion>

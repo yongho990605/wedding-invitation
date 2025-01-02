@@ -28,7 +28,7 @@
       </div>
     </div>
     <div
-      id="congratulations"
+      id="invite"
       class="flex flex-col items-center justify-center bg-gradient-to-bl from-[#E8E3F5] to-[#F8E2DC] p-4 sm:p-6 md:p-8">
       <Card class="w-full divide-y p-5 font-gyeonggi-batang sm:p-6 md:p-8">
         <CardHeader class="pb-4 sm:pb-6 md:pb-8">
