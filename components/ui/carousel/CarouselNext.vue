@@ -1,28 +1,18 @@
 <template>
   <Button
     :disabled="!canScrollNext"
-    :class="
-      cn(
-        'absolute h-8 w-8 touch-manipulation rounded-full p-0',
-        orientation === 'horizontal'
-          ? '-right-12 top-1/2 -translate-y-1/2'
-          : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
-        props.class
-      )
-    "
-    variant="outline"
+    :class="cn('h-8 w-8 touch-manipulation p-0', orientation !== 'horizontal' && 'rotate-90', props.class)"
+    variant="ghost"
     @click="scrollNext">
     <slot>
-      <ArrowRight class="h-4 w-4 text-current" />
+      <Icon name="heroicons:arrow-right" class="h-5 w-5 text-[#BBBBBB]" />
       <span class="sr-only">Next Slide</span>
     </slot>
   </Button>
 </template>
 
 <script setup lang="ts">
-import { ArrowRight } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
-import { Button } from '~/components/ui/button'
 import type { WithClassAsProps } from './interface'
 import { useCarousel } from './useCarousel'
 
