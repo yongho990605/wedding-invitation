@@ -22,7 +22,7 @@ export default defineNuxtConfig({
       ]
     }
   },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@vueuse/nuxt'],
   components: {
     dirs: [{ path: '~/components', pathPrefix: false }]
   },
