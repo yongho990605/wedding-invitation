@@ -65,7 +65,7 @@
       </div>
       <CarouselContent class="pt-4">
         <CarouselItem v-for="imgSource in Object.values(GALLERY_IMAGES).flat()" :key="imgSource" class="w-full">
-          <NuxtImg :src="imgSource" class="h-[26.25rem] w-full rounded-2xl border-2 border-white object-contain" />
+          <NuxtImg :src="imgSource" class="h-[26.25rem] w-full rounded-2xl object-contain" />
         </CarouselItem>
       </CarouselContent>
     </Carousel>
