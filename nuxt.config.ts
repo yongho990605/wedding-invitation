@@ -23,26 +23,6 @@ export default defineNuxtConfig({
     }
   },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxt/icon', '@nuxt/image', '@vueuse/nuxt'],
-  image: {
-    provider: 'ipx',
-    dir: 'public',
-    prerender: true,
-    screens: {
-      xs: 320,
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280,
-      xxl: 1536
-    }
-  },
-  nitro: {
-    prerender: {
-      failOnError: false,
-      routes: ['/'],
-      ignore: ['/_ipx/**']
-    }
-  },
   components: {
     dirs: [{ path: '~/components', pathPrefix: false }]
   },
