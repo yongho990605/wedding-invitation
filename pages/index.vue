@@ -65,7 +65,10 @@
       </div>
       <CarouselContent class="pt-4">
         <CarouselItem v-for="imgSource in Object.values(GALLERY_IMAGES).flat()" :key="imgSource" class="w-full">
-          <img :src="imgSource" :alt="imgSource" class="h-[26.25rem] w-full rounded-2xl object-contain" />
+          <img
+            :src="`${config.public.baseURL}${imgSource}`"
+            :alt="imgSource"
+            class="h-[26.25rem] w-full rounded-2xl object-contain" />
         </CarouselItem>
       </CarouselContent>
     </Carousel>
@@ -134,9 +137,9 @@ interface AccordionItem {
   pickupLocation: { name: string; address?: string; type?: 'badge' | 'text' }[]
 }
 
+const config = useRuntimeConfig()
 const weddingHoleAddress = '광주 서구 상무누리로 59 (치평동 268-18)'
 const addressClipboard = useClipboard({ source: weddingHoleAddress })
-
 const carouselPlugin = Autoplay({
   delay: 3000,
   stopOnMouseEnter: true,
