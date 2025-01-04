@@ -2,11 +2,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
-  runtimeConfig: {
-    public: {
-      s3: 'https://pub-0d22b53f49a545f394cf32145169f0dd.r2.dev/'
-    }
-  },
   app: {
     rootId: 'wedding-invitation',
     head: {
@@ -17,7 +12,7 @@ export default defineNuxtConfig({
         { name: 'description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
         { name: 'og:title', content: '장용호 💗 최원비' },
         { name: 'og:description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
-        { name: 'og:image', content: './image1.jpg' }
+        { name: 'og:image', content: '/concept4/image5.jpg' }
       ],
       script: [
         {
