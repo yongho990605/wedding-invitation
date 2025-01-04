@@ -2,7 +2,7 @@
   <div class="flex flex-col bg-white">
     <div class="relative h-fit w-full">
       <div class="absolute left-0 top-1/2 z-10 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
-      <img src="/image1.jpg" class="w-full" />
+      <img src="/concept4/image5.jpg" class="w-full" />
       <div class="absolute top-[71%] z-20 flex w-full flex-col px-1">
         <div class="flex justify-center gap-[clamp(0.375rem,1vw,0.75rem)] font-gyeonggi-batang">
           <span class="text-[clamp(1.25rem,5vw,1.75rem)] font-bold">장용호</span>
@@ -15,8 +15,8 @@
     <div
       class="relative flex flex-col items-center justify-center pb-[clamp(1.875rem,3vw,3.75rem)] pt-[clamp(0.6rem,22vw,8rem)]">
       <img
-        src="/spinning-scroll.png"
-        class="absolute -top-[clamp(1rem,2.5vw,1.4rem)] z-30 flex h-[clamp(4.625rem,20vw,8rem)] w-[clamp(4.625rem,20vw,8rem)] animate-[spin_4s_linear_infinite] justify-center" />
+        src="/shared/spinning-scroll.png"
+        class="absolute -top-[clamp(1rem,2.5vw,1.4rem)] z-30 flex h-[clamp(4.625rem,20vw,8rem)] w-[clamp(4.625rem,20vw,8rem)] animate-[spin_5s_linear_infinite] justify-center" />
       <div class="flex flex-col items-center justify-center pb-7">
         <span class="font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)] font-bold">D-day</span>
         <div class="mb-7 mt-5">Time stamp</div>
@@ -50,7 +50,28 @@
         </CardContent>
       </Card>
     </div>
-    <div class="border-b border-[#EEEEEE] px-4 py-10 font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]">앨범</div>
+
+    <Carousel
+      class="flex flex-col items-center justify-center border-b border-[#EEEEEE] px-4 py-10 font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]"
+      :plugins="[carouselPlugin]"
+      @mouseenter="carouselPlugin.stop"
+      @mouseleave="[carouselPlugin.reset(), carouselPlugin.play()]">
+      <div class="flex w-full items-center justify-between border-b border-[#EEEEEE] pb-4">
+        <span>앨범</span>
+        <div class="flex">
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
+      </div>
+      <CarouselContent class="pt-4">
+        <CarouselItem v-for="imgSource in Object.values(GALLERY_IMAGES).flat()" :key="imgSource" class="w-full">
+          <NuxtImg
+            :src="imgSource"
+            class="h-[26.25rem] w-[17.375rem] rounded-2xl border-2 border-white object-contain" />
+        </CarouselItem>
+      </CarouselContent>
+    </Carousel>
+
     <div class="flex flex-col items-center justify-center divide-y px-4 py-10">
       <div id="location" class="flex w-full flex-col items-center justify-center gap-4 pb-4">
         <span class="font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]">오시는 길</span>
@@ -107,6 +128,8 @@
 
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
+import Autoplay from 'embla-carousel-autoplay'
+import { GALLERY_IMAGES } from '~/constants/gallery'
 
 interface AccordionItem {
   departureFrom: { region: string; time: string | number }
@@ -115,6 +138,12 @@ interface AccordionItem {
 
 const weddingHoleAddress = '광주 서구 상무누리로 59 (치평동 268-18)'
 const addressClipboard = useClipboard({ source: weddingHoleAddress })
+
+const carouselPlugin = Autoplay({
+  delay: 3000,
+  stopOnMouseEnter: true,
+  stopOnInteraction: false
+})
 
 const accordionItems: AccordionItem[] = [
   {
