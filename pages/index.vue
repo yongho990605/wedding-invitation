@@ -66,8 +66,9 @@
       <CarouselContent class="pt-4">
         <CarouselItem v-for="imgSource in Object.values(GALLERY_IMAGES).flat()" :key="imgSource" class="w-full">
           <img
-            :src="`${config.public.baseURL ?? '/wedding-invitation'}${imgSource}`"
+            :src="`${config.app.baseURL === '/' ? '' : '/wedding-invitation'}${imgSource}`"
             :alt="imgSource"
+            loading="lazy"
             class="h-[26.25rem] w-full rounded-2xl object-contain" />
         </CarouselItem>
       </CarouselContent>
