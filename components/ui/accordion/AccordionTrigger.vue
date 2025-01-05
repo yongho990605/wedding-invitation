@@ -7,8 +7,7 @@
       ">
       <slot />
       <slot name="icon">
-        <ChevronDown
-          class="h-[clamp(1.25rem,5vw,1.75rem)] w-[clamp(1.25rem,5vw,1.75rem)] shrink-0 text-[#777777] transition-transform duration-200" />
+        <ChevronDown class="h-[1.25rem] w-[1.25rem] shrink-0 text-[#777777] transition-transform duration-200" />
       </slot>
     </AccordionTrigger>
   </AccordionHeader>

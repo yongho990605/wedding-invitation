@@ -5,33 +5,34 @@
         <TransitionGroup name="fade">
           <div v-for="(image, index) in images" :key="image" class="w-full">
             <div
-              class="absolute left-0 top-[60%] z-10 h-[40%] w-full bg-gradient-to-b from-transparent via-white/50 to-white" />
+              class="absolute left-0 top-[60%] z-10 h-[42%] w-full bg-gradient-to-b from-transparent via-white/50 to-white" />
             <img v-show="currentImageIndex === index" :key="image" :src="image" class="-mt-[4.0625rem] w-full" />
           </div>
         </TransitionGroup>
-        <div class="absolute top-[80%] z-20 flex w-full flex-col px-1">
-          <div class="flex justify-center gap-[clamp(0.375rem,1vw,0.75rem)] font-gyeonggi-batang">
-            <span class="text-[clamp(1.25rem,5vw,1.75rem)] font-bold">장용호</span>
-            <span class="mt-[clamp(0.5rem,3vw,1rem)] text-[clamp(1rem,2.5vw,1.4rem)]">그리고</span>
-            <span class="text-[clamp(1.25rem,5vw,1.75rem)] font-bold">최원비</span>
+        <div class="absolute top-[72%] z-20 flex w-full flex-col px-1">
+          <div class="flex justify-center gap-3 font-gyeonggi-batang">
+            <span class="text-xl font-bold lg:text-2xl">장용호</span>
+            <span class="mt-2 lg:text-lg">그리고</span>
+            <span class="text-xl font-bold lg:text-2xl">최원비</span>
           </div>
-          <div class="flex justify-center font-[ink-lipquid] text-[clamp(3.5rem,10vw,8rem)]">우리 결혼합니다</div>
+          <div class="mt-3 flex justify-center font-[ink-lipquid] text-5xl lg:text-6xl">우리 결혼합니다</div>
         </div>
       </div>
     </div>
 
-    <div
-      class="relative flex flex-col items-center justify-center pb-[clamp(1.875rem,3vw,3.75rem)] pt-[clamp(10rem,18vw,1rem)]">
+    <div class="relative flex flex-col items-center justify-center">
       <img
         src="/shared/spinning-scroll.png"
-        class="absolute top-[clamp(2rem,5vh,5rem)] z-30 flex h-[4.625rem] w-[4.625rem] animate-[spin_6s_linear_infinite] justify-center sm:h-[5rem] sm:w-[5rem] md:h-[7rem] md:w-[7rem]" />
-      <div class="flex flex-col items-center justify-center pb-7 md:mt-10">
-        <span class="font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)] font-bold">D-day</span>
-        <div class="flex w-full items-center justify-center gap-5 sm:gap-7 md:gap-10">
+        class="absolute -top-5 z-30 flex h-[4.625rem] w-[4.625rem] animate-[spin_6s_linear_infinite] justify-center" />
+      <div class="mt-20 flex flex-col items-center justify-center pb-7">
+        <span class="font-gyeonggi-batang text-xl font-bold">D-day</span>
+        <div class="flex w-full items-center justify-center gap-5">
           <div
             v-for="(value, key) in remainingDueDate"
             :key="key"
-            class="mb-7 mt-5 flex flex-col items-center gap-2.5 sm:mb-10 sm:mt-7 md:mb-14 md:mt-10">
+            :class="
+              cn('mb-7 mt-5 flex flex-col items-center gap-1.5 lg:gap-2.5', key === 'Seconds' && 'hidden lg:flex')
+            ">
             <div class="relative">
               <ClientOnly>
                 <CircleProgress
@@ -51,30 +52,29 @@
                 </CircleProgress>
               </ClientOnly>
               <span
-                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-gyeonggi-batang text-2xl font-bold sm:text-3xl md:text-4xl">
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-gyeonggi-batang text-2xl font-bold">
                 {{ value.text }}
               </span>
             </div>
-            <span class="text-[clamp(0.8125rem,4vw,1.2rem)] text-[#BBBBBB]">{{ key }}</span>
+            <span class="text-[0.8125rem] text-[#BBBBBB] lg:text-base">{{ key }}</span>
           </div>
         </div>
         <div
           id="invite"
-          class="flex flex-col items-center justify-center gap-2 font-gyeonggi-batang text-[clamp(0.9375rem,5vw,1.25rem)]">
+          class="mb-7 mt-2 flex flex-col items-center justify-center gap-2 font-gyeonggi-batang text-[0.9375rem] lg:text-base">
           <p>광주 라붐웨딩홀 1층 리즈홀</p>
           <p>2025. 02. 22. 토요일 오후 2:00</p>
         </div>
       </div>
     </div>
 
-    <div
-      class="flex flex-col items-center justify-center bg-gradient-to-bl from-[#E8E3F5] to-[#F8E2DC] p-4 sm:p-6 md:p-8">
-      <Card class="w-full divide-y p-5 font-gyeonggi-batang sm:p-6 md:p-8">
-        <CardHeader class="pb-4 sm:pb-6 md:pb-8">
-          <p class="text-[clamp(1.4rem,3vw,2.8rem)]">소중한 결실의 순간,</p>
-          <p class="text-[clamp(2rem,5vw,4rem)]">당신을 초대합니다.</p>
+    <div class="flex flex-col items-center justify-center bg-gradient-to-bl from-[#E8E3F5] to-[#F8E2DC] p-4">
+      <Card class="w-full divide-y p-5 font-gyeonggi-batang">
+        <CardHeader class="flex flex-col gap-1 pb-4 lg:gap-2">
+          <p class="text-xl font-medium lg:text-2xl">소중한 결실의 순간,</p>
+          <p class="text-[1.625rem] font-bold lg:text-4xl">당신을 초대합니다.</p>
         </CardHeader>
-        <CardContent class="py-4 text-[clamp(1rem,3vw,1.4rem)] sm:py-6 md:py-8">
+        <CardContent class="py-4 lg:text-[1.0625rem]">
           <div class="flex flex-col gap-2.5 break-keep">
             <p>
               축복이 내림처럼 포근한 눈이 내리는 2월의 하늘 아래, 저희 두 사람이 하나 되어 새로운 가정을 이루고자
@@ -91,7 +91,7 @@
     </div>
 
     <Carousel
-      class="flex flex-col items-center justify-center border-b border-[#EEEEEE] px-4 py-10 font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]"
+      class="flex flex-col items-center justify-center border-b border-[#EEEEEE] px-4 py-10 font-gyeonggi-batang text-xl lg:text-2xl"
       :plugins="[carouselPlugin]"
       @mouseenter="carouselPlugin.stop"
       @mouseleave="[carouselPlugin.reset(), carouselPlugin.play()]">
@@ -115,14 +115,14 @@
 
     <div class="flex flex-col items-center justify-center divide-y px-4 py-10">
       <div id="location" class="flex w-full flex-col items-center justify-center gap-4 pb-4">
-        <span class="font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]">오시는 길</span>
+        <span class="font-gyeonggi-batang text-xl lg:text-2xl">오시는 길</span>
         <div class="flex flex-col items-center justify-center gap-2">
           <p
-            class="cursor-pointer text-[clamp(0.875rem,2.5vw,1.2rem)] text-[#333333] hover:text-[#E58AAB]"
+            class="cursor-pointer text-[#333333] hover:text-[#E58AAB] lg:text-lg"
             @click="addressClipboard.copy(weddingHoleAddress)">
             {{ weddingHoleAddress }}
           </p>
-          <p class="text-[clamp(0.875rem,2.5vw,1.2rem)] text-[#999999]">
+          <p class="text-[#999999] lg:text-lg">
             Tel.
             <a href="tel:062-380-7000" class="cursor-pointer font-semibold hover:text-[#E58AAB]">062-380-7000</a>
           </p>
@@ -132,7 +132,7 @@
         </ClientOnly>
       </div>
       <div class="flex w-full flex-col items-center justify-center divide-y pt-4">
-        <span class="pb-5 pt-3 font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)]">전세버스 안내</span>
+        <span class="pb-5 pt-3 font-gyeonggi-batang text-lg lg:text-2xl">전세버스 안내</span>
         <Accordion type="single" collapsible class="w-full">
           <AccordionItem
             v-for="({ departureFrom, pickupLocation }, i) in accordionItems"
@@ -140,22 +140,22 @@
             :value="`item-${i}`"
             class="border-b border-[#EEEEEE] py-6">
             <AccordionTrigger class="w-full justify-between">
-              <div class="flex text-[clamp(1rem,2.5vw,1.4rem)] font-light">
+              <div class="flex font-light lg:text-lg">
                 <span class="font-semibold">{{ departureFrom.region }}</span>
                 에서 광주 출발: &nbsp;
                 <span class="font-semibold">{{ departureFrom.time }}시</span>
               </div>
             </AccordionTrigger>
-            <AccordionContent class="flex flex-row gap-2 py-3 text-[clamp(0.9rem,2.5vw,1.2rem)] font-light">
+            <AccordionContent class="flex flex-row gap-2 py-3 text-[0.9375rem] font-light lg:text-base">
               <span class="w-1/6 text-[#BBBBBB]">장소</span>
               <div class="flex flex-col gap-2">
                 <template v-for="(item, j) in pickupLocation" :key="j">
-                  <Badge v-if="item.type === 'badge'" class="text-[clamp(0.85rem,2.5vw,1.05rem)] font-bold" rounded>
+                  <Badge v-if="item.type === 'badge'" class="text-[0.8rem] font-bold lg:text-[0.9125rem]" rounded>
                     {{ item.name }}
                   </Badge>
                   <div v-else class="flex flex-col gap-1.5">
                     <p class="font-semibold">{{ item.name }}</p>
-                    <p class="text-[clamp(0.85rem,2.5vw,1.1rem)] font-light">{{ item.address }}</p>
+                    <p class="text-[0.85rem] font-light lg:text-base">{{ item.address }}</p>
                   </div>
                 </template>
               </div>
@@ -172,6 +172,7 @@ import { useClipboard, useNow } from '@vueuse/core'
 import Autoplay from 'embla-carousel-autoplay'
 // @ts-ignore
 import CircleProgress from 'vue3-circle-progress'
+import { cn } from '@/lib/utils'
 import { GALLERY_IMAGES } from '~/constants/gallery'
 
 interface AccordionItem {
@@ -196,11 +197,13 @@ const remainingDueDate = computed(() => {
   const dueDays = Math.floor(diff / (1000 * 60 * 60 * 24))
   const dueHours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
   const dueMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+  const dueSeconds = Math.floor((diff % (1000 * 60)) / 1000)
 
   return {
     Days: { precentage: Math.floor((dueDays / 100) * 100), text: dueDays },
     Hours: { precentage: Math.floor((dueHours / 24) * 100), text: dueHours },
-    Minutes: { precentage: Math.floor((dueMinutes / 60) * 100), text: dueMinutes }
+    Minutes: { precentage: Math.floor((dueMinutes / 60) * 100), text: dueMinutes },
+    Seconds: { precentage: Math.floor((dueSeconds / 60) * 100), text: dueSeconds }
   }
 })
 

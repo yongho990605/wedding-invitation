@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-slate-50">
+  <div class="bg-[#333]">
     <NuxtLoadingIndicator />
     <NuxtLayout>
       <NuxtPage />
