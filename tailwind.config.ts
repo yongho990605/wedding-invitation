@@ -10,17 +10,9 @@ module.exports = {
       'gyeonggi-batang': ['Gyeonggi Batang', 'serif'],
       'hakgyoansim-gaeulsopung': ['Hakgyoansim Gaeulsopung', 'sans-serif']
     },
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        xs: '320px',
-        sm: '480px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1400px'
-      }
+    screens: {
+      md: '320px',
+      lg: '425px'
     },
     extend: {
       colors: {
