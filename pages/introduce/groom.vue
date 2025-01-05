@@ -1,3 +1,5 @@
 <template>
-  <div>신랑 소개</div>
+  <NuxtLayout name="introduce">
+    <div>신랑소개</div>
+  </NuxtLayout>
 </template>
