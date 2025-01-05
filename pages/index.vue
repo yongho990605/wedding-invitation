@@ -1,24 +1,31 @@
 <template>
   <div class="flex flex-col bg-white">
-    <div class="relative h-fit w-full">
-      <div class="absolute left-0 top-1/2 z-10 h-1/2 w-full bg-gradient-to-b from-transparent to-white" />
-      <img src="/concept4/image5.jpg" class="w-full" />
-      <div class="absolute top-[71%] z-20 flex w-full flex-col px-1">
-        <div class="flex justify-center gap-[clamp(0.375rem,1vw,0.75rem)] font-gyeonggi-batang">
-          <span class="text-[clamp(1.25rem,5vw,1.75rem)] font-bold">장용호</span>
-          <span class="mt-[clamp(0.5rem,3vw,1rem)] text-[clamp(1rem,2.5vw,1.4rem)]">그리고</span>
-          <span class="text-[clamp(1.25rem,5vw,1.75rem)] font-bold">최원비</span>
+    <div class="relative h-fit w-full overflow-hidden">
+      <div class="relative h-fit w-full">
+        <TransitionGroup name="fade">
+          <div v-for="(image, index) in images" :key="image" class="w-full">
+            <div
+              class="absolute left-0 top-[60%] z-10 h-[40%] w-full bg-gradient-to-b from-transparent via-white/50 to-white" />
+            <img v-show="currentImageIndex === index" :key="image" :src="image" class="-mt-[4.0625rem] w-full" />
+          </div>
+        </TransitionGroup>
+        <div class="absolute top-[80%] z-20 flex w-full flex-col px-1">
+          <div class="flex justify-center gap-[clamp(0.375rem,1vw,0.75rem)] font-gyeonggi-batang">
+            <span class="text-[clamp(1.25rem,5vw,1.75rem)] font-bold">장용호</span>
+            <span class="mt-[clamp(0.5rem,3vw,1rem)] text-[clamp(1rem,2.5vw,1.4rem)]">그리고</span>
+            <span class="text-[clamp(1.25rem,5vw,1.75rem)] font-bold">최원비</span>
+          </div>
+          <div class="flex justify-center font-[ink-lipquid] text-[clamp(3.5rem,10vw,8rem)]">우리 결혼합니다</div>
         </div>
-        <div class="flex justify-center font-[ink-lipquid] text-[clamp(3.5rem,10vw,8rem)]">우리 결혼합니다</div>
       </div>
     </div>
 
     <div
-      class="relative flex flex-col items-center justify-center pb-[clamp(1.875rem,3vw,3.75rem)] pt-[clamp(0.6rem,22vw,8rem)]">
+      class="relative flex flex-col items-center justify-center pb-[clamp(1.875rem,3vw,3.75rem)] pt-[clamp(10rem,18vw,1rem)]">
       <img
         src="/shared/spinning-scroll.png"
-        class="absolute -top-[clamp(1rem,2.5vw,1.4rem)] z-30 flex h-[clamp(4.625rem,20vw,8rem)] w-[clamp(4.625rem,20vw,8rem)] animate-[spin_6s_linear_infinite] justify-center" />
-      <div class="flex flex-col items-center justify-center pb-7">
+        class="absolute top-[clamp(2rem,5vh,5rem)] z-30 flex h-[4.625rem] w-[4.625rem] animate-[spin_6s_linear_infinite] justify-center sm:h-[5rem] sm:w-[5rem] md:h-[7rem] md:w-[7rem]" />
+      <div class="flex flex-col items-center justify-center pb-7 md:mt-10">
         <span class="font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)] font-bold">D-day</span>
         <div class="flex w-full items-center justify-center gap-5 sm:gap-7 md:gap-10">
           <div
@@ -28,10 +35,6 @@
             <div class="relative">
               <ClientOnly>
                 <CircleProgress
-                  :style="{
-                    width: 'clamp(4.375rem,8vw,8rem)',
-                    height: 'clamp(4.375rem,8vw,8rem)'
-                  }"
                   :border-width="3.5"
                   :border-bg-width="3.5"
                   :size="70"
@@ -219,6 +222,23 @@ const accordionItems: AccordionItem[] = [
     pickupLocation: [{ name: '수북면사무소 앞', address: '(수북면 수북리 600)' }]
   }
 ]
+
+// 이미지 배열 추가
+const images = ['main_image1.jpg', 'main_image2.jpg', 'main_image3.jpg']
+
+// 현재 이미지 인덱스 상태 관리
+const currentImageIndex = ref(0)
+
+let intervalId: NodeJS.Timeout
+onMounted(() => {
+  intervalId = setInterval(() => {
+    currentImageIndex.value = (currentImageIndex.value + 1) % images.length
+  }, 3000)
+})
+
+onUnmounted(() => {
+  clearInterval(intervalId)
+})
 </script>
 
 <style scoped>
@@ -229,5 +249,22 @@ const accordionItems: AccordionItem[] = [
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+  position: absolute;
+  width: 100%;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
 }
 </style>
