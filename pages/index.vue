@@ -12,23 +12,59 @@
         <div class="flex justify-center font-[ink-lipquid] text-[clamp(3.5rem,10vw,8rem)]">우리 결혼합니다</div>
       </div>
     </div>
+
     <div
       class="relative flex flex-col items-center justify-center pb-[clamp(1.875rem,3vw,3.75rem)] pt-[clamp(0.6rem,22vw,8rem)]">
       <img
         src="/shared/spinning-scroll.png"
-        class="absolute -top-[clamp(1rem,2.5vw,1.4rem)] z-30 flex h-[clamp(4.625rem,20vw,8rem)] w-[clamp(4.625rem,20vw,8rem)] animate-[spin_5s_linear_infinite] justify-center" />
+        class="absolute -top-[clamp(1rem,2.5vw,1.4rem)] z-30 flex h-[clamp(4.625rem,20vw,8rem)] w-[clamp(4.625rem,20vw,8rem)] animate-[spin_6s_linear_infinite] justify-center" />
       <div class="flex flex-col items-center justify-center pb-7">
         <span class="font-gyeonggi-batang text-[clamp(1.25rem,5vw,1.75rem)] font-bold">D-day</span>
-        <div class="mb-7 mt-5">Time stamp</div>
+        <div class="flex w-full items-center justify-center gap-5 sm:gap-7 md:gap-10">
+          <div
+            v-for="(value, key) in remainingDueDate"
+            :key="key"
+            class="mb-7 mt-5 flex flex-col items-center gap-2.5 sm:mb-10 sm:mt-7 md:mb-14 md:mt-10">
+            <div class="relative">
+              <ClientOnly>
+                <CircleProgress
+                  :style="{
+                    width: 'clamp(4.375rem,8vw,8rem)',
+                    height: 'clamp(4.375rem,8vw,8rem)'
+                  }"
+                  :border-width="3.5"
+                  :border-bg-width="3.5"
+                  :size="70"
+                  empty-color="#EEEEEE"
+                  :gradient="{
+                    angle: 90,
+                    startColor: '#EEACC1',
+                    stopColor: '#D0D0F3'
+                  }"
+                  :percent="value.precentage"
+                  unit="''"
+                  is-gradient>
+                  뭐 나옴?
+                </CircleProgress>
+              </ClientOnly>
+              <span
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-gyeonggi-batang text-2xl font-bold sm:text-3xl md:text-4xl">
+                {{ value.text }}
+              </span>
+            </div>
+            <span class="text-[clamp(0.8125rem,4vw,1.2rem)] text-[#BBBBBB]">{{ key }}</span>
+          </div>
+        </div>
         <div
+          id="invite"
           class="flex flex-col items-center justify-center gap-2 font-gyeonggi-batang text-[clamp(0.9375rem,5vw,1.25rem)]">
           <p>광주 라붐웨딩홀 1층 리즈홀</p>
           <p>2025. 02. 22. 토요일 오후 2:00</p>
         </div>
       </div>
     </div>
+
     <div
-      id="invite"
       class="flex flex-col items-center justify-center bg-gradient-to-bl from-[#E8E3F5] to-[#F8E2DC] p-4 sm:p-6 md:p-8">
       <Card class="w-full divide-y p-5 font-gyeonggi-batang sm:p-6 md:p-8">
         <CardHeader class="pb-4 sm:pb-6 md:pb-8">
@@ -129,8 +165,10 @@
 </template>
 
 <script setup lang="ts">
-import { useClipboard } from '@vueuse/core'
+import { useClipboard, useNow } from '@vueuse/core'
 import Autoplay from 'embla-carousel-autoplay'
+// @ts-ignore
+import CircleProgress from 'vue3-circle-progress'
 import { GALLERY_IMAGES } from '~/constants/gallery'
 
 interface AccordionItem {
@@ -141,10 +179,26 @@ interface AccordionItem {
 const config = useRuntimeConfig()
 const weddingHoleAddress = '광주 서구 상무누리로 59 (치평동 268-18)'
 const addressClipboard = useClipboard({ source: weddingHoleAddress })
+const now = useNow()
 const carouselPlugin = Autoplay({
   delay: 3000,
   stopOnMouseEnter: true,
   stopOnInteraction: false
+})
+
+const weddingDate = new Date('2025-02-22 14:00:00')
+
+const remainingDueDate = computed(() => {
+  const diff = weddingDate.getTime() - now.value.getTime()
+  const dueDays = Math.floor(diff / (1000 * 60 * 60 * 24))
+  const dueHours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  const dueMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+
+  return {
+    Days: { precentage: Math.floor((dueDays / 100) * 100), text: dueDays },
+    Hours: { precentage: Math.floor((dueHours / 24) * 100), text: dueHours },
+    Minutes: { precentage: Math.floor((dueMinutes / 60) * 100), text: dueMinutes }
+  }
 })
 
 const accordionItems: AccordionItem[] = [
@@ -168,6 +222,8 @@ const accordionItems: AccordionItem[] = [
 </script>
 
 <style scoped>
+@import 'vue3-circle-progress/dist/circle-progress.css';
+
 @font-face {
   font-family: 'ink-lipquid';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
