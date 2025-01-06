@@ -136,6 +136,16 @@
         <ClientOnly>
           <NaverMap class="h-[20rem]" />
         </ClientOnly>
+        <Card orientation="horizontal" class="w-full divide-x border p-2 shadow-none">
+          <CardContent class="w-full flex-row items-center justify-center gap-2">
+            <img src="/map/naver.jpeg" alt="naver-map" class="w-5" />
+            <NuxtLink to="https://naver.me/FvEI6CAZ" target="_blank">네이버 지도</NuxtLink>
+          </CardContent>
+          <CardContent class="w-full flex-row items-center justify-center gap-2">
+            <img src="/map/kakao.jpeg" alt="kakao-map" class="w-5" />
+            <NuxtLink to="https://kko.kakao.com/LrrRMT4k-u" target="_blank">카카오 맵</NuxtLink>
+          </CardContent>
+        </Card>
       </div>
       <div class="flex w-full flex-col items-center justify-center divide-y py-4">
         <span class="pb-5 pt-3 font-gyeonggi-batang text-lg lg:text-2xl">전세버스 안내</span>
