@@ -137,7 +137,7 @@
           <NaverMap class="h-[20rem]" />
         </ClientOnly>
       </div>
-      <div class="flex w-full flex-col items-center justify-center divide-y pt-4">
+      <div class="flex w-full flex-col items-center justify-center divide-y py-4">
         <span class="pb-5 pt-3 font-gyeonggi-batang text-lg lg:text-2xl">전세버스 안내</span>
         <Accordion type="single" collapsible class="w-full">
           <AccordionItem
