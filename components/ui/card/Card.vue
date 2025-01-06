@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn(cardVariants({ outline }), props.class)">
+  <div :class="cn(cardVariants({ outline, orientation }), props.class)">
     <slot />
   </div>
 </template>
@@ -11,5 +11,6 @@ import { cardVariants } from './index'
 const props = defineProps<{
   class?: HTMLAttributes['class']
   outline?: boolean
+  orientation?: 'vertical' | 'horizontal'
 }>()
 </script>

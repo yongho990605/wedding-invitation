@@ -7,8 +7,12 @@ export { default as CardFooter } from './CardFooter.vue'
 export { default as CardHeader } from './CardHeader.vue'
 export { default as CardTitle } from './CardTitle.vue'
 
-export const cardVariants = cva('bg-card text-card-foreground rounded-[0.5rem] shadow-sm bg-white flex flex-col', {
+export const cardVariants = cva('bg-card text-card-foreground rounded-[0.5rem] shadow-sm bg-white flex', {
   variants: {
-    outline: { true: 'border' }
+    outline: { true: 'border' },
+    orientation: { vertical: 'flex-col', horizontal: 'flex-row justify-around' }
+  },
+  defaultVariants: {
+    orientation: 'vertical'
   }
 })
