@@ -11,7 +11,8 @@ module.exports = {
       'hakgyoansim-gaeulsopung': ['Hakgyoansim Gaeulsopung', 'sans-serif']
     },
     screens: {
-      md: '320px',
+      sm: '320px',
+      md: '375px',
       lg: '425px'
     },
     extend: {

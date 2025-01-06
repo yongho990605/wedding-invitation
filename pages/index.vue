@@ -31,7 +31,10 @@
             v-for="(value, key) in remainingDueDate"
             :key="key"
             :class="
-              cn('mb-7 mt-5 flex flex-col items-center gap-1.5 lg:gap-2.5', key === 'Seconds' && 'hidden lg:flex')
+              cn(
+                'mb-7 mt-5 flex flex-col items-center gap-2 sm:gap-1.5 lg:gap-2.5',
+                key === 'Seconds' && 'hidden md:flex lg:flex'
+              )
             ">
             <div class="relative">
               <ClientOnly>
@@ -93,6 +96,7 @@
     <Carousel
       class="flex flex-col items-center justify-center border-b border-[#EEEEEE] px-4 py-10 font-gyeonggi-batang text-xl lg:text-2xl"
       :plugins="[carouselPlugin]"
+      :options="{ loop: true }"
       @mouseenter="carouselPlugin.stop"
       @mouseleave="[carouselPlugin.reset(), carouselPlugin.play()]">
       <div class="flex w-full items-center justify-between border-b border-[#EEEEEE] pb-4">
@@ -102,13 +106,15 @@
           <CarouselNext />
         </div>
       </div>
-      <CarouselContent class="pt-4">
+      <CarouselContent class="pt-10">
         <CarouselItem v-for="imgSource in Object.values(GALLERY_IMAGES).flat()" :key="imgSource" class="w-full">
           <img
             :src="`${config.app.baseURL === '/' ? '' : '/wedding-invitation'}${imgSource}`"
             :alt="imgSource"
             loading="lazy"
-            class="h-[26.25rem] w-full rounded-2xl object-contain" />
+            class="h-[26.25rem] w-full rounded-2xl object-contain"
+            oncontextmenu="return false"
+            @dragstart.prevent />
         </CarouselItem>
       </CarouselContent>
     </Carousel>
@@ -257,8 +263,6 @@ onUnmounted(() => {
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
-  position: absolute;
-  width: 100%;
 }
 
 .fade-enter-from,
