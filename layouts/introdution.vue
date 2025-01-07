@@ -10,12 +10,24 @@
             :to="`/introduce/${trigger.value}`"
             :value="trigger.value"
             :active="trigger.value === introdution"
-            class="flex justify-center text-[#E58AAB]">
+            class="flex justify-center text-[#E58AAB] hover:bg-pink-50">
             {{ trigger.label }}
           </TabsTrigger>
         </TabsList>
       </Tabs>
     </ClientOnly>
+
+    <div class="relative mx-2 mb-[2.5rem] flex flex-col">
+      <div class="h-[clamp(25rem, 30vh, 34rem)] relative flex w-full flex-col overflow-hidden rounded-t-full">
+        <slot name="background" />
+      </div>
+      <div class="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 translate-y-1/2">
+        <slot name="profile" />
+      </div>
+    </div>
+    <div class="flex items-center gap-2 font-gyeonggi-batang">
+      <slot name="name" />
+    </div>
     <slot />
   </div>
 </template>
