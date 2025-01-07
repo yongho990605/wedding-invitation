@@ -18,11 +18,11 @@
               value="introduce"
               class="w-full items-center justify-center gap-5 font-gyeonggi-batang text-lg">
               <AccordionTrigger class="mb-5 gap-5 !text-lg font-bold">신랑 · 신부 소개</AccordionTrigger>
-              <AccordionContent
-                v-for="content in accordionContents"
-                :key="content.label"
-                class="text-[1.0625rem] font-bold">
-                <NuxtLink :to="content.to" class="text-[1.0625rem] hover:text-[#E58AAB]" @click="isOpen = false">
+              <AccordionContent v-for="content in accordionContents" :key="content.label" class="text-[1.0625rem]">
+                <NuxtLink
+                  :to="content.to"
+                  class="text-[1.0625rem] hover:font-bold hover:text-[#E58AAB]"
+                  @click="isOpen = false">
                   {{ content.label }}
                 </NuxtLink>
               </AccordionContent>
