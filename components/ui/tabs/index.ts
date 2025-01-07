@@ -7,6 +7,6 @@ export { default as TabsTrigger } from './TabsTrigger.vue'
 
 export const tabsTriggerVariants = cva('h-full w-full rounded px-10 py-2 text-sm hover:bg-white', {
   variants: {
-    active: { true: 'bg-white' }
+    active: { true: '!bg-white' }
   }
 })
