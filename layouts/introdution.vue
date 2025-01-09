@@ -21,14 +21,22 @@
       <div class="h-[clamp(25rem, 30vh, 34rem)] relative flex w-full flex-col overflow-hidden rounded-t-full">
         <slot name="background" />
       </div>
-      <div class="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 translate-y-1/2">
+      <div class="absolute bottom-0 left-1/2 z-20 -translate-x-1/2 translate-y-1/2">
         <slot name="profile" />
       </div>
     </div>
     <div class="flex items-center gap-2 font-gyeonggi-batang">
-      <slot name="name" />
+      <slot name="title" />
     </div>
-    <slot />
+    <slot name="badge-group" />
+    <hr class="w-full border-t border-[#EEEEEE]" />
+    <div class="flex w-full flex-col">
+      <span
+        class="content-center border-b border-[#EEEEEE] pb-5 pt-3 text-center font-gyeonggi-batang text-lg lg:text-xl">
+        연락처
+      </span>
+      <slot name="contact" />
+    </div>
   </div>
 </template>
 
