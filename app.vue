@@ -1,6 +1,7 @@
 <template>
-  <div class="bg-[#333]">
+  <div class="overflow-hidden bg-[#333]">
     <NuxtLoadingIndicator />
+    <SnowEffect />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
