@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 
 export { default as Button } from './Button.vue'
 
-export const buttonVariants = cva('flex items-center justify-center gap-2 whitespace-nowrap', {
+export const buttonVariants = cva('flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer', {
   variants: {
     size: {
       sm: 'h-6 px-2 py-0.5 text-sm',
