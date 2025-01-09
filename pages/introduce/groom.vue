@@ -26,28 +26,32 @@
       </BadgeGroup>
     </template>
     <template #contact>
-      <Accordion type="multiple" class="w-full" collapsible>
-        <AccordionItem value="mobile" class="border-b border-[#EEEEEE] py-3">
-          <AccordionTrigger class="w-full justify-between p-3 font-semibold">Mobile</AccordionTrigger>
-          <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
-            <span class="sm:text-base lg:text-lg">{{ phoneNumber }}</span>
-            <ClientOnly>
-              <Button class="bg-[#E58AAB] text-[0.8125rem] font-semibold text-white" rounded>
-                <a :href="`sms:${phoneNumber}`">문자 보내기</a>
-              </Button>
-            </ClientOnly>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="acoount-number" class="border-b border-[#EEEEEE] py-4">
-          <AccordionTrigger class="w-full justify-between p-3 font-semibold">계좌번호</AccordionTrigger>
-          <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
-            <span class="sm:text-base lg:text-lg">{{ accountBank }} {{ accountNumber }}</span>
-            <ClientOnly>
-              <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyAccount">복사하기</Button>
-            </ClientOnly>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      <ClientOnly>
+        <Accordion type="multiple" class="w-full" collapsible>
+          <AccordionItem value="mobile" class="border-b border-[#EEEEEE] py-3">
+            <AccordionTrigger class="w-full justify-between p-3 font-semibold">Mobile</AccordionTrigger>
+            <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
+              <span class="sm:text-base lg:text-lg">{{ phoneNumber }}</span>
+              <ClientOnly>
+                <Button class="bg-[#E58AAB] text-[0.8125rem] font-semibold text-white" rounded>
+                  <a :href="`sms:${phoneNumber}`">문자 보내기</a>
+                </Button>
+              </ClientOnly>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="acoount-number" class="border-b border-[#EEEEEE] py-4">
+            <AccordionTrigger class="w-full justify-between p-3 font-semibold">계좌번호</AccordionTrigger>
+            <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
+              <span class="sm:text-base lg:text-lg">{{ accountBank }} {{ accountNumber }}</span>
+              <ClientOnly>
+                <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyAccount">
+                  복사하기
+                </Button>
+              </ClientOnly>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </ClientOnly>
     </template>
   </NuxtLayout>
 </template>
