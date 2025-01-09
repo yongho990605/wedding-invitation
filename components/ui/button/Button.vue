@@ -11,6 +11,7 @@ import { buttonVariants } from '.'
 import type { ButtonProps } from './types'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
-  type: 'button'
+  type: 'button',
+  as: 'button'
 })
 </script>
