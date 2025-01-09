@@ -123,11 +123,22 @@
       <div id="location" class="flex w-full flex-col items-center justify-center gap-4 pb-4">
         <span class="font-gyeonggi-batang text-xl lg:text-2xl">오시는 길</span>
         <div class="flex flex-col items-center justify-center gap-2">
-          <p
-            class="cursor-pointer text-[#333333] hover:text-[#E58AAB] lg:text-lg"
-            @click="addressClipboard.copy(weddingHoleAddress)">
-            {{ weddingHoleAddress }}
-          </p>
+          <div class="flex items-center gap-1">
+            <p class="cursor-pointer text-[#333333] sm:text-sm lg:text-lg">
+              {{ weddingHoleAddress }}
+            </p>
+            <Button
+              variant="ghost"
+              class="p-0 hover:text-slate-500"
+              @click="
+                () => {
+                  addressClipboard.copy(weddingHoleAddress)
+                  toast.success('복사되었습니다.')
+                }
+              ">
+              <Icon name="iconamoon:copy-duotone" />
+            </Button>
+          </div>
           <p class="text-[#999999] lg:text-lg">
             Tel.
             <a href="tel:062-380-7000" class="cursor-pointer font-semibold hover:text-[#E58AAB]">062-380-7000</a>
@@ -186,6 +197,7 @@
 <script setup lang="ts">
 import { useClipboard, useNow } from '@vueuse/core'
 import Autoplay from 'embla-carousel-autoplay'
+import { toast } from 'vue-sonner'
 // @ts-ignore
 import CircleProgress from 'vue3-circle-progress'
 import { cn } from '@/lib/utils'
