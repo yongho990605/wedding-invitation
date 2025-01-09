@@ -1,8 +1,10 @@
 <template>
   <div :class="cn(badgeVariants({ rounded, size, color }), props.class)">
-    <span v-if="prefix">{{ prefix }}</span>
-    <slot />
-    <span v-if="suffix">{{ suffix }}</span>
+    <span v-if="prefix" :class="prefixClass">{{ prefix }}</span>
+    <slot>
+      {{ label }}
+    </slot>
+    <span v-if="suffix" :class="suffixClass">{{ suffix }}</span>
   </div>
 </template>
 
