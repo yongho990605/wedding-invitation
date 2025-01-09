@@ -21,8 +21,13 @@ let lastTime = 0
 const FPS = 30 // 프레임 제한
 const frameInterval = 1000 / FPS
 
-// 눈송이 개수 감소
-const SNOWFLAKE_COUNT = 60
+// 눈송이 개수 설정
+const BASE_SNOWFLAKE_COUNT = 60
+const MOBILE_BREAKPOINT = 440 // 모바일 기준 너비
+
+// 모바일 여부 감지
+const isMobile = ref(false)
+const snowflakeCount = computed(() => (isMobile.value ? Math.floor(BASE_SNOWFLAKE_COUNT / 2) : BASE_SNOWFLAKE_COUNT))
 
 // 미리 폰트 설정
 const SNOW_FONT = '14px Arial'
@@ -69,6 +74,11 @@ function drawSnowflake(x: number, y: number, size: number, rotation: number) {
   ctx.restore()
 }
 
+// 모바일 체크 함수
+function checkMobile() {
+  isMobile.value = window.innerWidth <= MOBILE_BREAKPOINT
+}
+
 function init() {
   if (!canvas.value) return
 
@@ -88,7 +98,8 @@ function init() {
     createOffscreenCanvas()
   }
 
-  snowflakes = Array(SNOWFLAKE_COUNT).fill(null).map(createSnowflake)
+  // 현재 snowflakeCount 값으로 눈송이 생성
+  snowflakes = Array(snowflakeCount.value).fill(null).map(createSnowflake)
 }
 
 function draw(currentTime: number) {
@@ -127,11 +138,15 @@ function draw(currentTime: number) {
 }
 
 onMounted(() => {
+  checkMobile() // 초기 모바일 체크
   init()
   lastTime = performance.now()
   draw(lastTime)
 
-  window.addEventListener('resize', init)
+  window.addEventListener('resize', () => {
+    checkMobile() // 리사이즈 시 모바일 체크
+    init()
+  })
 })
 
 onUnmounted(() => {
