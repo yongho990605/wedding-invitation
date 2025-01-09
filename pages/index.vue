@@ -127,15 +127,7 @@
             <p class="cursor-pointer text-[#333333] sm:text-sm lg:text-lg">
               {{ weddingHoleAddress }}
             </p>
-            <Button
-              variant="ghost"
-              class="p-0 hover:text-slate-500"
-              @click="
-                () => {
-                  addressClipboard.copy(weddingHoleAddress)
-                  toast.success('복사되었습니다.')
-                }
-              ">
+            <Button variant="ghost" class="p-0 hover:text-slate-500" @click="copyAddress">
               <Icon name="iconamoon:copy-duotone" />
             </Button>
           </div>
@@ -212,14 +204,6 @@ const config = useRuntimeConfig()
 const weddingHoleAddress = '광주 서구 상무누리로 59 (치평동 268-18)'
 const addressClipboard = useClipboard({ source: weddingHoleAddress })
 const now = useNow()
-const carouselPlugin = Autoplay({
-  delay: 3000,
-  stopOnMouseEnter: true,
-  stopOnInteraction: false
-})
-
-const weddingDate = new Date('2025-02-22 14:00:00')
-
 const remainingDueDate = computed(() => {
   const diff = weddingDate.getTime() - now.value.getTime()
   const dueDays = Math.floor(diff / (1000 * 60 * 60 * 24))
@@ -234,7 +218,21 @@ const remainingDueDate = computed(() => {
     Seconds: { precentage: Math.floor((dueSeconds / 60) * 100), text: dueSeconds }
   }
 })
+const currentImageIndex = ref(0)
+let intervalId: NodeJS.Timeout
+onMounted(() => {
+  intervalId = setInterval(() => {
+    currentImageIndex.value = (currentImageIndex.value + 1) % images.length
+  }, 3000)
+})
 
+onUnmounted(() => {
+  clearInterval(intervalId)
+})
+
+const carouselPlugin = Autoplay({ delay: 3000, stopOnMouseEnter: true, stopOnInteraction: false })
+const weddingDate = new Date('2025-02-22 14:00:00')
+const images = ['main_image1.jpg', 'main_image2.jpg', 'main_image3.jpg']
 const accordionItems: AccordionItem[] = [
   {
     departureFrom: { region: '대전', time: 11 },
@@ -254,22 +252,10 @@ const accordionItems: AccordionItem[] = [
   }
 ]
 
-// 이미지 배열 추가
-const images = ['main_image1.jpg', 'main_image2.jpg', 'main_image3.jpg']
-
-// 현재 이미지 인덱스 상태 관리
-const currentImageIndex = ref(0)
-
-let intervalId: NodeJS.Timeout
-onMounted(() => {
-  intervalId = setInterval(() => {
-    currentImageIndex.value = (currentImageIndex.value + 1) % images.length
-  }, 3000)
-})
-
-onUnmounted(() => {
-  clearInterval(intervalId)
-})
+const copyAddress = () => {
+  addressClipboard.copy(weddingHoleAddress)
+  toast.success('주소가 복사되었습니다')
+}
 </script>
 
 <style scoped>
