@@ -1,8 +1,8 @@
 <template>
   <div
-    class="mx-auto flex w-screen min-w-[20rem] max-w-[27.5rem] flex-col"
+    class="relative mx-auto flex w-screen min-w-[20rem] max-w-[27.5rem] flex-col"
     :class="isOpen && 'h-screen overflow-hidden'">
-    <div class="relative">
+    <div class="fixed left-1/2 top-0 z-50 w-screen min-w-[20rem] max-w-[27.5rem] -translate-x-1/2 bg-white">
       <HeaderHamburgerMenu
         v-model:open="isOpen"
         :items="[
@@ -32,14 +32,11 @@
       </HeaderHamburgerMenu>
       <Header>
         <HeaderContent>
-          <Button variant="ghost">
-            <NuxtLink class="cursor-pointer" :to="{ name: 'index' }">
-              <Icon name="flowbite:home-outline" size="1.8rem" class="text-[#333333]" />
+          <button type="button">
+            <NuxtLink :to="{ name: 'index' }" class="font-hakgyoansim-gaeulsopung text-2xl font-bold text-[#E58AAB]">
+              용호💗원비
             </NuxtLink>
-          </Button>
-        </HeaderContent>
-        <HeaderContent>
-          <h2 class="font-hakgyoansim-gaeulsopung text-2xl font-bold text-[#E58AAB]">용호💗원비</h2>
+          </button>
         </HeaderContent>
         <HeaderContent>
           <div class="flex gap-3">
@@ -49,6 +46,8 @@
           </div>
         </HeaderContent>
       </Header>
+    </div>
+    <div class="relative pt-[60px]">
       <slot />
       <Footer />
     </div>
