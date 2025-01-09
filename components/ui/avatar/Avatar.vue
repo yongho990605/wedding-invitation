@@ -1,11 +1,10 @@
 <template>
-  <AvatarRoot :class="cn(avatarVariant({ size }), props.class)">
+  <span :class="cn(avatarVariant({ size }), props.class)">
     <img :src class="h-full w-full object-cover" />
-  </AvatarRoot>
+  </span>
 </template>
 
 <script setup lang="ts">
-import { AvatarRoot } from 'radix-vue'
 import { cn } from '@/lib/utils'
 import { avatarVariant } from '.'
 import type { AvatarProps } from './types'
