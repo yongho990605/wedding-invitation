@@ -27,7 +27,7 @@ const MOBILE_BREAKPOINT = 440 // 모바일 기준 너비
 
 // 모바일 여부 감지
 const isMobile = ref(false)
-const snowflakeCount = computed(() => (isMobile.value ? Math.floor(BASE_SNOWFLAKE_COUNT / 2) : BASE_SNOWFLAKE_COUNT))
+const snowflakeCount = computed(() => (isMobile.value ? Math.floor(BASE_SNOWFLAKE_COUNT / 4) : BASE_SNOWFLAKE_COUNT))
 
 // 미리 폰트 설정
 const SNOW_FONT = '14px Arial'
@@ -37,7 +37,7 @@ function createSnowflake(): Snowflake {
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
     size: Math.random() * 24 + 12, // 크기 2배 증가 (기존: 12 + 6)
-    speed: Math.random() + 0.3, // 속도 1.5배 증가 (기존: 0.3 + 0.2)
+    speed: Math.random() + 0.5, // 속도 1.5배 증가 (기존: 0.3 + 0.2)
     wind: Math.random() * 0.15 - 0.075,
     rotation: Math.random() * Math.PI * 2,
     rotationSpeed: (Math.random() - 0.5) * 0.01
