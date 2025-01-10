@@ -6,7 +6,7 @@
       class="fixed left-1/2 top-0 z-50 w-screen min-w-[20rem] max-w-[27.5rem] -translate-x-1/2 bg-white"
       :class="scrollY > 60 ? 'opacity-70' : 'opacity-100'">
       <HeaderHamburgerMenu
-        v-model:open="isOpen"
+        v-model:open="isOpen.burgerMenu"
         :items="[
           { label: '처음으로', to: { name: 'index' } },
           { slot: 'introduce-accordion' },
@@ -18,13 +18,16 @@
           <Accordion type="single" collapsible>
             <AccordionItem
               value="introduce"
-              class="w-full items-center justify-center gap-5 font-gyeonggi-batang text-lg">
-              <AccordionTrigger class="mb-5 gap-5 !text-lg font-bold">신랑 · 신부 소개</AccordionTrigger>
+              class="w-full items-center justify-center gap-5 font-gyeonggi-batang text-lg"
+              :open="isOpen.accordion">
+              <AccordionTrigger class="mb-5 gap-5 !text-lg font-bold" @click="isOpen.accordion = !isOpen.accordion">
+                신랑 · 신부 소개
+              </AccordionTrigger>
               <AccordionContent v-for="content in accordionContents" :key="content.label" class="text-[1.0625rem]">
                 <NuxtLink
                   :to="content.to"
                   class="text-[1.0625rem] hover:font-bold hover:text-[#E58AAB]"
-                  @click="isOpen = false">
+                  @click="isOpen.burgerMenu = false">
                   {{ content.label }}
                 </NuxtLink>
               </AccordionContent>
@@ -35,7 +38,7 @@
       <Header>
         <HeaderContent>
           <Button variant="ghost">
-            <NuxtLink class="cursor-pointer" :to="{ name: 'index' }">
+            <NuxtLink class="cursor-pointer" :to="{ name: 'index' }" @click="scrollToStart">
               <Icon name="flowbite:home-outline" size="1.8rem" class="text-[#333333]" />
             </NuxtLink>
           </Button>
@@ -45,7 +48,7 @@
         </HeaderContent>
         <HeaderContent>
           <div class="flex gap-3">
-            <Button variant="ghost" @click="isOpen = true">
+            <Button variant="ghost" @click="isOpen.burgerMenu = true">
               <Icon name="heroicons:bars-3-bottom-right" size="1.8rem" class="text-[#333333]" />
             </Button>
           </div>
@@ -60,11 +63,17 @@
 </template>
 
 <script setup lang="ts">
-const isOpen = ref(false)
+const isOpen = ref({ burgerMenu: false, accordion: true })
 const { y: scrollY } = useWindowScroll()
 
 const accordionContents = [
   { label: '신랑 장용호', to: { name: 'introduce-groom' } },
   { label: '신부 최원비', to: { name: 'introduce-bride' } }
 ]
+
+const scrollToStart = () => {
+  if (window && import.meta.client) {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
 </script>
