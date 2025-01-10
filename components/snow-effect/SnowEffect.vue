@@ -55,8 +55,8 @@ function createOffscreenCanvas() {
   offscreenCtx = offscreenCanvas.getContext('2d')
 
   if (offscreenCtx) {
-    offscreenCtx.fillStyle = 'rgba(135, 206, 235, 0.8)'
-    offscreenCtx.font = SNOW_FONT // 폰트 크기 2배 증가 (기존: 14px)
+    offscreenCtx.fillStyle = 'rgba(255, 182, 193, 0.6)' // 연분홍색(Light Pink)으로 변경
+    offscreenCtx.font = SNOW_FONT
     offscreenCtx.textAlign = 'center'
     offscreenCtx.textBaseline = 'middle'
     offscreenCtx.fillText('*', offscreenCanvas.width / 2, offscreenCanvas.height / 2)
