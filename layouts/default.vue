@@ -2,7 +2,9 @@
   <div
     class="relative mx-auto flex w-screen min-w-[20rem] max-w-[27.5rem] flex-col"
     :class="isOpen && 'h-screen overflow-hidden'">
-    <div class="fixed left-1/2 top-0 z-50 w-screen min-w-[20rem] max-w-[27.5rem] -translate-x-1/2 bg-white">
+    <div
+      class="fixed left-1/2 top-0 z-50 w-screen min-w-[20rem] max-w-[27.5rem] -translate-x-1/2 bg-white"
+      :class="scrollY > 60 ? 'opacity-70' : 'opacity-100'">
       <HeaderHamburgerMenu
         v-model:open="isOpen"
         :items="[
@@ -32,11 +34,14 @@
       </HeaderHamburgerMenu>
       <Header>
         <HeaderContent>
-          <button type="button">
-            <NuxtLink :to="{ name: 'index' }" class="font-hakgyoansim-gaeulsopung text-2xl font-bold text-[#E58AAB]">
-              용호💗원비
+          <Button variant="ghost">
+            <NuxtLink class="cursor-pointer" :to="{ name: 'index' }">
+              <Icon name="flowbite:home-outline" size="1.8rem" class="text-[#333333]" />
             </NuxtLink>
-          </button>
+          </Button>
+        </HeaderContent>
+        <HeaderContent>
+          <Icon name="shared:logo" size="1.8rem" />
         </HeaderContent>
         <HeaderContent>
           <div class="flex gap-3">
@@ -56,6 +61,7 @@
 
 <script setup lang="ts">
 const isOpen = ref(false)
+const { y: scrollY } = useWindowScroll()
 
 const accordionContents = [
   { label: '신랑 장용호', to: { name: 'introduce-groom' } },

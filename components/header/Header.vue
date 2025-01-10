@@ -1,5 +1,11 @@
 <template>
-  <header class="box-border flex w-full items-center justify-between border-b border-slate-200 bg-white p-4">
+  <header
+    class="flex w-full items-center justify-between bg-white p-4 transition-all duration-300"
+    :class="scrollY > 0 ? '' : 'shadow-sm'">
     <slot />
   </header>
 </template>
+
+<script setup lang="ts">
+const { y: scrollY } = useWindowScroll()
+</script>

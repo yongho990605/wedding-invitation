@@ -28,14 +28,22 @@
     <div class="flex items-center gap-2 font-gyeonggi-batang">
       <slot name="title" />
     </div>
-    <slot name="badge-group" />
+    <BadgeGroup class="!gap-1.5">
+      <slot name="hash-tags" />
+    </BadgeGroup>
     <hr class="w-full border-t border-[#EEEEEE]" />
     <div class="flex w-full flex-col">
       <span
         class="content-center border-b border-[#EEEEEE] pb-5 pt-3 text-center font-gyeonggi-batang text-lg lg:text-xl">
         연락처
       </span>
-      <slot name="contact" />
+      <ClientOnly>
+        <slot name="contact" />
+      </ClientOnly>
+    </div>
+    <div class="mb-10 flex w-full flex-col items-center">
+      <span class="font-bonitalia text-3xl lg:text-4xl">Photos</span>
+      <slot name="gallery" layout="horizontal" />
     </div>
   </div>
 </template>
