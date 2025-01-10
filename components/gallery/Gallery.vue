@@ -3,7 +3,7 @@
     <template v-if="layout === 'vertical'">
       <div v-for="(image, index) in images" :key="image" class="overflow-hidden rounded-lg">
         <img
-          :src="image"
+          :src="isDevMode ? image : config.app.baseURL + image"
           :alt="`Gallery image ${index + 1}`"
           class="h-full w-full object-contain transition-transform duration-300 hover:scale-105"
           loading="lazy"
@@ -32,6 +32,9 @@
 <script setup lang="ts">
 import { galleryVariants } from '.'
 import type { GalleryProps } from './types'
+
+const config = useRuntimeConfig()
+const isDevMode = config.public.isDevMode
 
 withDefaults(defineProps<GalleryProps>(), {
   layout: 'horizontal'
