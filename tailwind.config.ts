@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     fontFamily: {
       'gyeonggi-batang': ['Gyeonggi Batang', 'serif'],
-      'hakgyoansim-gaeulsopung': ['Hakgyoansim Gaeulsopung', 'sans-serif']
+      'hakgyoansim-gaeulsopung': ['Hakgyoansim Gaeulsopung', 'sans-serif'],
+      bonitalia: ['Bonitalia', 'sans-serif']
     },
     screens: {
       sm: '320px',
