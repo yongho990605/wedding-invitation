@@ -137,7 +137,7 @@
           </p>
         </div>
         <ClientOnly>
-          <NaverMap class="z-0 h-[20rem]" />
+          <NaverMap />
         </ClientOnly>
         <Card orientation="horizontal" class="w-full divide-x border p-2 shadow-none">
           <CardContent class="w-full flex-row items-center justify-center gap-2">

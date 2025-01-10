@@ -1,10 +1,19 @@
 <template>
-  <div ref="mapRef" class="w-full overflow-hidden rounded-[0.5rem]" />
+  <div class="relative z-0 w-full">
+    <div ref="mapRef" class="h-[20rem] overflow-hidden rounded-[0.5rem]" />
+    <Button
+      class="absolute left-2 top-2 border"
+      :class="isMapControlEnabled ? 'bg-white' : 'bg-slate-300'"
+      @click="toggleMapControl">
+      <Icon :name="isMapControlEnabled ? 'heroicons:lock-open' : 'heroicons:lock-closed'" />
+    </Button>
+  </div>
 </template>
 
 <script setup lang="ts">
 const mapRef = ref<HTMLElement | null>(null)
 const map = ref<any>(null)
+const isMapControlEnabled = ref(false)
 const weddingHoleLatLng = { lat: 35.1484573066235, lng: 126.837917039111 }
 
 // 지도 초기화 함수
@@ -14,7 +23,10 @@ const initMap = () => {
   const mapOptions = {
     center: new window.naver.maps.LatLng(weddingHoleLatLng.lat, weddingHoleLatLng.lng),
     zoom: 15,
-    zoomControl: true,
+    zoomControl: false, // 기본적으로 줌 컨트롤 비활성화
+    draggable: false, // 기본적으로 드래그 비활성화
+    scrollWheel: false, // 기본적으로 스크롤 줌 비활성화
+    pinchZoom: false, // 기본적으로 핀치 줌 비활성화
     zoomControlOptions: {
       position: window.naver.maps.Position.TOP_RIGHT
     }
@@ -27,6 +39,20 @@ const initMap = () => {
   new window.naver.maps.Marker({
     position: new window.naver.maps.LatLng(weddingHoleLatLng.lat, weddingHoleLatLng.lng),
     map: map.value
+  })
+}
+
+// 지도 컨트롤 토글 함수
+const toggleMapControl = () => {
+  if (!map.value) return
+
+  isMapControlEnabled.value = !isMapControlEnabled.value
+
+  map.value.setOptions({
+    draggable: isMapControlEnabled.value,
+    scrollWheel: isMapControlEnabled.value,
+    pinchZoom: isMapControlEnabled.value,
+    zoomControl: isMapControlEnabled.value
   })
 }
 
