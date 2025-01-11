@@ -5,8 +5,7 @@
       class="absolute left-2 top-2 border"
       :class="isMapControlEnabled ? 'bg-white' : 'bg-slate-300'"
       @click="toggleMapControl">
-      <Icon v-if="isMapControlEnabled" name="heroicons:lock-open" />
-      <Icon v-else name="heroicons:lock-closed" />
+      <Icon :name="isMapControlEnabled ? 'heroicons:lock-open' : 'heroicons:lock-closed'" />
     </Button>
   </div>
 </template>
