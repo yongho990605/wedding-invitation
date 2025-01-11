@@ -34,7 +34,7 @@ import { galleryVariants } from '.'
 import type { GalleryProps } from './types'
 
 const config = useRuntimeConfig()
-const isDevMode = config.public.isDevMode
+const isDevMode = import.meta.dev
 
 withDefaults(defineProps<GalleryProps>(), {
   layout: 'horizontal'
