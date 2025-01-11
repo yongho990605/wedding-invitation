@@ -5,7 +5,7 @@
       class="absolute left-2 top-2 border"
       :class="isMapControlEnabled ? 'bg-white' : 'bg-slate-300'"
       @click="toggleMapControl">
-      <Icon :name="isMapControlEnabled ? 'heroicons:lock-open' : 'heroicons:lock-closed'" />
+      <Icon :name="isMapControlEnabled ? 'shared:lock-open' : 'shared:lock-closed'" />
     </Button>
   </div>
 </template>
