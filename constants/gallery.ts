@@ -61,4 +61,4 @@ export const GALLERY_IMAGES = {
     '/concept8/image5.jpg',
     '/concept8/image6.jpg'
   ]
-} as const
+}
