@@ -2,15 +2,16 @@
   <div class="relative z-0 w-full">
     <div ref="mapRef" class="h-[20rem] overflow-hidden rounded-[0.5rem]" />
     <Button
-      class="absolute left-2 top-2 border"
-      :class="isMapControlEnabled ? 'bg-white' : 'bg-slate-300'"
+      :class="cn('absolute left-2 top-2 border', isMapControlEnabled ? 'bg-white' : 'bg-slate-300')"
       @click="toggleMapControl">
-      <Icon :name="isMapControlEnabled ? 'shared:lock-open' : 'shared:lock-closed'" />
+      <Icon :name="isMapControlEnabled ? 'heroicons:lock-open' : 'heroicons:lock-closed'" />
     </Button>
   </div>
 </template>
 
 <script setup lang="ts">
+import { cn } from '@/lib/utils'
+
 const mapRef = ref<HTMLElement | null>(null)
 const map = ref<any>(null)
 const isMapControlEnabled = ref(false)
