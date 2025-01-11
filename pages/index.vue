@@ -150,6 +150,33 @@
           </CardContent>
         </Card>
       </div>
+      <div class="flex w-full flex-col">
+        <div class="flex items-center gap-1 border-b border-dashed border-[#EEEEEE] py-3 text-lg lg:gap-1.5 lg:text-xl">
+          <span class="w-fit rounded-full border px-2 text-center font-semibold lg:px-2">P</span>
+          <span class="font-gyeonggi-batang font-bold text-[#777777]">주차안내</span>
+        </div>
+        <ul class="list-disc space-y-2 py-3 pl-5">
+          <li>
+            <div class="flex gap-1 lg:text-lg">
+              <span class="rounded bg-[#F9E6EC] px-1 font-bold">라붐 웨딩홀 내부 주차장</span>
+              무료
+            </div>
+          </li>
+          <li>
+            <div class="flex gap-1 lg:text-lg">
+              <span class="rounded bg-[#F9E6EC] px-1 font-bold">김대중컨벤션 제1주차장</span>
+              무료
+            </div>
+          </li>
+          <li>
+            <div class="flex gap-1 lg:text-lg">
+              주차공간은
+              <span class="font-bold">동시주차 1,000대</span>
+              가능합니다.
+            </div>
+          </li>
+        </ul>
+      </div>
       <div class="flex w-full flex-col items-center justify-center divide-y py-4">
         <span class="pb-5 pt-3 font-gyeonggi-batang text-lg lg:text-2xl">전세버스 안내</span>
         <Accordion type="single" collapsible class="w-full">
