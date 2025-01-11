@@ -2,20 +2,29 @@
   <div class="flex flex-col bg-white">
     <div class="relative h-fit w-full overflow-hidden">
       <div class="relative h-fit w-full">
-        <TransitionGroup name="fade">
+        <div class="relative h-[38.75rem] w-full overflow-hidden">
           <div v-for="(image, index) in images" :key="image" class="w-full">
             <div
-              class="absolute left-0 top-[60%] z-10 h-[42%] w-full bg-gradient-to-b from-transparent via-white/50 to-white" />
-            <img v-show="currentImageIndex === index" :key="image" :src="image" class="-mt-[4.0625rem] w-full" />
+              class="absolute left-0 top-1/2 z-10 h-[40%] w-full bg-gradient-to-b from-transparent via-white/50 to-white" />
+            <img
+              :src="image"
+              :class="[
+                'absolute left-0 top-0 -mt-[4.0625rem] w-full transition-opacity duration-500',
+                currentImageIndex === index ? 'opacity-100' : 'opacity-0'
+              ]" />
           </div>
-        </TransitionGroup>
-        <div class="absolute top-[72%] z-20 flex w-full flex-col px-1">
+        </div>
+
+        <div class="absolute top-[72%] z-20 flex w-full flex-col">
           <div class="flex justify-center gap-3 font-gyeonggi-batang">
             <span class="text-xl font-bold lg:text-2xl">장용호</span>
             <span class="mt-2 lg:text-lg">그리고</span>
             <span class="text-xl font-bold lg:text-2xl">최원비</span>
           </div>
-          <div class="mt-3 flex justify-center font-[ink-lipquid] text-5xl lg:text-6xl">우리 결혼합니다</div>
+          <div
+            class="mt-3 flex justify-center bg-gradient-to-b from-transparent via-white/50 to-white font-[ink-lipquid] text-5xl lg:text-6xl">
+            우리 결혼합니다
+          </div>
         </div>
       </div>
     </div>
@@ -294,20 +303,5 @@ const copyAddress = () => {
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-enter-to,
-.fade-leave-from {
-  opacity: 1;
 }
 </style>
