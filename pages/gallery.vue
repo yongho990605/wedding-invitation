@@ -28,7 +28,7 @@
       :class="GALLERY_IMAGES[currentGallery].length % 2 === 0 && currentGallery !== 'CONCEPT_2' ? 'pb-16' : 'pb-6'">
       <span class="py-5 font-bonitalia text-3xl">gallery</span>
       <template v-if="currentGallery === 'CONCEPT_5'">
-        <Gallery :images="GALLERY_IMAGES[currentGallery].slice(0, 4)" layout="vertical" class="mb-2.5" />
+        <Gallery :images="GALLERY_IMAGES[currentGallery].slice(0, 4)" layout="vertical" class="mb-2" />
         <Gallery :images="GALLERY_IMAGES[currentGallery].slice(4, 9)" />
       </template>
       <template v-else>
