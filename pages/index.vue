@@ -108,13 +108,15 @@
       </div>
       <CarouselContent class="pt-10">
         <CarouselItem v-for="imgSource in Object.values(GALLERY_IMAGES).flat()" :key="imgSource" class="w-full">
-          <img
-            :src="`${config.app.baseURL === '/' ? '' : '/wedding-invitation'}${imgSource}`"
-            :alt="imgSource"
-            loading="lazy"
-            class="h-[26.25rem] w-full rounded-2xl object-contain"
-            oncontextmenu="return false"
-            @dragstart.prevent />
+          <div class="h-fit w-fit overflow-hidden rounded-2xl">
+            <img
+              :src="isDevMode ? imgSource : config.app.baseURL + imgSource"
+              :alt="imgSource"
+              loading="lazy"
+              class="h-fit max-h-[26.25rem] w-full rounded-lg object-contain"
+              oncontextmenu="return false"
+              @dragstart.prevent />
+          </div>
         </CarouselItem>
       </CarouselContent>
     </Carousel>
@@ -199,6 +201,7 @@ interface AccordionItem {
 }
 
 const config = useRuntimeConfig()
+const isDevMode = import.meta.dev
 const weddingHoleAddress = '광주 서구 상무누리로 59 (치평동 268-18)'
 const addressClipboard = useClipboard({ source: weddingHoleAddress })
 const now = useNow()
