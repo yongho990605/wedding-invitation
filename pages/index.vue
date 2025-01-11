@@ -136,9 +136,7 @@
             <a href="tel:062-380-7000" class="cursor-pointer font-semibold hover:text-[#E58AAB]">062-380-7000</a>
           </p>
         </div>
-        <ClientOnly>
-          <NaverMap />
-        </ClientOnly>
+        <NaverMap />
         <Card orientation="horizontal" class="w-full divide-x border p-2 shadow-none">
           <CardContent class="w-full flex-row items-center justify-center gap-2">
             <img src="/map/naver.jpeg" alt="naver-map" class="w-5" />
