@@ -42,8 +42,8 @@
                 key === 'Seconds' && 'hidden md:flex lg:flex'
               )
             ">
-            <div class="relative">
-              <ClientOnly>
+            <ClientOnly>
+              <div class="relative">
                 <CircleProgress
                   :border-width="3.5"
                   :border-bg-width="3.5"
@@ -56,15 +56,14 @@
                   }"
                   :percent="value.precentage"
                   unit="''"
-                  is-gradient>
-                  뭐 나옴?
-                </CircleProgress>
-              </ClientOnly>
-              <span
-                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-gyeonggi-batang text-2xl font-bold">
-                {{ value.text }}
-              </span>
-            </div>
+                  is-gradient />
+
+                <span
+                  class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-gyeonggi-batang text-2xl font-bold">
+                  {{ value.text }}
+                </span>
+              </div>
+            </ClientOnly>
             <span class="text-[0.8125rem] text-[#BBBBBB] lg:text-base">{{ key }}</span>
           </div>
         </div>
