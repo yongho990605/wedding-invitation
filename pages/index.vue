@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col bg-white">
-    <div class="relative h-fit w-full overflow-hidden">
-      <div class="relative h-fit w-full">
-        <div class="relative h-[38.75rem] w-full overflow-hidden">
+    <div class="relative w-full overflow-hidden">
+      <div class="relative w-full">
+        <div class="relative h-[23.5rem] w-full overflow-hidden md:h-[28.5rem] lg:h-[34rem]">
           <div v-for="(image, index) in images" :key="image" class="w-full">
             <div
-              class="absolute left-0 top-1/2 z-10 h-[40%] w-full bg-gradient-to-b from-transparent via-white/50 to-white" />
+              class="absolute left-0 top-[60%] z-10 h-[40%] w-full bg-gradient-to-b from-transparent via-white/50 to-white" />
             <img
               :src="image"
               :class="[
@@ -15,16 +15,13 @@
           </div>
         </div>
 
-        <div class="absolute top-[72%] z-20 flex w-full flex-col">
+        <div class="absolute top-[70%] z-20 flex w-full flex-col">
           <div class="flex justify-center gap-3 font-gyeonggi-batang">
             <span class="text-xl font-bold lg:text-2xl">장용호</span>
             <span class="mt-2 lg:text-lg">그리고</span>
             <span class="text-xl font-bold lg:text-2xl">최원비</span>
           </div>
-          <div
-            class="mt-3 flex justify-center bg-gradient-to-b from-transparent via-white/50 to-white font-[ink-lipquid] text-5xl lg:text-6xl">
-            우리 결혼합니다
-          </div>
+          <div class="mt-3 flex justify-center font-[ink-lipquid] text-5xl lg:text-6xl">우리 결혼합니다</div>
         </div>
       </div>
     </div>
