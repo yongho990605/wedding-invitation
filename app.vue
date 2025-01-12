@@ -17,6 +17,5 @@ import { Toaster } from '@/components/ui/sonner'
 body {
   padding: 0 !important;
   margin: 0 !important;
-  overflow: initial !important;
 }
 </style>
