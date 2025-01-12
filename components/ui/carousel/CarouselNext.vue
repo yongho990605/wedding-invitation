@@ -1,7 +1,7 @@
 <template>
   <Button
     :disabled="!canScrollNext"
-    :class="cn('h-8 w-8 touch-manipulation p-0', orientation !== 'horizontal' && 'rotate-90', props.class)"
+    :class="cn('h-8 w-8 touch-manipulation p-0', props.class)"
     variant="ghost"
     @click="scrollNext">
     <slot>
@@ -18,5 +18,5 @@ import { useCarousel } from './useCarousel'
 
 const props = defineProps<WithClassAsProps>()
 
-const { orientation, canScrollNext, scrollNext } = useCarousel()
+const { canScrollNext, scrollNext } = useCarousel()
 </script>
