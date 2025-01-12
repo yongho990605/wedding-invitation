@@ -37,14 +37,19 @@
       </HeaderHamburgerMenu>
       <Header>
         <HeaderContent>
-          <Button variant="ghost">
-            <NuxtLink class="cursor-pointer" :to="{ name: 'index' }" @click="scrollToStart">
-              <Icon name="flowbite:home-outline" size="1.8rem" class="text-[#333333]" />
-            </NuxtLink>
+          <Button variant="ghost" @click="toggleSound">
+            <Icon
+              :name="isPlaying ? 'heroicons:speaker-wave' : 'heroicons:speaker-x-mark'"
+              size="1.8rem"
+              class="text-[#333333]" />
           </Button>
         </HeaderContent>
         <HeaderContent>
-          <Icon name="shared:logo" size="1.8rem" />
+          <Button variant="ghost">
+            <NuxtLink class="cursor-pointer" :to="{ name: 'index' }" @click="scrollToStart">
+              <Icon name="shared:logo" size="1.8rem" />
+            </NuxtLink>
+          </Button>
         </HeaderContent>
         <HeaderContent>
           <div class="flex gap-3">
@@ -63,7 +68,10 @@
 </template>
 
 <script setup lang="ts">
+import { useSound } from '~/composables/useSound'
+
 const isOpen = ref({ burgerMenu: false, accordion: true })
+const { isPlaying, play, pause } = useSound('/sounds/I_See_the_Light.mp3')
 const { y: scrollY } = useWindowScroll()
 
 const accordionContents = [
@@ -75,5 +83,11 @@ const scrollToStart = () => {
   if (window && import.meta.client) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+}
+
+const toggleSound = () => {
+  if (isPlaying.value) {
+    pause()
+  } else play()
 }
 </script>
