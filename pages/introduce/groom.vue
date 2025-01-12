@@ -1,10 +1,10 @@
 <template>
   <NuxtLayout name="introdution">
     <template #background>
-      <img src="/groom/image1.jpg" alt="groom" class="h-full w-full rounded-b object-cover" />
+      <img src="/images/groom/image1.jpg" alt="groom" class="h-full w-full rounded-b object-cover" />
     </template>
     <template #profile>
-      <Avatar src="/groom/profile.jpg" size="lg" class="lg:h-24 lg:w-24" />
+      <Avatar src="/images/groom/profile.jpg" size="lg" class="lg:h-24 lg:w-24" />
     </template>
     <template #title>
       <span class="lg:text-lg">신랑</span>
