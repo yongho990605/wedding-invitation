@@ -1,9 +1,9 @@
 <template>
   <div
-    class="relative mx-auto flex w-screen min-w-[20rem] max-w-[27.5rem] flex-col"
+    class="min-w-screen-sm relative mx-auto flex w-screen max-w-screen-lg flex-col"
     :class="isOpen.burgerMenu && 'h-screen overflow-hidden'">
     <div
-      class="fixed left-1/2 top-0 z-50 w-screen min-w-[20rem] max-w-[27.5rem] -translate-x-1/2 bg-white"
+      class="min-w-screen-sm fixed left-1/2 top-0 z-50 w-screen max-w-screen-lg -translate-x-1/2 bg-white"
       :class="scrollY > 60 ? 'opacity-70' : 'opacity-100'">
       <HeaderHamburgerMenu
         v-model:open="isOpen.burgerMenu"
