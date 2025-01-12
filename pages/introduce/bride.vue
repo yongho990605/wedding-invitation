@@ -69,13 +69,13 @@ const copyAccount = () => {
 }
 
 const images: string[] = [
-  '/bride/image1.jpg',
-  '/bride/image2.jpg',
-  '/bride/image3.jpg',
-  '/bride/image4.jpg',
-  '/bride/image5.jpg',
-  '/bride/image6.jpg',
-  '/bride/image7.jpg',
-  '/bride/image8.jpg'
+  '/images/bride/image1.jpg',
+  '/images/bride/image2.jpg',
+  '/images/bride/image3.jpg',
+  '/images/bride/image4.jpg',
+  '/images/bride/image5.jpg',
+  '/images/bride/image6.jpg',
+  '/images/bride/image7.jpg',
+  '/images/bride/image8.jpg'
 ]
 </script>

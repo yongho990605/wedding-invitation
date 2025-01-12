@@ -28,7 +28,7 @@
 
     <div class="relative flex flex-col items-center justify-center">
       <img
-        src="/shared/spinning-scroll.png"
+        src="/images/shared/spinning-scroll.png"
         class="absolute -top-5 z-30 flex h-[4.625rem] w-[4.625rem] animate-[spin_6s_linear_infinite] justify-center" />
       <div class="mt-20 flex flex-col items-center justify-center pb-7">
         <span class="font-gyeonggi-batang text-xl font-bold">D-day</span>
@@ -146,11 +146,11 @@
         <NaverMap />
         <Card orientation="horizontal" class="w-full divide-x border p-2 shadow-none">
           <CardContent class="w-full flex-row items-center justify-center gap-2">
-            <img src="/map/naver.jpeg" alt="naver-map" class="w-5" />
+            <img src="/images/map/naver.jpeg" alt="naver-map" class="w-5" />
             <NuxtLink to="https://naver.me/FvEI6CAZ" target="_blank">네이버 지도</NuxtLink>
           </CardContent>
           <CardContent class="w-full flex-row items-center justify-center gap-2">
-            <img src="/map/kakao.jpeg" alt="kakao-map" class="w-5" />
+            <img src="/images/map/kakao.jpeg" alt="kakao-map" class="w-5" />
             <NuxtLink to="https://kko.kakao.com/LrrRMT4k-u" target="_blank">카카오 맵</NuxtLink>
           </CardContent>
         </Card>
