@@ -1,6 +1,18 @@
 import type { GalleryVariants } from './index'
 
-export interface GalleryProps {
-  images: string[]
+interface BaseGalleryProps {
+  images?: string[]
+}
+
+export interface GalleryProps extends BaseGalleryProps {
   layout?: GalleryVariants['layout']
+}
+
+export interface GalleryDialogProps extends BaseGalleryProps {
+  initialIndex?: number
+}
+
+export interface GalleryDialogStore {
+  open: boolean
+  initialIndex: number
 }
