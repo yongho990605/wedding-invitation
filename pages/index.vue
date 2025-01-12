@@ -265,7 +265,7 @@ onUnmounted(() => {
 
 const carouselPlugin = Autoplay({ delay: 3000, stopOnMouseEnter: true, stopOnInteraction: false })
 const weddingDate = new Date('2025-02-22 14:00:00')
-const images = ['main_image1.jpg', 'main_image2.jpg', 'main_image3.jpg']
+const images = ['/images/main1.jpg', '/images/main2.jpg', '/images/main3.jpg']
 const accordionItems: AccordionItem[] = [
   {
     departureFrom: { region: '대전', time: 11 },
