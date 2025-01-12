@@ -11,6 +11,8 @@
         )
       "
       @pointer-down-outside="(e) => e.preventDefault()">
+      <DialogTitle class="hidden" />
+      <DialogDescription class="hidden" />
       <slot />
 
       <DialogClose
@@ -30,7 +32,9 @@ import {
   type DialogContentProps,
   DialogOverlay,
   DialogPortal,
-  useForwardPropsEmits
+  useForwardPropsEmits,
+  DialogTitle,
+  DialogDescription
 } from 'radix-vue'
 import { computed, type HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
