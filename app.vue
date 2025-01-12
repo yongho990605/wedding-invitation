@@ -12,3 +12,11 @@
 <script setup lang="ts">
 import { Toaster } from '@/components/ui/sonner'
 </script>
+
+<style>
+body {
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: initial !important;
+}
+</style>
