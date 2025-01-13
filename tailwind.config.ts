@@ -7,6 +7,7 @@ module.exports = {
 
   theme: {
     fontFamily: {
+      'hakgyoansim-kossuyeom': ['Hakgyoansim Kossuyeom', 'sans-serif'],
       pretendard: ['Pretendard', 'sans-serif'],
       'gyeonggi-batang': ['Gyeonggi Batang', 'serif'],
       'hakgyoansim-gaeulsopung': ['Hakgyoansim Gaeulsopung', 'sans-serif'],

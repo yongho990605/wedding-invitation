@@ -14,8 +14,17 @@
   
 @font-face {
   font-family: 'Bonitalia';
-  src: url('../fonts/Bonitalia.otf') format('opentype'),
-       url('../fonts/Bonitalia.ttf') format('truetype');
+  src: url('../fonts/bonitalia/Bonitalia.otf') format('opentype'),
+       url('../fonts/bonitalia/Bonitalia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; 
+}
+
+@font-face {
+  font-family: 'Hakgyoansim Kossuyeom'; 
+  src: url('../fonts/hakgyoansim-kossuyeom/HakgyoansimKossuyeomR.ttf') format('truetype'),
+       url('../fonts/hakgyoansim-kossuyeom/HakgyoansimKossuyeomOTFR.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
