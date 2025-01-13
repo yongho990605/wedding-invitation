@@ -42,34 +42,31 @@
                 key === 'Seconds' && 'hidden md:flex lg:flex'
               )
             ">
-            <ClientOnly>
-              <div class="relative">
-                <CircleProgress
-                  :border-width="3.5"
-                  :border-bg-width="3.5"
-                  :size="70"
-                  empty-color="#EEEEEE"
-                  :gradient="{
-                    angle: 90,
-                    startColor: '#EEACC1',
-                    stopColor: '#D0D0F3'
-                  }"
-                  :percent="value.precentage"
-                  unit="''"
-                  is-gradient />
-
-                <span
-                  class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-gyeonggi-batang text-2xl font-bold">
-                  {{ value.text }}
-                </span>
-              </div>
-            </ClientOnly>
+            <div class="relative">
+              <CircleProgress
+                :border-width="3.5"
+                :border-bg-width="3.5"
+                :size="70"
+                empty-color="#EEEEEE"
+                :gradient="{
+                  angle: 90,
+                  startColor: '#EEACC1',
+                  stopColor: '#D0D0F3'
+                }"
+                :percent="value.precentage"
+                unit="''"
+                is-gradient />
+              <span
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-gyeonggi-batang text-2xl font-bold">
+                {{ value.text }}
+              </span>
+            </div>
             <span class="text-[0.8125rem] text-[#BBBBBB] lg:text-base">{{ key }}</span>
           </div>
         </div>
         <div
           id="invite"
-          class="mb-7 mt-2 flex flex-col items-center justify-center gap-2 font-gyeonggi-batang text-[0.9375rem] lg:text-base">
+          class="mb-7 mt-2 flex flex-col items-center justify-center gap-2 font-gyeonggi-batang lg:text-lg">
           <p>광주 라붐웨딩홀 1층 리즈홀</p>
           <p>2025. 02. 22. 토요일 오후 2:00</p>
         </div>
