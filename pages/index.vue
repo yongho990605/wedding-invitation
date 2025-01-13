@@ -7,7 +7,7 @@
             <div
               class="absolute left-0 top-[60%] z-10 h-[40%] w-full bg-gradient-to-b from-transparent via-white/50 to-white" />
             <img
-              :src="image"
+              :src="isDevMode ? image : config.app.baseURL + image"
               :class="[
                 'absolute left-0 top-0 -mt-[4.0625rem] w-full transition-opacity duration-500',
                 currentImageIndex === index ? 'opacity-100' : 'opacity-0'
