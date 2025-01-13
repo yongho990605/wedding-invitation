@@ -9,7 +9,7 @@
           :class="cn('overflow-hidden rounded-lg', layout === 'horizontal' && index % 2 !== 0 && 'mt-10')"
           @click="open(index)">
           <img
-            :src="isDevMode ? image : config.app.baseURL + image"
+            :src="isDevMode ? '/' + image : config.app.baseURL + image"
             :alt="`Gallery image ${index + 1}`"
             class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
             loading="lazy"
