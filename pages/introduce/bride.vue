@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout name="introdution">
     <template #background>
-      <img src="images/bride/image2.jpg" alt="groom" class="h-full w-full rounded-b object-cover" />
+      <img src="/images/bride/image2.jpg" alt="groom" class="h-full w-full rounded-b object-cover" />
     </template>
     <template #profile>
       <Avatar src="images/bride/profile.jpg" size="lg" class="lg:h-24 lg:w-24" />
