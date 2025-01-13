@@ -2,7 +2,7 @@
   <div class="relative z-0 w-full">
     <div ref="mapRef" class="h-[20rem] overflow-hidden rounded-[0.5rem]" />
     <Button
-      :class="cn('absolute left-2 top-2 border', isMapControlEnabled ? 'bg-white' : 'bg-slate-300')"
+      :class="cn('absolute left-2 top-2 h-8 border', isMapControlEnabled ? 'bg-white' : 'bg-slate-300')"
       @click="toggleMapControl">
       <Icon :name="isMapControlEnabled ? 'heroicons:lock-open' : 'heroicons:lock-closed'" />
     </Button>
