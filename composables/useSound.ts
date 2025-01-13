@@ -24,6 +24,7 @@ export const useSound = (source: string) => {
   const src = import.meta.dev ? source : config.app.baseURL + source
   onMounted(() => {
     audio.value = new Audio(src)
+    audio.value.autoplay = true
     audio.value.loop = true
 
     attemptAutoplay()
