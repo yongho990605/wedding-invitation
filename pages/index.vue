@@ -105,7 +105,16 @@
       @mouseenter="carouselPlugin.stop"
       @mouseleave="[carouselPlugin.reset(), carouselPlugin.play()]">
       <div class="flex w-full items-center justify-between border-b border-[#EEEEEE] pb-4">
-        <span>앨범</span>
+        <div class="flex items-center gap-2">
+          <span>앨범</span>
+          <Button
+            variant="outline"
+            class="h-6 border-[#E58AAB] font-pretendard text-[0.6875rem] font-semibold text-[#E58AAB] lg:h-8 lg:px-3 lg:py-1 lg:text-sm"
+            size="sm"
+            rounded>
+            <NuxtLink :to="{ name: 'gallery' }">더보기</NuxtLink>
+          </Button>
+        </div>
         <div class="flex">
           <CarouselPrevious />
           <CarouselNext />
