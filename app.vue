@@ -1,16 +1,21 @@
 <template>
   <div class="overflow-hidden bg-[#333]">
-    <NuxtLoadingIndicator />
-    <SnowEffect />
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-    <Toaster position="bottom-center" />
+    <SplashScreen v-model:show="showSplash" />
+    <template v-if="!showSplash">
+      <NuxtLoadingIndicator />
+      <SnowEffect />
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+      <Toaster position="bottom-center" />
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Toaster } from '@/components/ui/sonner'
+
+const showSplash = ref(true)
 </script>
 
 <style>
