@@ -1,4 +1,5 @@
 export const useSound = (source: string) => {
+  const config = useRuntimeConfig()
   const audio = ref<HTMLAudioElement | null>(null)
   const isPlaying = ref(false)
 
@@ -20,8 +21,9 @@ export const useSound = (source: string) => {
     }
   }
 
+  const src = import.meta.dev ? source : config.app.baseURL + source
   onMounted(() => {
-    audio.value = new Audio(source)
+    audio.value = new Audio(src)
     audio.value.loop = true
 
     attemptAutoplay()
