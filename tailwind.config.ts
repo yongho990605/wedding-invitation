@@ -7,6 +7,7 @@ module.exports = {
 
   theme: {
     fontFamily: {
+      pretendard: ['Pretendard', 'sans-serif'],
       'gyeonggi-batang': ['Gyeonggi Batang', 'serif'],
       'hakgyoansim-gaeulsopung': ['Hakgyoansim Gaeulsopung', 'sans-serif'],
       bonitalia: ['Bonitalia', 'sans-serif']
