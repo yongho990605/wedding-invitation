@@ -1,10 +1,10 @@
 <template>
   <NuxtLayout name="introdution">
     <template #background>
-      <img src="/images/bride/image2.jpg" alt="groom" class="h-full w-full rounded-b object-cover" />
+      <img src="images/bride/image2.jpg" alt="groom" class="h-full w-full rounded-b object-cover" />
     </template>
     <template #profile>
-      <Avatar src="/images/bride/profile.jpg" size="lg" class="lg:h-24 lg:w-24" />
+      <Avatar src="images/bride/profile.jpg" size="lg" class="lg:h-24 lg:w-24" />
     </template>
     <template #title>
       <span>신부</span>
@@ -69,13 +69,13 @@ const copyAccount = () => {
 }
 
 const images: string[] = [
-  '/images/bride/image1.jpg',
-  '/images/bride/image2.jpg',
-  '/images/bride/image3.jpg',
-  '/images/bride/image4.jpg',
-  '/images/bride/image5.jpg',
-  '/images/bride/image6.jpg',
-  '/images/bride/image7.jpg',
-  '/images/bride/image8.jpg'
+  'images/bride/image1.jpg',
+  'images/bride/image2.jpg',
+  'images/bride/image3.jpg',
+  'images/bride/image4.jpg',
+  'images/bride/image5.jpg',
+  'images/bride/image6.jpg',
+  'images/bride/image7.jpg',
+  'images/bride/image8.jpg'
 ]
 </script>

@@ -23,7 +23,7 @@ export const GALLERY_IMAGES = Object.entries(CONCEPT_IMAGE_COUNTS).reduce(
   (acc, [concept, count]) => {
     acc[concept as ConceptKey] = Array.from(
       { length: count },
-      (_, i) => `/images/${concept.replace('_', '').toLowerCase()}/image${i + 1}.jpg`
+      (_, i) => `images/${concept.replace('_', '').toLowerCase()}/image${i + 1}.jpg`
     )
     return acc
   },
