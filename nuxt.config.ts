@@ -11,9 +11,11 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
-        { name: 'og:title', content: '장용호 💗 최원비' },
-        { name: 'og:description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
-        { name: 'og:image', content: import.meta.env.NUXT_APP_BASE_URL + 'images/concept4/image5.jpg' }
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: '장용호 💗 최원비' },
+        { property: 'og:description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
+        { property: 'og:image', content: import.meta.env.NUXT_APP_BASE_URL + 'images/concept4/image5.jpg' },
+        { property: 'og:url', content: import.meta.env.NUXT_APP_BASE_URL }
       ],
       script: [
         {
