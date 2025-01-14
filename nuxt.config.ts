@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         { name: 'description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
         { name: 'og:title', content: '장용호 💗 최원비' },
         { name: 'og:description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
-        { name: 'og:image', content: import.meta.env.NUXT_APP_BASE_URL + 'concept4/image5.jpg' }
+        { name: 'og:image', content: import.meta.env.NUXT_APP_BASE_URL + 'images/concept4/image5.jpg' }
       ],
       script: [
         {
