@@ -13,7 +13,6 @@ export default defineNuxtConfig({
         { name: 'description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
         { name: 'msapplication-TileColor', content: '#ffffff' },
         { name: 'theme-color', content: '#ffffff' },
-        { rel: 'icon', type: 'image/x-icon', href: import.meta.env.NUXT_APP_BASE_URL + 'favicon.ico' },
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: '장용호 💗 최원비' },
         { property: 'og:description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
