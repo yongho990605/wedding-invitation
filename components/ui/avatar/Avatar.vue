@@ -16,5 +16,5 @@ const props = withDefaults(defineProps<AvatarProps>(), {
   size: 'md'
 })
 
-const resource = import.meta.dev ? '/' + props.src : config.app.baseURL + props.src
+const resource = import.meta.dev ? props.src : config.app.baseURL + props.src
 </script>

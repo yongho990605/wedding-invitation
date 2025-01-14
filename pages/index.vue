@@ -117,14 +117,17 @@
           <CarouselNext />
         </div>
       </div>
-      <CarouselContent class="pt-10">
-        <CarouselItem v-for="imgSource in Object.values(GALLERY_IMAGES).flat()" :key="imgSource" class="w-full">
+      <CarouselContent class="flex w-full gap-20 pt-10 sm:max-w-[18.75rem] md:max-w-[21.875rem] lg:max-w-[25rem]">
+        <CarouselItem
+          v-for="imgSource in Object.values(GALLERY_IMAGES).flat()"
+          :key="imgSource"
+          class="w-full shrink-0 grow-0 basis-full">
           <div class="h-fit w-fit overflow-hidden rounded-2xl">
             <img
               :src="isDevMode ? imgSource : config.app.baseURL + imgSource"
               :alt="imgSource"
               loading="lazy"
-              class="h-fit max-h-[26.25rem] w-full rounded-lg object-contain"
+              class="max-h-[26.25rem] object-contain"
               oncontextmenu="return false"
               @dragstart.prevent />
           </div>
