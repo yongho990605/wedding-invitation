@@ -1,14 +1,14 @@
 <template>
   <div class="overflow-hidden bg-[#333]">
     <SplashScreen v-model:show="showSplash" />
+    <NuxtLoadingIndicator />
+    <SnowEffect />
     <template v-if="!showSplash">
-      <NuxtLoadingIndicator />
-      <SnowEffect />
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
-      <Toaster position="bottom-center" />
     </template>
+    <Toaster position="bottom-center" />
   </div>
 </template>
 
