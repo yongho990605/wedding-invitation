@@ -242,10 +242,11 @@ interface AccordionItem {
 }
 
 const config = useRuntimeConfig()
+const now = useNow()
+
 const isDevMode = import.meta.dev
 const weddingHoleAddress = '광주 서구 상무누리로 59 (치평동 268-18)'
 const addressClipboard = useClipboard({ source: weddingHoleAddress })
-const now = useNow()
 const remainingDueDate = computed(() => {
   const diff = weddingDate.getTime() - now.value.getTime()
   const dueDays = Math.floor(diff / (1000 * 60 * 60 * 24))
