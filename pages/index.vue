@@ -11,7 +11,7 @@
             <div
               class="absolute left-0 top-[60%] z-10 h-[40%] w-full bg-gradient-to-b from-transparent via-white/50 to-white" />
             <img
-              :src="isDevMode ? image : config.app.baseURL + image"
+              :src="withDomain(image)"
               :class="[
                 'absolute left-0 top-0 -mt-[4.0625rem] w-full transition-opacity duration-500',
                 currentImageIndex === index ? 'opacity-100' : 'opacity-0'
@@ -129,7 +129,7 @@
           @click="openGalleryDialog(index)">
           <div class="h-fit w-fit overflow-hidden rounded-2xl">
             <img
-              :src="isDevMode ? imgSource : config.app.baseURL + imgSource"
+              :src="withDomain(imgSource)"
               :alt="imgSource"
               loading="lazy"
               class="max-h-[26.25rem] object-contain"
@@ -241,17 +241,15 @@ import CircleProgress from 'vue3-circle-progress'
 import { cn } from '@/lib/utils'
 import { useGalleryDialog } from '~/components/gallery/useGalleryDialog'
 import { GALLERY_IMAGES } from '~/constants/gallery'
-
+import { withDomain } from '~/utils/withDomain'
 interface AccordionItem {
   departureFrom: { region: string; time: string | number }
   pickupLocation: { name: string; address?: string; type?: 'badge' | 'text' }[]
 }
 
-const config = useRuntimeConfig()
 const { dialog, open: openGalleryDialog } = useGalleryDialog()
 const now = useNow()
 
-const isDevMode = import.meta.dev
 const weddingHoleAddress = '광주 서구 상무누리로 59 (치평동 268-18)'
 const addressClipboard = useClipboard({ source: weddingHoleAddress })
 const remainingDueDate = computed(() => {

@@ -4,10 +4,10 @@
     <template #content>
       <Carousel class="relative flex h-full w-full items-center justify-center" @init-api="setApi">
         <DialogClose
-          class="extra:-translate-y-1/2 absolute right-4 top-2 z-10 rounded-lg bg-black/50 p-1 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+          class="absolute right-4 top-2 z-10 rounded-lg bg-black/50 p-1 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground extra:-translate-y-1/2">
           <Icon name="heroicons:x-mark" class="h-6 w-6 text-white" />
         </DialogClose>
-        <div class="extra:-translate-y-1/2 absolute left-4 top-2 z-10 rounded-lg bg-black/50 px-3 py-1 text-white">
+        <div class="absolute left-4 top-2 z-10 rounded-lg bg-black/50 px-3 py-1 text-white extra:-translate-y-1/2">
           {{ current }} / {{ totalCount }}
         </div>
         <div class="absolute left-0 z-10 flex w-full justify-between px-3">
@@ -20,7 +20,7 @@
         </div>
         <CarouselContent class="flex w-full gap-40 sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg">
           <CarouselItem v-for="(image, i) in images" :key="i" class="shrink-0 grow-0 basis-full">
-            <img :src="isDevMode ? image : config.app.baseURL + image" class="object-cover" />
+            <img :src="withDomain(image)" class="object-cover" />
           </CarouselItem>
         </CarouselContent>
       </Carousel>
@@ -30,14 +30,12 @@
 
 <script setup lang="ts">
 import type { CarouselApi } from '@/components/ui/carousel'
+import { withDomain } from '~/utils/withDomain'
 import type { GalleryDialogProps } from './types'
 
 const props = withDefaults(defineProps<GalleryDialogProps>(), {
   initialIndex: 0
 })
-
-const config = useRuntimeConfig()
-const isDevMode = import.meta.dev
 
 const api = ref<CarouselApi>()
 const totalCount = ref(0)

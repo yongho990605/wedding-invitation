@@ -41,7 +41,7 @@
             class="col-span-2 overflow-hidden rounded-lg"
             @click="open(index)">
             <img
-              :src="isDevMode ? image : config.app.baseURL + image"
+              :src="withDomain(image)"
               :alt="`Gallery image ${index + 1}`"
               class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
               loading="lazy"
@@ -54,7 +54,7 @@
             :class="cn('overflow-hidden rounded-lg', index % 2 !== 0 && 'mt-10')"
             @click="open(index + 4)">
             <img
-              :src="isDevMode ? image : config.app.baseURL + image"
+              :src="withDomain(image)"
               :alt="`Gallery image ${index + 5}`"
               class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
               loading="lazy"
@@ -76,10 +76,9 @@
 import { cn } from '@/lib/utils'
 import { useGalleryDialog } from '~/components/gallery/useGalleryDialog'
 import { GALLERY_IMAGES } from '~/constants/gallery'
+import { withDomain } from '~/utils/withDomain'
 
-const config = useRuntimeConfig()
 const { dialog, open } = useGalleryDialog()
-const isDevMode = import.meta.dev
 
 const galleryOrder = ['첫 번째', '두 번째', '세 번째', '네 번째', '다섯 번째', '여섯 번째', '일곱 번째', '여덟 번째']
 const currentGallery = ref<keyof typeof GALLERY_IMAGES>('CONCEPT_1')
