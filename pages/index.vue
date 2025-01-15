@@ -1,5 +1,9 @@
 <template>
   <div class="flex flex-col bg-white">
+    <GalleryDialog
+      v-model:open="dialog.open"
+      :initial-index="dialog.initialIndex"
+      :images="Object.values(GALLERY_IMAGES).flat()" />
     <div class="relative w-full overflow-hidden">
       <div class="relative w-full">
         <div class="relative h-[23.5rem] w-full overflow-hidden md:h-[28.5rem] lg:h-[34rem]">
@@ -119,9 +123,10 @@
       </div>
       <CarouselContent class="flex w-full gap-20 pt-10 sm:max-w-[18.75rem] md:max-w-[21.875rem] lg:max-w-[25rem]">
         <CarouselItem
-          v-for="imgSource in Object.values(GALLERY_IMAGES).flat()"
+          v-for="(imgSource, index) in Object.values(GALLERY_IMAGES).flat()"
           :key="imgSource"
-          class="w-full shrink-0 grow-0 basis-full">
+          class="w-full shrink-0 grow-0 basis-full"
+          @click="openGalleryDialog(index)">
           <div class="h-fit w-fit overflow-hidden rounded-2xl">
             <img
               :src="isDevMode ? imgSource : config.app.baseURL + imgSource"
@@ -234,6 +239,7 @@ import { toast } from 'vue-sonner'
 // @ts-ignore
 import CircleProgress from 'vue3-circle-progress'
 import { cn } from '@/lib/utils'
+import { useGalleryDialog } from '~/components/gallery/useGalleryDialog'
 import { GALLERY_IMAGES } from '~/constants/gallery'
 
 interface AccordionItem {
@@ -242,6 +248,7 @@ interface AccordionItem {
 }
 
 const config = useRuntimeConfig()
+const { dialog, open: openGalleryDialog } = useGalleryDialog()
 const now = useNow()
 
 const isDevMode = import.meta.dev
