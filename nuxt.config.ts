@@ -37,11 +37,13 @@ export default defineNuxtConfig({
     componentDir: './components/ui'
   },
   icon: {
-    customCollections: [
-      {
-        prefix: 'shared',
-        dir: './assets/icons'
-      }
-    ]
+    customCollections: [{ prefix: 'shared', dir: './assets/icons' }]
+  },
+  i18n: {
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
+    }
   }
 })
