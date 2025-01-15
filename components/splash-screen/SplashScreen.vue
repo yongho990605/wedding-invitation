@@ -6,7 +6,7 @@
         <img
           src="/images/shared/splash-screen.png"
           alt="splash-screen"
-          class="w-[90%]"
+          class="w-[70%]"
           loading="eager"
           fetchpriority="high" />
       </div>
