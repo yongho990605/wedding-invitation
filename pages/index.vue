@@ -125,7 +125,7 @@
         <CarouselItem
           v-for="(imgSource, index) in Object.values(GALLERY_IMAGES).flat()"
           :key="imgSource"
-          class="w-full shrink-0 grow-0 basis-full"
+          class="w-full shrink-0 grow-0 basis-full cursor-pointer"
           @click="openGalleryDialog(index)">
           <div class="h-fit w-fit overflow-hidden rounded-2xl">
             <img
