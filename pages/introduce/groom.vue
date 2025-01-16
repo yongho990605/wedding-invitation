@@ -35,7 +35,7 @@
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="acoount-number" class="border-b border-[#EEEEEE] py-4">
-          <AccordionTrigger class="w-full justify-between p-3 font-semibold">계좌번호</AccordionTrigger>
+          <AccordionTrigger class="w-full justify-between p-3 font-semibold">마음 전하실 곳</AccordionTrigger>
           <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
             <span class="sm:text-base lg:text-lg">{{ accountBank }} {{ accountNumber }}</span>
             <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyAccount">복사하기</Button>
