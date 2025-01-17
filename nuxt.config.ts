@@ -40,10 +40,17 @@ export default defineNuxtConfig({
     customCollections: [{ prefix: 'shared', dir: './assets/icons' }]
   },
   i18n: {
+    strategy: 'no_prefix',
     detectBrowserLanguage: {
       useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root'
-    }
+      cookieKey: 'i18n_redirected'
+    },
+    locales: [
+      { code: 'ko', file: 'ko.json' },
+      { code: 'en', file: 'en.json' },
+      { code: 'ja', file: 'ja.json' }
+    ],
+    lazy: true,
+    defaultLocale: 'ko'
   }
 })
