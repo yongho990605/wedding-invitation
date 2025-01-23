@@ -1,1 +1,15 @@
-{}
+{ 
+  "home": "ホーム", 
+  "introduction": "花婿/花嫁紹介",
+  "gallery": "ギャラリー",
+  "invitation-message": "招待状メッセージ", 
+  "directions": "アクセス", 
+  "and": "そして",
+  "yongho": "チャン・ヨンホ", 
+  "wonbi": "チェ・ウォンビ", 
+  "groom": "花婿", 
+  "bride": "花嫁", 
+  "we-are-getting-married": "私たちは結婚します。",
+  "wedding-hall-venue": "ラ・ブームウェディングホール \n1階 リーズホール（光州）", 
+  "wedding-date": "2025年2月22日 土曜日 午後2時" 
+}

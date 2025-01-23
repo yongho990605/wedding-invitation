@@ -1,1 +1,21 @@
-{} 
+{
+  "home": "처음으로",
+  "view-more": "더보기",
+  "introduction": "@:groom · @:bride 소개", 
+  "gallery": "갤러리", 
+  "directions": "오시는길", 
+  "and": "그리고",
+  "yongho": "장용호",  
+  "wonbi": "최원비",
+  "groom": "신랑",
+  "bride": "신부",
+  "invitation-message": "초대 인사말",
+  "parking-info": "주차안내",
+  "region": {
+    "daejeon": "대전",
+    "damyang": "담양",
+    "yeosu": "여수" 
+  }
+}  
+
+  

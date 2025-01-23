@@ -1,1 +1,20 @@
-{}
+{
+  "home": "Home",
+  "view-more": "View More",
+  "introduction": "Introduction", 
+  "gallery": "Gallery",
+  "directions": "Directions", 
+  "and": "and", 
+  "yongho": "Yongho Jang",
+  "wonbi": "Wonbi Choi",  
+  "groom": "Groom",
+  "bride": "Bride",
+  "invitation-message": "Invitation Message",
+  "parking-info": "Parking Information",
+  "region": { 
+    "daejeon": "Daejeon",
+    "damyang": "Damyang",
+    "yeosu": "Yeosu"
+  }
+} 
+ 
