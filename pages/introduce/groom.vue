@@ -7,12 +7,12 @@
       <Avatar src="/images/groom/profile.jpg" size="lg" class="lg:h-24 lg:w-24" />
     </template>
     <template #title>
-      <span class="lg:text-lg">신랑</span>
-      <span class="text-2xl font-bold lg:text-3xl">장용호</span>
+      <span class="lg:text-lg">{{ $t('groom') }}</span>
+      <span class="text-2xl font-bold lg:text-3xl">{{ $t('yongho') }}</span>
     </template>
     <template #hash-tags>
       <Badge
-        v-for="tag in hashTags"
+        v-for="tag in tm('tags') as string[]"
         :key="tag"
         class="bg-[#F9E6EC] sm:px-2 sm:py-0 sm:text-[0.8125rem] md:px-3 md:py-0.5 md:text-[0.92rem] lg:text-base"
         prefix="#"
@@ -20,25 +20,32 @@
         outline
         size="lg"
         rounded>
-        {{ tag }}
+        {{ rt(tag) }}
       </Badge>
     </template>
     <template #contact>
       <Accordion type="multiple" class="w-full" collapsible>
         <AccordionItem value="mobile" class="border-b border-[#EEEEEE] py-3">
-          <AccordionTrigger class="w-full justify-between p-3 font-semibold">Mobile</AccordionTrigger>
+          <AccordionTrigger class="w-full justify-between p-3 font-semibold lg:text-lg">Mobile</AccordionTrigger>
           <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
             <span class="sm:text-base lg:text-lg">{{ phoneNumber }}</span>
             <Button class="bg-[#E58AAB] text-[0.8125rem] font-semibold text-white" rounded>
-              <a :href="`sms:${phoneNumber}`">문자 보내기</a>
+              <a :href="`sms:${phoneNumber}`">{{ $t('send-sms') }}</a>
             </Button>
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="acoount-number" class="border-b border-[#EEEEEE] py-4">
-          <AccordionTrigger class="w-full justify-between p-3 font-semibold">마음 전하실 곳</AccordionTrigger>
+          <AccordionTrigger class="w-full justify-between p-3 font-semibold lg:text-lg">
+            {{ $t('send-your-kind-blessing') }}
+          </AccordionTrigger>
           <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
-            <span class="sm:text-base lg:text-lg">{{ accountBank }} {{ accountNumber }}</span>
-            <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyAccount">복사하기</Button>
+            <p class="sm:text-base lg:text-lg">
+              <span class="font-bold">{{ t('toss-bank') }}</span>
+              {{ accountNumber }}
+            </p>
+            <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyAccount">
+              {{ $t('copy') }}
+            </Button>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -55,26 +62,17 @@ import { toast } from 'vue-sonner'
 
 definePageMeta({ introdution: 'groom' })
 
-const hashTags = [
-  '용고',
-  'ENTJ',
-  '계획적',
-  '1등 신랑감',
-  '프론트엔드 개발자',
-  '일론머스크 광팬',
-  '초보 투자자',
-  '테슬라💕'
-]
+const { rt, tm, t } = useI18n({ useScope: 'local' })
+const { t: $t } = useI18n({ useScope: 'global' })
 
 const phoneNumber = '010-9213-5518'
-const accountBank = '토스뱅크'
 const accountNumber = '1000-5493-4058'
 
 const accountClipboard = useClipboard({ source: accountNumber })
 
 const copyAccount = () => {
   accountClipboard.copy()
-  toast.success('계좌번호가 복사되었습니다')
+  toast.success($t('copy-account'))
 }
 
 const images: string[] = [
@@ -86,3 +84,16 @@ const images: string[] = [
   '/images/groom/image6.jpg'
 ]
 </script>
+
+<i18n>
+  { 
+    ko: { 
+     "tags": ['용고', 'ENTJ', '계획적', '1등 신랑감', '프론트엔드 개발자', '일론머스크 광팬', '초보 투자자', '테슬라💕'],
+     "toss-bank": "토스뱅크",
+    },
+    en: {  
+      "tags": ['Yong-go', 'ENTJ', 'Strategist', 'Top Groom Material', 'Frontend Developer', 'Elon Musk Fanatic', 'NoviceInvestor', 'Tesla Lover💕'],
+      "toss-bank": "Toss Bank",
+    }
+  }
+</i18n>

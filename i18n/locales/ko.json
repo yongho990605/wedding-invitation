@@ -9,12 +9,27 @@
   "wonbi": "최원비",
   "groom": "신랑",
   "bride": "신부",
+  "contact": "연락처",
+  "copy": "복사하기",
+  "send-sms": "문자 보내기",
   "invitation-message": "초대 인사말",
   "parking-info": "주차안내",
+  "copy-account": "계좌번호가 복사되었습니다",
+  "send-your-kind-blessing": "마음 전하실 곳",
   "region": {
     "daejeon": "대전",
     "damyang": "담양",
     "yeosu": "여수" 
+  },
+  "count": {
+    "first": "첫 번째",
+    "second": "두 번째",
+    "third": "세 번째",
+    "fourth": "네 번째", 
+    "fifth": "다섯 번째",
+    "sixth": "여섯 번째",
+    "seventh": "일곱 번째",
+    "eighth": "여덟 번째"
   }
 }  
 
