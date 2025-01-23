@@ -57,8 +57,9 @@
               v-model="currentLocale"
               :items="[
                 { label: '한국어', value: 'ko' },
-                { label: 'English', value: 'en' },
-                { label: '日本語', value: 'ja' }
+                { label: 'English', value: 'en' }
+                // 일본어 1차출시(?) 제외
+                // { label: '日本語', value: 'ja' }
               ]"
               @update:model-value="(value: string) => setLocale(value as typeof locale)">
               <Button
