@@ -9,7 +9,6 @@ export default defineNuxtConfig({
       title: '장용호 💗 최원비',
       meta: [
         { charset: 'utf-8' },
-        { name: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: '장용호 그리고 최원비, 우리 결혼합니다' },
         { name: 'msapplication-TileColor', content: '#ffffff' },
