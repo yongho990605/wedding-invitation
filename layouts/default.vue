@@ -8,11 +8,11 @@
       <HeaderHamburgerMenu
         v-model:open="isOpen.burgerMenu"
         :items="[
-          { label: '처음으로', to: { name: 'index' } },
+          { label: $t('home'), to: { name: 'index' } },
           { slot: 'introduce-accordion' },
-          { label: '갤러리', to: { name: 'gallery' }, class: '-mt-5' },
-          { label: '초대 인사말', to: { name: 'index', hash: '#invite' } },
-          { label: '오시는길', to: { name: 'index', hash: '#location' } }
+          { label: $t('gallery'), to: { name: 'gallery' }, class: '-mt-5' },
+          { label: $t('invitation-message'), to: { name: 'index', hash: '#invite' } },
+          { label: $t('directions'), to: { name: 'index', hash: '#location' } }
         ]">
         <template #introduce-accordion>
           <Accordion type="single" collapsible>
@@ -21,7 +21,7 @@
               class="w-full items-center justify-center gap-5 font-gyeonggi-batang text-lg"
               :open="isOpen.accordion">
               <AccordionTrigger class="mb-5 gap-5 !text-lg font-bold" @click="isOpen.accordion = !isOpen.accordion">
-                신랑 · 신부 소개
+                {{ $t('introduction') }}
               </AccordionTrigger>
               <AccordionContent v-for="content in accordionContents" :key="content.label" class="text-[1.0625rem]">
                 <NuxtLink
@@ -35,7 +35,7 @@
           </Accordion>
         </template>
       </HeaderHamburgerMenu>
-      <Header>
+      <Header class="relative">
         <HeaderContent>
           <Button variant="ghost" @click="toggleSound">
             <Icon
@@ -45,14 +45,28 @@
           </Button>
         </HeaderContent>
         <HeaderContent>
-          <Button variant="ghost">
+          <Button variant="ghost" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <NuxtLink class="cursor-pointer" :to="{ name: 'index' }" @click="scrollToStart">
               <Icon name="shared:logo" size="1.8rem" />
             </NuxtLink>
           </Button>
         </HeaderContent>
         <HeaderContent>
-          <div class="flex gap-3">
+          <div class="flex items-center gap-3">
+            <Select
+              v-model="currentLocale"
+              :items="[
+                { label: '한국어', value: 'ko' },
+                { label: 'English', value: 'en' },
+                { label: '日本語', value: 'ja' }
+              ]"
+              @update:model-value="(value: string) => setLocale(value as typeof locale)">
+              <Button
+                variant="ghost"
+                class="h-8 w-8 overflow-hidden rounded-full p-0 shadow shadow-slate-500 drop-shadow">
+                <Avatar :src="`/images/flags/${currentLocale}.png`" class="h-8 w-8" />
+              </Button>
+            </Select>
             <Button variant="ghost" @click="isOpen.burgerMenu = true">
               <Icon name="heroicons:bars-3-bottom-right" size="1.8rem" class="text-[#333333]" />
             </Button>
@@ -70,19 +84,20 @@
 <script setup lang="ts">
 import { useSound } from '~/composables/useSound'
 
-const isOpen = ref({ burgerMenu: false, accordion: true })
 const { isPlaying, play, pause } = useSound('/sounds/I_See_the_Light.mp3')
 const { y: scrollY } = useWindowScroll()
+const { locale, setLocale, t: $t } = useI18n({ useScope: 'global' })
 
-const accordionContents = [
-  { label: '신랑 장용호', to: { name: 'introduce-groom' } },
-  { label: '신부 최원비', to: { name: 'introduce-bride' } }
-]
+const isOpen = ref({ burgerMenu: false, accordion: true })
+const currentLocale = ref(locale.value)
+
+const accordionContents = computed(() => [
+  { label: `${$t('groom')} ${$t('yongho')}`, to: { name: 'introduce-groom' } },
+  { label: `${$t('bride')} ${$t('wonbi')}`, to: { name: 'introduce-bride' } }
+])
 
 const scrollToStart = () => {
-  if (window && import.meta.client) {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 const toggleSound = () => {
