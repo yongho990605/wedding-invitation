@@ -33,7 +33,7 @@
     <div class="flex w-full flex-col">
       <span
         class="content-center border-b border-[#EEEEEE] pb-5 pt-3 text-center font-gyeonggi-batang text-lg lg:text-xl">
-        연락처
+        {{ $t('contact') }}
       </span>
       <slot name="contact" />
     </div>
