@@ -19,13 +19,19 @@
           </div>
         </div>
 
-        <div class="absolute top-[70%] z-20 flex w-full flex-col">
+        <div
+          class="absolute z-20 flex w-full flex-col"
+          :class="getLocaleClass(locale, { en: 'top-[64%]', ko: 'top-[70%]' })">
           <div class="flex justify-center gap-3 font-gyeonggi-batang">
-            <span class="text-xl font-bold lg:text-2xl">장용호</span>
-            <span class="mt-2 lg:text-lg">그리고</span>
-            <span class="text-xl font-bold lg:text-2xl">최원비</span>
+            <span class="text-xl font-bold lg:text-2xl">{{ $t('yongho') }}</span>
+            <span class="mt-2 lg:text-lg">{{ $t('and') }}</span>
+            <span class="text-xl font-bold lg:text-2xl">{{ $t('wonbi') }}</span>
           </div>
-          <div class="mt-3 flex justify-center font-[ink-lipquid] text-5xl lg:text-6xl">우리 결혼합니다</div>
+          <div
+            class="z-10 mt-3 text-center text-5xl lg:text-6xl"
+            :class="getLocaleClass(locale, { en: 'font-bonitalia !text-6xl', ko: 'font-[ink-lipquid]' })">
+            {{ t('we-are-getting-married') }}
+          </div>
         </div>
       </div>
     </div>
@@ -33,8 +39,9 @@
     <div class="relative flex flex-col items-center justify-center">
       <img
         src="/images/shared/spinning-scroll.png"
-        class="absolute -top-5 z-30 flex h-[4.625rem] w-[4.625rem] animate-[spin_6s_linear_infinite] justify-center" />
-      <div class="mt-20 flex flex-col items-center justify-center pb-7">
+        class="absolute z-30 flex h-[4.625rem] w-[4.625rem] animate-[spin_6s_linear_infinite] justify-center"
+        :class="locale === 'ko' ? '-top-3' : 'top-5'" />
+      <div class="mt-28 flex flex-col items-center justify-center pb-7">
         <span class="font-gyeonggi-batang text-xl font-bold">D-day</span>
         <div class="flex w-full items-center justify-center gap-5">
           <div
@@ -71,8 +78,8 @@
         <div
           id="invite"
           class="mb-7 mt-2 flex flex-col items-center justify-center gap-2 font-gyeonggi-batang lg:text-lg">
-          <p>광주 라붐웨딩홀 1층 리즈홀</p>
-          <p>2025. 02. 22. 토요일 오후 2:00</p>
+          <p class="whitespace-pre-line text-center">{{ t('wedding-hall-venue') }}</p>
+          <p class="whitespace-pre-line">{{ t('wedding-date') }}</p>
         </div>
       </div>
     </div>
@@ -80,20 +87,13 @@
     <div class="flex flex-col items-center justify-center bg-gradient-to-bl from-[#E8E3F5] to-[#F8E2DC] p-4">
       <Card class="w-full divide-y p-5 font-gyeonggi-batang">
         <CardHeader class="flex flex-col gap-1 pb-4 lg:gap-2">
-          <p class="text-xl font-medium lg:text-2xl">소중한 결실의 순간,</p>
-          <p class="text-[1.625rem] font-bold lg:text-4xl">당신을 초대합니다.</p>
+          <p class="text-xl font-medium lg:text-2xl">{{ t('cherished-moment') }}</p>
+          <p class="text-3xl font-bold lg:text-4xl">{{ t('invite-you') }}</p>
         </CardHeader>
         <CardContent class="py-4 lg:text-[1.0625rem]">
           <div class="flex flex-col gap-2.5 break-keep">
-            <p>
-              축복이 내림처럼 포근한 눈이 내리는 2월의 하늘 아래, 저희 두 사람이 하나 되어 새로운 가정을 이루고자
-              합니다.
-            </p>
-            <p>
-              저희의 삶에 귀하고 특별한 의미가 되어 주신 당신께서 소중한 발걸음을 해 주시어, 이 자리에서 우리의 새로운
-              시작을 함께 축복해 주신다면 더할나위 없는 기쁨으로 저희의 영원을 약속하는 이 자리가 더 큰 축복 속에
-              아름답게 빛날 것입니다.
-            </p>
+            <p>{{ t('invitation-message-paragraph[0]') }}</p>
+            <p>{{ t('invitation-message-paragraph[1]') }}</p>
           </div>
         </CardContent>
       </Card>
@@ -107,13 +107,15 @@
       @mouseleave="[carouselPlugin.reset(), carouselPlugin.play()]">
       <div class="flex w-full items-center justify-between border-b border-[#EEEEEE] pb-4">
         <div class="flex items-center gap-2">
-          <span>앨범</span>
+          <span>{{ $t('gallery') }}</span>
           <Button
             variant="outline"
             class="h-6 border-[#E58AAB] font-pretendard text-[0.6875rem] font-semibold text-[#E58AAB] lg:h-8 lg:px-3 lg:py-1 lg:text-sm"
             size="sm"
             rounded>
-            <NuxtLink :to="{ name: 'gallery' }">더보기</NuxtLink>
+            <NuxtLink :to="{ name: 'gallery' }" :class="getLocaleClass(locale, { en: 'font-bold' })">
+              {{ $t('view-more') }}
+            </NuxtLink>
           </Button>
         </div>
         <div class="flex">
@@ -142,11 +144,11 @@
 
     <div class="flex flex-col items-center justify-center divide-y px-4 py-10">
       <div id="location" class="flex w-full flex-col items-center justify-center gap-4 pb-4">
-        <span class="font-gyeonggi-batang text-xl lg:text-2xl">오시는 길</span>
+        <span class="font-gyeonggi-batang text-xl lg:text-2xl">{{ $t('directions') }}</span>
         <div class="flex flex-col items-center justify-center gap-2">
           <div class="flex items-center gap-1">
             <p class="cursor-pointer text-[#333333] sm:text-sm lg:text-lg">
-              {{ weddingHoleAddress }}
+              {{ t('wedding-hall-direction') }}
             </p>
             <Button variant="ghost" class="p-0 hover:text-slate-500" @click="copyAddress">
               <Icon name="iconamoon:copy-duotone" />
@@ -159,45 +161,59 @@
         </div>
         <NaverMap />
         <Card orientation="horizontal" class="w-full divide-x border p-2 shadow-none">
-          <CardContent class="w-full flex-row items-center justify-center gap-2">
-            <img src="/images/map/naver.jpeg" alt="naver-map" class="w-5" />
-            <NuxtLink to="https://naver.me/FvEI6CAZ" target="_blank">네이버 지도</NuxtLink>
-          </CardContent>
-          <CardContent class="w-full flex-row items-center justify-center gap-2">
-            <img src="/images/map/kakao.jpeg" alt="kakao-map" class="w-5" />
-            <NuxtLink to="https://kko.kakao.com/LrrRMT4k-u" target="_blank">카카오 맵</NuxtLink>
-          </CardContent>
+          <template v-if="locale === 'ko'">
+            <CardContent class="w-full flex-row items-center justify-center gap-2">
+              <img src="/images/maps/naver.jpeg" alt="naver-map" class="w-5" />
+              <NuxtLink to="https://naver.me/FvEI6CAZ" target="_blank">네이버 지도</NuxtLink>
+            </CardContent>
+            <CardContent class="w-full flex-row items-center justify-center gap-2">
+              <img src="/images/maps/kakao.jpeg" alt="kakao-map" class="w-5" />
+              <NuxtLink to="https://kko.kakao.com/LrrRMT4k-u" target="_blank">카카오 맵</NuxtLink>
+            </CardContent>
+          </template>
+          <template v-else>
+            <CardContent class="w-full flex-row items-center justify-center gap-2">
+              <img src="/images/maps/google.png" alt="google-map" class="w-5" />
+              <NuxtLink
+                to="https://www.google.com/maps/dir//59+Sangmunuri-ro,+Seo-gu,+Gwangju/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x35718917aef01569:0x4a4a35705e229224!2m2!1d126.8381198!2d35.1484032?entry=ttu&g_ep=EgoyMDI1MDEyMS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank">
+                Google Map
+              </NuxtLink>
+            </CardContent>
+          </template>
         </Card>
       </div>
       <div class="flex w-full flex-col">
         <div class="flex items-center gap-1 border-b border-dashed border-[#EEEEEE] py-3 text-lg lg:gap-1.5 lg:text-xl">
           <span class="w-fit rounded-full border px-2 text-center font-semibold lg:px-2">P</span>
-          <span class="font-gyeonggi-batang font-bold text-[#777777]">주차안내</span>
+          <span class="font-gyeonggi-batang font-bold text-[#777777]">{{ $t('parking-info') }}</span>
         </div>
         <ul class="list-disc space-y-2 py-3 pl-5">
           <li>
-            <div class="flex gap-1 lg:text-lg">
-              <span class="rounded bg-[#F9E6EC] px-1 font-bold">라붐 웨딩홀 내부 주차장</span>
-              무료
-            </div>
+            <i18n-t keypath="free-parking" tag="p" class="lg:text-lg">
+              <template #parkingLot>
+                <span class="rounded bg-[#F9E6EC] px-1 font-bold">{{ t('la-boum-parking-lot') }}</span>
+              </template>
+            </i18n-t>
           </li>
           <li>
-            <div class="flex gap-1 lg:text-lg">
-              <span class="rounded bg-[#F9E6EC] px-1 font-bold">김대중컨벤션 제1주차장</span>
-              무료
-            </div>
+            <i18n-t keypath="free-parking" tag="p" class="lg:text-lg">
+              <template #parkingLot>
+                <span class="rounded bg-[#F9E6EC] px-1 font-bold">{{ t('kim-dae-jung-convention-parking-lot') }}</span>
+              </template>
+            </i18n-t>
           </li>
           <li>
-            <div class="flex gap-1 lg:text-lg">
-              주차공간은
-              <span class="font-bold">동시주차 1,000대</span>
-              가능합니다.
-            </div>
+            <i18n-t keypath="parking-spaces-accommodate" tag="p" class="lg:text-lg">
+              <template #concurrentParking>
+                <span class="font-bold">{{ t('concurrency-parking-thousand-vehicles') }}</span>
+              </template>
+            </i18n-t>
           </li>
         </ul>
       </div>
       <div class="flex w-full flex-col items-center justify-center divide-y py-4">
-        <span class="pb-5 pt-3 font-gyeonggi-batang text-lg lg:text-2xl">전세버스 안내</span>
+        <span class="pb-5 pt-3 font-gyeonggi-batang text-lg lg:text-2xl">{{ t('chartered-bus-info') }}</span>
         <Accordion type="single" collapsible class="w-full">
           <AccordionItem
             v-for="({ departureFrom, pickupLocation }, i) in accordionItems"
@@ -205,11 +221,16 @@
             :value="`item-${i}`"
             class="border-b border-[#EEEEEE] py-6">
             <AccordionTrigger class="w-full justify-between">
-              <div class="flex font-light lg:text-lg">
-                <span class="font-semibold">{{ departureFrom.region }}</span>
-                에서 광주 출발: &nbsp;
-                <span class="font-semibold">{{ departureFrom.time }}시</span>
-              </div>
+              <i18n-t keypath="from-region-to-gwangju" tag="p" class="font-light lg:text-lg">
+                <template #region>
+                  <span class="font-semibold">{{ departureFrom.region }}</span>
+                </template>
+                <template #time>
+                  <span class="whitespace-nowrap font-semibold">
+                    {{ getLocaleTime(locale, departureFrom.time) }}
+                  </span>
+                </template>
+              </i18n-t>
             </AccordionTrigger>
             <AccordionContent class="flex flex-row gap-2 py-3 text-[0.9375rem] font-light lg:text-base">
               <span class="w-1/6 text-[#BBBBBB]">장소</span>
@@ -243,15 +264,16 @@ import { useGalleryDialog } from '~/components/gallery/useGalleryDialog'
 import { GALLERY_IMAGES } from '~/constants/gallery'
 import { withDomain } from '~/utils/withDomain'
 interface AccordionItem {
-  departureFrom: { region: string; time: string | number }
+  departureFrom: { region: string; time: number }
   pickupLocation: { name: string; address?: string; type?: 'badge' | 'text' }[]
 }
 
+const { locale, t: $t } = useI18n({ useScope: 'global' })
+const { t } = useI18n({ useScope: 'local' })
 const { dialog, open: openGalleryDialog } = useGalleryDialog()
 const now = useNow()
 
-const weddingHoleAddress = '광주 서구 상무누리로 59 (치평동 268-18)'
-const addressClipboard = useClipboard({ source: weddingHoleAddress })
+const addressClipboard = useClipboard({ source: t('wedding-hall-direction') })
 const remainingDueDate = computed(() => {
   const diff = weddingDate.getTime() - now.value.getTime()
   const dueDays = Math.floor(diff / (1000 * 60 * 60 * 24))
@@ -281,13 +303,13 @@ onUnmounted(() => {
 const carouselPlugin = Autoplay({ delay: 3000, stopOnMouseEnter: true, stopOnInteraction: false })
 const weddingDate = new Date('2025-02-22 14:00:00')
 const images = ['images/main1.jpg', 'images/main2.jpg', 'images/main3.jpg']
-const accordionItems: AccordionItem[] = [
+const accordionItems = computed<AccordionItem[]>(() => [
   {
-    departureFrom: { region: '대전', time: 11 },
+    departureFrom: { region: $t('region.daejeon'), time: 11 },
     pickupLocation: [{ name: '죽동임시공영주차장', address: '(유성불백 건너편, 대전 유성구 죽동 731-1)' }]
   },
   {
-    departureFrom: { region: '여수', time: 11 },
+    departureFrom: { region: $t('region.yeosu'), time: 11 },
     pickupLocation: [
       { name: '여수 시민회관', address: '(전남 여수시 좌수영로 69 진남문예회관) →' },
       { type: 'badge', name: '여천에서 경유' },
@@ -295,14 +317,27 @@ const accordionItems: AccordionItem[] = [
     ]
   },
   {
-    departureFrom: { region: '담양', time: 12 },
+    departureFrom: { region: $t('region.damyang'), time: 12 },
     pickupLocation: [{ name: '수북면사무소 앞', address: '(수북면 수북리 600)' }]
   }
-]
+])
 
 const copyAddress = () => {
-  addressClipboard.copy(weddingHoleAddress)
-  toast.success('주소가 복사되었습니다')
+  addressClipboard.copy(t('wedding-hall-direction'))
+  toast.success(t('copy-address'))
+}
+
+const getLocaleTime = (_locale: typeof locale.value, time: number) => {
+  switch (_locale) {
+    case 'ko':
+      return time + '시'
+    case 'en':
+      return time + (time % 12 === 0 ? ' PM' : ' AM')
+    case 'ja':
+      return time + '時'
+    default:
+      return time
+  }
 }
 </script>
 
@@ -316,3 +351,42 @@ const copyAddress = () => {
   font-style: normal;
 }
 </style>
+
+<i18n> 
+  {
+    ko: {
+      "free-parking": "{parkingLot} 무료", 
+      "copy-address": "주소가 복사되었습니다",
+      "we-are-getting-married": "우리 결혼합니다",  
+      "wedding-hall-venue": "광주 라붐웨딩홀 1층 리즈홀",
+      "wedding-date": "2025. 2. 22. 토요일 오후 2:00",
+      "cherished-moment": "소중한 결실의 순간,",
+      "invite-you": "당신을 초대합니다.",
+      "invitation-message-paragraph": ["축복이 내림처럼 포근한 눈이 내리는 2월의 하늘 아래, 저희 두 사람이 하나 되어 새로운 가정을 이루고자 합니다.", "저희의 삶에 귀하고 특별한 의미가 되어 주신 당신께서 소중한 발걸음을 해 주시어, 이 자리에서 우리의 새로운 시작을 함께 축복해 주신다면 더할나위 없는 기쁨으로 저희의 영원을 약속하는 이 자리가 더 큰 축복 속에 아름답게 빛날 것입니다."],
+      "wedding-hall-direction": "광주 서구 상무누리로 59 (치평동 268-18)",
+      "la-boum-parking-lot": "라붐 웨딩홀 내부 주차장",
+      "kim-dae-jung-convention-parking-lot": "김대중컨벤션 제1주차장", 
+      "concurrency-parking-thousand-vehicles": "동시주차 1,000대", 
+      "parking-spaces-accommodate": "주차공간은 {concurrentParking} 가능합니다.",
+      "chartered-bus-info": "전세버스 안내",
+      "from-region-to-gwangju": "{region}에서 광주 출발 {time}" 
+    }, 
+    en: {
+      "free-parking": "Free parking available at {parkingLot}", 
+      "copy-address": "Address has been copied.",
+      "we-are-getting-married": "We are getting married",  
+      "wedding-hall-venue": "LaBoum Wedding Hall, \n1st Floor - Leez Hall, Gwangju",  
+      "wedding-date": "Saturday, February 22, 2025, 2:00 PM",
+      "cherished-moment": "A cherished moment of union,",
+      "invite-you": "we warmly invite you.",
+      "invitation-message-paragraph": ["Under the dreamy February sky, as gentle as a blessing of falling snow, we come together as one to begin our journey as a new family.", "You have been a precious and meaningful part of our lives, and it would be our greatest joy and honor to have your presence as we promise forever to each other. Your blessings will make this celebration even more radiant and filled with love."],
+      "wedding-hall-direction": "59 Sangmunuri-ro, Seo-gu, Gwangju", 
+      "la-boum-parking-lot": "La Boum Wedding Hall’s parking lot.",
+      "kim-dae-jung-convention-parking-lot": "the Kim Daejung Convention Center’s Parking Lot #1.",
+      "concurrency-parking-thousand-vehicles": "up to 1,000 vehicles simultaneously.",
+      "parking-spaces-accommodate": "Parking spaces accommodate {concurrentParking}",
+      "chartered-bus-info": "Chartered Bus Information",
+      "from-region-to-gwangju": "From {region} to Gwangju {time}" 
+    }
+  } 
+</i18n>

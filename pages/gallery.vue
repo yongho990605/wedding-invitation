@@ -79,7 +79,17 @@ import { GALLERY_IMAGES } from '~/constants/gallery'
 import { withDomain } from '~/utils/withDomain'
 
 const { dialog, open } = useGalleryDialog()
+const { t: $t } = useI18n({ useScope: 'global' })
 
-const galleryOrder = ['첫 번째', '두 번째', '세 번째', '네 번째', '다섯 번째', '여섯 번째', '일곱 번째', '여덟 번째']
+const galleryOrder = computed(() => [
+  $t('count.first'),
+  $t('count.second'),
+  $t('count.third'),
+  $t('count.fourth'),
+  $t('count.fifth'),
+  $t('count.sixth'),
+  $t('count.seventh'),
+  $t('count.eighth')
+])
 const currentGallery = ref<keyof typeof GALLERY_IMAGES>('CONCEPT_1')
 </script>

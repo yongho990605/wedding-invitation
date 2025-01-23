@@ -46,11 +46,13 @@
 
 <script setup lang="ts">
 import { NuxtLink } from '#components'
-const route = useRoute()
 
+const route = useRoute()
+const { t: $t } = useI18n({ useScope: 'global' })
 const introdution = route.meta.introdution
-const tabsTriggers = [
-  { label: '신랑 소개', value: 'groom' },
-  { label: '신부 소개', value: 'bride' }
-]
+
+const tabsTriggers = computed(() => [
+  { label: $t('groom'), value: 'groom' },
+  { label: $t('bride'), value: 'bride' }
+])
 </script>
