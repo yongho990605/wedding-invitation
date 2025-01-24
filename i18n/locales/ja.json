@@ -1,15 +1,37 @@
-{ 
-  "home": "ホーム", 
-  "introduction": "花婿/花嫁紹介",
-  "gallery": "ギャラリー",
-  "invitation-message": "招待状メッセージ", 
+{
+  "home": "ホーム",
+  "view-more": "もっと見る",
+  "introduction": "@:groom · @:bride 紹介", 
+  "gallery": "ギャラリー", 
   "directions": "アクセス", 
   "and": "そして",
-  "yongho": "チャン・ヨンホ", 
-  "wonbi": "チェ・ウォンビ", 
-  "groom": "花婿", 
-  "bride": "花嫁", 
-  "we-are-getting-married": "私たちは結婚します。",
-  "wedding-hall-venue": "ラ・ブームウェディングホール \n1階 リーズホール（光州）", 
-  "wedding-date": "2025年2月22日 土曜日 午後2時" 
-}
+  "yongho": "チャン・ヨンホ",  
+  "wonbi": "チェ・ウォンビ",
+  "groom": "花婿",
+  "bride": "花嫁",
+  "contact": "連絡先",
+  "copy": "コピーする",  
+  "send-sms": "メッセージを送る",
+  "location": "場所", 
+  "invitation-message": "招待状メッセージ",
+  "parking-info": "駐車場案内", 
+  "copy-account": "口座番号がコピーされました",
+  "send-your-kind-blessing": "お祝いを送る場所",
+  "region": {
+    "daejeon": "大田",
+    "damyang": "潭陽",
+    "yeosu": "麗水"  
+  },
+  "count": {
+    "first": "一つ目",
+    "second": "二つ目",
+    "third": "三つ目",
+    "fourth": "四つ目", 
+    "fifth": "五つ目",
+    "sixth": "六つ目", 
+    "seventh": "七つ目",
+    "eighth": "八つ目"
+  }
+}  
+
+  

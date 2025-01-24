@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col bg-white">
+  <div class="flex flex-col bg-white" :class="getLocaleClass(locale, { ja: '!font-noto-serif-jp' })">
     <GalleryDialog
       v-model:open="dialog.open"
       :initial-index="dialog.initialIndex"
@@ -29,7 +29,13 @@
           </div>
           <div
             class="z-10 mt-3 text-center text-5xl lg:text-6xl"
-            :class="getLocaleClass(locale, { en: 'font-bonitalia !text-6xl', ko: 'font-[ink-lipquid]' })">
+            :class="
+              getLocaleClass(locale, {
+                en: 'font-bonitalia !text-6xl',
+                ko: 'font-[ink-lipquid]',
+                ja: 'font-noto-serif-jp !text-5xl'
+              })
+            ">
             {{ t('we-are-getting-married') }}
           </div>
         </div>
@@ -87,11 +93,15 @@
     <div class="flex flex-col items-center justify-center bg-gradient-to-bl from-[#E8E3F5] to-[#F8E2DC] p-4">
       <Card class="w-full divide-y p-5 font-gyeonggi-batang">
         <CardHeader class="flex flex-col gap-1 pb-4 lg:gap-2">
-          <p class="text-xl font-medium lg:text-2xl">{{ t('cherished-moment') }}</p>
-          <p class="text-3xl font-bold lg:text-4xl">{{ t('invite-you') }}</p>
+          <p class="text-xl font-medium lg:text-2xl" :class="getLocaleClass(locale, { ja: '!text-xl' })">
+            {{ t('cherished-moment') }}
+          </p>
+          <p class="text-3xl font-bold lg:text-4xl" :class="getLocaleClass(locale, { ja: '!text-2xl' })">
+            {{ t('invite-you') }}
+          </p>
         </CardHeader>
-        <CardContent class="py-4 lg:text-[1.0625rem]">
-          <div class="flex flex-col gap-2.5 break-keep">
+        <CardContent class="py-4 lg:text-[1.0625rem]" :class="getLocaleClass(locale, { ja: '!text-base' })">
+          <div class="flex flex-col gap-2.5 whitespace-pre-wrap break-keep">
             <p>{{ t('invitation-message-paragraph[0]') }}</p>
             <p>{{ t('invitation-message-paragraph[1]') }}</p>
           </div>
@@ -147,7 +157,7 @@
         <span class="font-gyeonggi-batang text-xl lg:text-2xl">{{ $t('directions') }}</span>
         <div class="flex flex-col items-center justify-center gap-2">
           <div class="flex items-center gap-1">
-            <p class="cursor-pointer text-[#333333] sm:text-sm lg:text-lg">
+            <p class="text-[#333333] sm:text-sm lg:text-lg">
               {{ t('wedding-hall-direction') }}
             </p>
             <Button variant="ghost" class="p-0 hover:text-slate-500" @click="copyAddress">
@@ -186,7 +196,11 @@
       <div class="flex w-full flex-col">
         <div class="flex items-center gap-1 border-b border-dashed border-[#EEEEEE] py-3 text-lg lg:gap-1.5 lg:text-xl">
           <span class="w-fit rounded-full border px-2 text-center font-semibold lg:px-2">P</span>
-          <span class="font-gyeonggi-batang font-bold text-[#777777]">{{ $t('parking-info') }}</span>
+          <span
+            :class="getLocaleClass(locale, { ja: '!font-noto-serif-jp' })"
+            class="font-gyeonggi-batang font-bold text-[#777777]">
+            {{ $t('parking-info') }}
+          </span>
         </div>
         <ul class="list-disc space-y-2 py-3 pl-5">
           <li>
@@ -213,7 +227,11 @@
         </ul>
       </div>
       <div class="flex w-full flex-col items-center justify-center divide-y py-4">
-        <span class="pb-5 pt-3 font-gyeonggi-batang text-lg lg:text-2xl">{{ t('chartered-bus-info') }}</span>
+        <span
+          class="pb-5 pt-3 font-gyeonggi-batang text-lg lg:text-2xl"
+          :class="getLocaleClass(locale, { ja: '!font-noto-serif-jp' })">
+          {{ t('chartered-bus-info') }}
+        </span>
         <Accordion type="single" collapsible class="w-full">
           <AccordionItem
             v-for="({ departureFrom, pickupLocation }, i) in accordionItems"
@@ -434,6 +452,51 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
           { 
             name: "In front of Subuk-myeon Community Center",
             address: "(600, Subuk-ri, Subuk-myeon, Damyang-gun, Jeollanam-do)"
+          }
+        ]
+      }
+    }, 
+    ja: {
+      "free-parking": "{parkingLot} 無料",  
+      "copy-address": "住所がコピーされました",
+      "we-are-getting-married": "私たち結婚します",
+      "wedding-hall-venue": "光州 ラブームウェディングホール 1階 リーズホール",
+      "wedding-date": "2025年2月22日（土）午後2時",
+      "cherished-moment": "大切な結実の瞬間、",
+      "invite-you": "あなたをお招きします。",
+      "invitation-message-paragraph": [
+        "祝福が降り注ぐように穏やかな雪が舞う2月の空の下、私たち二人は一つになり、新しい家庭を築こうとしています。",
+        "私たちの人生において貴重で特別な存在であるあなたが、この特別な場にお越しいただき、私たちの新しい出発を祝福してくだされば、この場がさらなる祝福の中で美しく輝くことでしょう。"
+      ],
+      "wedding-hall-direction": "光州市 西区 サンムヌリ路59（チピョンドン268-18）",
+      "la-boum-parking-lot": "ラブームウェディングホール内駐車場",
+      "kim-dae-jung-convention-parking-lot": "金大中コンベンション 第1駐車場",
+      "concurrency-parking-thousand-vehicles": "同時駐車 1,000台",
+      "parking-spaces-accommodate": "駐車スペースは{concurrentParking}可能です。",
+      "chartered-bus-info": "貸切バス案内",
+      "from-region-to-gwangju": "{region}から光州出発 {time}",
+      "pickup-location": {
+        "daejeon": [
+          {
+            name: "チュクドン臨時公営駐車場", 
+            address: "(ユソンブルベク向かい、テジョン ユソング チュクドン 731-1)"
+          }
+        ],
+        "yeosu": [
+          {  
+            name: "ヨス市民会館",
+            address: "(全羅南道 ヨス市 座水泳路 69 ジナム文化芸術会館) →" 
+          },
+          { name: 'ヨチョン経由' },
+          {
+            name: "ヨス消防署",
+            address: "(全羅南道 ヨス市 望馬路 20)" 
+          }
+        ], 
+        "damyang": [ 
+          { 
+            name: "スブク面事務所前",
+            address: "(スブク面 スブクリ 600)"
           }
         ]
       }

@@ -96,6 +96,10 @@ const images: string[] = [
   "en": {
     "tags": ["Wabi", "ENFP", "Clumsy Queen", "Top Bride Material", "Web Designer", "Mori Mom", "Artist Soul", "Pixel Perfectionist"], 
     "hana-bank": "KEB Hana"
-  }
-}
+  },
+  "ja": {
+    "tags": ["ワビ", "ENFP", "おっちょこちょいクイーン", "最高の花嫁候補", "Web Designer", "モリママ", "芸術的魂", "ピクセルの完璧主義者"],
+    "hana-bank": "KEB Hana"
+  } 
+} 
 </i18n>

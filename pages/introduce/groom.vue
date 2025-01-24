@@ -94,6 +94,10 @@ const images: string[] = [
     en: {  
       "tags": ['Yong-go', 'ENTJ', 'Strategist', 'Top Groom Material', 'Frontend Developer', 'Elon Musk Fanatic', 'NoviceInvestor', 'Tesla Lover💕'],
       "toss-bank": "Toss Bank",
+    },    
+    ja: {
+      "tags": ['ヨンゴ', 'ENTJ', '戦略家', '最高の花婿候補', 'Frontend Developer', 'イーロン・マスクファン', '初心者投資家', 'テスララバー💕'],
+      "toss-bank": "Toss Bank",
     }
   }
 </i18n>
