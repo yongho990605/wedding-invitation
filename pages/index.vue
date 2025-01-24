@@ -40,7 +40,7 @@
       <img
         src="/images/shared/spinning-scroll.png"
         class="absolute z-30 flex h-[4.625rem] w-[4.625rem] animate-[spin_6s_linear_infinite] justify-center"
-        :class="locale === 'ko' ? '-top-3' : 'top-5'" />
+        :class="locale === 'ko' ? '-top-3' : 'top-5 lg:top-0'" />
       <div class="mt-28 flex flex-col items-center justify-center pb-7">
         <span class="font-gyeonggi-batang text-xl font-bold">D-day</span>
         <div class="flex w-full items-center justify-center gap-5">
@@ -233,7 +233,7 @@
               </i18n-t>
             </AccordionTrigger>
             <AccordionContent class="flex flex-row gap-2 py-3 text-[0.9375rem] font-light lg:text-base">
-              <span class="w-1/6 text-[#BBBBBB]">장소</span>
+              <span class="w-1/6 font-semibold text-[#BBBBBB]">{{ $t('location') }}</span>
               <div class="flex flex-col gap-2">
                 <template v-for="(item, j) in pickupLocation" :key="j">
                   <Badge v-if="item.type === 'badge'" class="text-[0.8rem] font-bold lg:text-[0.9125rem]" rounded>
@@ -306,19 +306,19 @@ const images = ['images/main1.jpg', 'images/main2.jpg', 'images/main3.jpg']
 const accordionItems = computed<AccordionItem[]>(() => [
   {
     departureFrom: { region: $t('region.daejeon'), time: 11 },
-    pickupLocation: [{ name: '죽동임시공영주차장', address: '(유성불백 건너편, 대전 유성구 죽동 731-1)' }]
+    pickupLocation: [{ name: t('pickup-location.daejeon[0].name'), address: t('pickup-location.daejeon[0].address') }]
   },
   {
     departureFrom: { region: $t('region.yeosu'), time: 11 },
     pickupLocation: [
-      { name: '여수 시민회관', address: '(전남 여수시 좌수영로 69 진남문예회관) →' },
-      { type: 'badge', name: '여천에서 경유' },
-      { name: '여수 소방서', address: '(전남 여수시 망마로 20)' }
+      { name: t('pickup-location.yeosu[0].name'), address: t('pickup-location.yeosu[0].address') },
+      { type: 'badge', name: t('pickup-location.yeosu[1].name') },
+      { name: t('pickup-location.yeosu[2].name'), address: t('pickup-location.yeosu[2].address') }
     ]
   },
   {
     departureFrom: { region: $t('region.damyang'), time: 12 },
-    pickupLocation: [{ name: '수북면사무소 앞', address: '(수북면 수북리 600)' }]
+    pickupLocation: [{ name: t('pickup-location.damyang[0].name'), address: t('pickup-location.damyang[0].address') }]
   }
 ])
 
@@ -369,7 +369,32 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
       "concurrency-parking-thousand-vehicles": "동시주차 1,000대", 
       "parking-spaces-accommodate": "주차공간은 {concurrentParking} 가능합니다.",
       "chartered-bus-info": "전세버스 안내",
-      "from-region-to-gwangju": "{region}에서 광주 출발 {time}" 
+      "from-region-to-gwangju": "{region}에서 광주 출발 {time}",
+      "pickup-location": {
+        "daejeon": [
+          {
+            name: "죽동임시공영주차장",
+            address: "(유성불백 건너편, 대전 유성구 죽동 731-1)"
+          }
+        ],
+        "yeosu": [
+          {
+            name: "여수 시민회관",
+            address: "(전남 여수시 좌수영로 69 진남문예회관) →" 
+          },
+          { name: "여천에서 경유" }, 
+          {
+            name: "여수 소방서",
+            address: "(전남 여수시 망마로 20)"
+          }
+        ],
+        "damyang": [  
+          {
+            name: "수북면사무소 앞",
+            address: "(수북면 수북리 600)"
+          }
+        ]
+      }
     }, 
     en: {
       "free-parking": "Free parking available at {parkingLot}", 
@@ -386,7 +411,32 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
       "concurrency-parking-thousand-vehicles": "up to 1,000 vehicles simultaneously.",
       "parking-spaces-accommodate": "Parking spaces accommodate {concurrentParking}",
       "chartered-bus-info": "Chartered Bus Information",
-      "from-region-to-gwangju": "From {region} to Gwangju {time}" 
+      "from-region-to-gwangju": "From {region} to Gwangju {time}" ,
+      "pickup-location": {
+        "daejeon": [
+          {
+            name: "Jukdong Temporary Public Parking Lot", 
+            address: "(731-1, Juk-dong, Yuseong-gu, Daejeon)"
+          }
+        ],
+        "yeosu": [
+          {  
+            name: "Yeosu Civic Center",
+            address: "(69, Jwasuyeong-ro, Yeosu-si, Jeollanam-do) →" 
+          },
+          { name: 'Stopover at Yeocheon' },
+          {
+            name: "Yeosu Fire Station",
+            address: "(20, Mangma-ro, Yeosu-si, Jeollanam-do)"
+          }
+        ], 
+        "damyang": [
+          { 
+            name: "In front of Subuk-myeon Community Center",
+            address: "(600, Subuk-ri, Subuk-myeon, Damyang-gun, Jeollanam-do)"
+          }
+        ]
+      }
     }
   } 
 </i18n>
