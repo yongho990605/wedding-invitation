@@ -1,7 +1,8 @@
 @import url('https://cdn.jsdelivr.net/gh/fonts-archive/GyeonggiBatang/GyeonggiBatang.css');
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 @import url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimGaeulsopung/HakgyoansimGaeulsopung.css');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
+ 
 @tailwind base;
 @tailwind components; 
 @tailwind utilities;

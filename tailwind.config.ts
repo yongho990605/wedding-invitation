@@ -10,7 +10,8 @@ module.exports = {
       pretendard: ['Pretendard', 'sans-serif'],
       'gyeonggi-batang': ['Gyeonggi Batang', 'serif'],
       'hakgyoansim-gaeulsopung': ['Hakgyoansim Gaeulsopung', 'sans-serif'],
-      bonitalia: ['Bonitalia', 'sans-serif']
+      bonitalia: ['Bonitalia', 'sans-serif'],
+      'noto-serif-jp': ['Noto Serif JP', 'sans-serif']
     },
     screens: {
       sm: '320px',
