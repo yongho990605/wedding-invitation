@@ -40,7 +40,7 @@
           </AccordionTrigger>
           <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
             <p class="sm:text-base lg:text-lg">
-              <span class="font-bold">{{ t('hana-bank') }}</span>
+              <span class="font-bold">{{ $t('hana-bank') }}</span>
               {{ BRIDE.ACCOUNT_NUMBER }}
             </p>
             <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyAccount">
@@ -57,14 +57,17 @@
 </template>
 
 <script setup lang="ts">
+import { toast } from 'vue-sonner'
 import { BRIDE } from '~/constants/contact'
 
 definePageMeta({ introdution: 'bride' })
 
-const { rt, tm, t } = useI18n({ useScope: 'local' })
+const { rt, tm } = useI18n({ useScope: 'local' })
 const { t: $t } = useI18n({ useScope: 'global' })
 
-const { copy: copyAccount } = useCopyToClipboard(BRIDE.ACCOUNT_NUMBER)
+const { copy: copyAccount } = useCopyToClipboard(BRIDE.ACCOUNT_NUMBER, () => {
+  toast.success($t('copy-account'))
+})
 
 const images: string[] = [
   '/images/bride/image1.jpg',
@@ -81,16 +84,13 @@ const images: string[] = [
 <i18n>
 {
   "ko": {
-    "tags": ["와비", "ENFP", "덤벙이", "1등 신부감", "웹 디자이너", "모리 맘", "예술가의 혼", "1px의 신중함"],
-    "hana-bank": "하나은행"
+    "tags": ["와비", "ENFP", "덤벙이", "1등 신부감", "웹 디자이너", "모리 맘", "예술가의 혼", "1px의 신중함"]
   },
   "en": {
-    "tags": ["Wabi", "ENFP", "Clumsy Queen", "Top Bride Material", "Web Designer", "Mori Mom", "Artist Soul", "Pixel Perfectionist"], 
-    "hana-bank": "KEB Hana"
+    "tags": ["Wabi", "ENFP", "Clumsy Queen", "Top Bride Material", "Web Designer", "Mori Mom", "Artist Soul", "Pixel Perfectionist"]
   },
   "ja": {
-    "tags": ["ワビ", "ENFP", "おっちょこちょいクイーン", "最高の花嫁候補", "Web Designer", "モリママ", "芸術的魂", "ピクセルの完璧主義者"],
-    "hana-bank": "KEB Hana"
+    "tags": ["ワビ", "ENFP", "おっちょこちょいクイーン", "最高の花嫁候補", "Web Designer", "モリママ", "芸術的魂", "ピクセルの完璧主義者"]
   } 
 } 
 </i18n>

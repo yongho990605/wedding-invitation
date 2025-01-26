@@ -40,7 +40,7 @@
           </AccordionTrigger>
           <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
             <p class="sm:text-base lg:text-lg">
-              <span class="font-bold">{{ t('toss-bank') }}</span>
+              <span class="font-bold">{{ $t('toss-bank') }}</span>
               {{ GROOM.ACCOUNT_NUMBER }}
             </p>
             <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyAccount">
@@ -57,14 +57,17 @@
 </template>
 
 <script setup lang="ts">
+import { toast } from 'vue-sonner'
 import { GROOM } from '~/constants/contact'
 
 definePageMeta({ introdution: 'groom' })
 
-const { rt, tm, t } = useI18n({ useScope: 'local' })
+const { rt, tm } = useI18n({ useScope: 'local' })
 const { t: $t } = useI18n({ useScope: 'global' })
 
-const { copy: copyAccount } = useCopyToClipboard(GROOM.ACCOUNT_NUMBER)
+const { copy: copyAccount } = useCopyToClipboard(GROOM.ACCOUNT_NUMBER, () => {
+  toast.success($t('copy-account'))
+})
 
 const images: string[] = [
   '/images/groom/image1.jpg',
@@ -79,16 +82,13 @@ const images: string[] = [
 <i18n>
   { 
     ko: { 
-     "tags": ['용고', 'ENTJ', '계획적', '1등 신랑감', '프론트엔드 개발자', '일론머스크 광팬', '초보 투자자', '테슬라💕'],
-     "toss-bank": "토스뱅크",
+     "tags": ['용고', 'ENTJ', '계획적', '1등 신랑감', '프론트엔드 개발자', '일론머스크 광팬', '초보 투자자', '테슬라💕']
     },
     en: {  
-      "tags": ['Yong-go', 'ENTJ', 'Strategist', 'Top Groom Material', 'Frontend Developer', 'Elon Musk Fanatic', 'NoviceInvestor', 'Tesla Lover💕'],
-      "toss-bank": "Toss Bank",
+      "tags": ['Yong-go', 'ENTJ', 'Strategist', 'Top Groom Material', 'Frontend Developer', 'Elon Musk Fanatic', 'NoviceInvestor', 'Tesla Lover💕']
     },    
     ja: {
-      "tags": ['ヨンゴ', 'ENTJ', '戦略家', '最高の花婿候補', 'Frontend Developer', 'イーロン・マスクファン', '初心者投資家', 'テスララバー💕'],
-      "toss-bank": "Toss Bank",
+      "tags": ['ヨンゴ', 'ENTJ', '戦略家', '最高の花婿候補', 'Frontend Developer', 'イーロン・マスクファン', '初心者投資家', 'テスララバー💕']
     }
   }
 </i18n>
