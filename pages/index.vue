@@ -101,7 +101,7 @@
           </p>
         </CardHeader>
         <CardContent class="py-4 lg:text-[1.0625rem]" :class="getLocaleClass(locale, { ja: '!text-base' })">
-          <div class="flex flex-col gap-2.5 whitespace-pre-wrap break-keep">
+          <div class="flex flex-col gap-2.5 whitespace-pre-wrap break-all">
             <p>{{ t('invitation-message-paragraph[0]') }}</p>
             <p>{{ t('invitation-message-paragraph[1]') }}</p>
           </div>
@@ -458,10 +458,10 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
     }, 
     ja: {
       "free-parking": "{parkingLot} 無料",  
-      "copy-address": "住所がコピーされました",
+      "copy-address": "住所がコピ-されました",
       "we-are-getting-married": "私たち結婚します",
-      "wedding-hall-venue": "光州 ラブームウェディングホール 1階 リーズホール",
-      "wedding-date": "2025年2月22日（土）午後2時",
+      "wedding-hall-venue": "光州 ラブ-ムウェディングホ-ル 1階 リ-ズホ-ル",
+      "wedding-date": "2025年2月22日（土）午後2時", 
       "cherished-moment": "大切な結実の瞬間、",
       "invite-you": "あなたをお招きします。",
       "invitation-message-paragraph": [
@@ -469,10 +469,10 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
         "私たちの人生において貴重で特別な存在であるあなたが、この特別な場にお越しいただき、私たちの新しい出発を祝福してくだされば、この場がさらなる祝福の中で美しく輝くことでしょう。"
       ],
       "wedding-hall-direction": "光州市 西区 サンムヌリ路59（チピョンドン268-18）",
-      "la-boum-parking-lot": "ラブームウェディングホール内駐車場",
+      "la-boum-parking-lot": "ラブ-ムウェディングホ-ル内駐車場",
       "kim-dae-jung-convention-parking-lot": "金大中コンベンション 第1駐車場",
       "concurrency-parking-thousand-vehicles": "同時駐車 1,000台",
-      "parking-spaces-accommodate": "駐車スペースは{concurrentParking}可能です。",
+      "parking-spaces-accommodate": "駐車スペ-スは{concurrentParking}可能です。",
       "chartered-bus-info": "貸切バス案内",
       "from-region-to-gwangju": "{region}から光州出発 {time}",
       "pickup-location": {
@@ -482,7 +482,7 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
             address: "(ユソンブルベク向かい、テジョン ユソング チュクドン 731-1)"
           }
         ],
-        "yeosu": [
+        "yeosu": [ 
           {  
             name: "ヨス市民会館",
             address: "(全羅南道 ヨス市 座水泳路 69 ジナム文化芸術会館) →" 
