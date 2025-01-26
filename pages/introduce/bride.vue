@@ -28,9 +28,9 @@
         <AccordionItem value="mobile" class="border-b border-[#EEEEEE] py-3">
           <AccordionTrigger class="w-full justify-between p-3 font-semibold lg:text-lg">Mobile</AccordionTrigger>
           <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
-            <span class="sm:text-base lg:text-lg">{{ phoneNumber }}</span>
+            <span class="sm:text-base lg:text-lg">{{ BRIDE.PHONE_NUMBER }}</span>
             <Button class="bg-[#E58AAB] text-[0.8125rem] font-semibold text-white" rounded>
-              <a :href="`sms:${phoneNumber}`">{{ $t('send-sms') }}</a>
+              <a :href="`sms:${BRIDE.PHONE_NUMBER}`">{{ $t('send-sms') }}</a>
             </Button>
           </AccordionContent>
         </AccordionItem>
@@ -41,7 +41,7 @@
           <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
             <p class="sm:text-base lg:text-lg">
               <span class="font-bold">{{ t('hana-bank') }}</span>
-              {{ accountNumber }}
+              {{ BRIDE.ACCOUNT_NUMBER }}
             </p>
             <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyAccount">
               {{ $t('copy') }}
@@ -59,16 +59,14 @@
 <script setup lang="ts">
 import { useClipboard } from '@vueuse/core'
 import { toast } from 'vue-sonner'
+import { BRIDE } from '~/constants/contact'
 
 definePageMeta({ introdution: 'bride' })
 
 const { rt, tm, t } = useI18n({ useScope: 'local' })
 const { t: $t } = useI18n({ useScope: 'global' })
 
-const phoneNumber = '010-2938-4368'
-const accountNumber = '137-910347-04807'
-
-const accountClipboard = useClipboard({ source: accountNumber })
+const accountClipboard = useClipboard({ source: BRIDE.ACCOUNT_NUMBER })
 
 const copyAccount = () => {
   accountClipboard.copy()
