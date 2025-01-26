@@ -152,7 +152,7 @@
       </CarouselContent>
     </Carousel>
 
-    <div class="flex flex-col items-center justify-center divide-y px-4 py-10">
+    <div class="flex flex-col items-center justify-center px-4 py-10">
       <div id="location" class="flex w-full flex-col items-center justify-center gap-4 pb-4">
         <span class="font-gyeonggi-batang text-xl lg:text-2xl">{{ $t('directions') }}</span>
         <div class="flex flex-col items-center justify-center gap-2">
@@ -193,7 +193,9 @@
           </template>
         </Card>
       </div>
-      <div class="flex w-full flex-col">
+
+      <!-- 주차관련 정보 -->
+      <div class="flex w-full flex-col border-b border-[#EEEEEE]">
         <div class="flex items-center gap-1 border-b border-dashed border-[#EEEEEE] py-3 text-lg lg:gap-1.5 lg:text-xl">
           <span class="w-fit rounded-full border px-2 text-center font-semibold lg:px-2">P</span>
           <span
@@ -226,6 +228,8 @@
           </li>
         </ul>
       </div>
+
+      <!-- 전세버스 시간표 -->
       <div class="flex w-full flex-col items-center justify-center divide-y py-4">
         <span
           class="pb-5 pt-3 font-gyeonggi-batang text-lg lg:text-2xl"
@@ -267,18 +271,64 @@
           </AccordionItem>
         </Accordion>
       </div>
+
+      <!-- 연락처 및 계좌번호 -->
+      <div class="flex w-full flex-col items-center justify-center divide-y py-4">
+        <span
+          class="pb-5 pt-3 font-gyeonggi-batang text-lg lg:text-2xl"
+          :class="getLocaleClass(locale, { ja: '!font-noto-serif-jp' })">
+          {{ $t('contact') }}
+        </span>
+        <Accordion type="single" collapsible class="w-full">
+          <AccordionItem value="phoneNumber" class="border-b border-[#EEEEEE] py-6">
+            <AccordionTrigger class="flex justify-between p-3 font-semibold md:text-lg">Mobile</AccordionTrigger>
+            <AccordionContent class="flex flex-col gap-4 p-3 text-[0.9375rem] font-light lg:text-base">
+              <div class="flex gap-2">
+                <span class="font-semibold text-[#BBBBBB]">{{ $t('groom') }}</span>
+                <p>{{ GROOM.PHONE_NUMBER }}</p>
+              </div>
+              <div class="flex gap-2">
+                <span class="font-semibold text-[#BBBBBB]">{{ $t('bride') }}</span>
+                <p>{{ BRIDE.PHONE_NUMBER }}</p>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="accountNumber" class="border-b border-[#EEEEEE] py-6">
+            <AccordionTrigger class="flex justify-between p-3 font-semibold md:text-lg">
+              {{ $t('send-your-kind-blessing') }}
+            </AccordionTrigger>
+            <AccordionContent class="flex flex-col gap-2 p-3 text-[0.9375rem] font-light lg:text-base">
+              <span class="font-semibold text-[#BBBBBB]">신랑측</span>
+              <div class="flex items-center gap-2">
+                <p class="font-semibold">{{ $t('toss-bank') }} {{ GROOM.ACCOUNT_NUMBER }}</p>
+                <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyGroomAccount">
+                  {{ $t('copy') }}
+                </Button>
+              </div>
+              <span class="mt-2 font-semibold text-[#BBBBBB]">신부측</span>
+              <div class="flex items-center gap-2">
+                <p class="font-semibold">{{ $t('hana-bank') }} {{ BRIDE.ACCOUNT_NUMBER }}</p>
+                <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyBrideAccount">
+                  {{ $t('copy') }}
+                </Button>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useClipboard, useNow } from '@vueuse/core'
+import { useNow } from '@vueuse/core'
 import Autoplay from 'embla-carousel-autoplay'
 import { toast } from 'vue-sonner'
 // @ts-ignore
 import CircleProgress from 'vue3-circle-progress'
 import { cn } from '@/lib/utils'
 import { useGalleryDialog } from '~/components/gallery/useGalleryDialog'
+import { BRIDE, GROOM } from '~/constants/contact'
 import { GALLERY_IMAGES } from '~/constants/gallery'
 import { withDomain } from '~/utils/withDomain'
 interface AccordionItem {
@@ -291,7 +341,17 @@ const { t } = useI18n({ useScope: 'local' })
 const { dialog, open: openGalleryDialog } = useGalleryDialog()
 const now = useNow()
 
-const addressClipboard = useClipboard({ source: t('wedding-hall-direction') })
+const { copy: copyAddress } = useCopyToClipboard(t('wedding-hall-direction'), () => {
+  toast.success(t('copy-address'))
+})
+
+const handleSuccessedAccountCopy = () => toast.success($t('copy-account'))
+
+const [{ copy: copyGroomAccount }, { copy: copyBrideAccount }] = [
+  useCopyToClipboard(GROOM.ACCOUNT_NUMBER, handleSuccessedAccountCopy),
+  useCopyToClipboard(BRIDE.ACCOUNT_NUMBER, handleSuccessedAccountCopy)
+]
+
 const remainingDueDate = computed(() => {
   const diff = weddingDate.getTime() - now.value.getTime()
   const dueDays = Math.floor(diff / (1000 * 60 * 60 * 24))
@@ -339,11 +399,6 @@ const accordionItems = computed<AccordionItem[]>(() => [
     pickupLocation: [{ name: t('pickup-location.damyang[0].name'), address: t('pickup-location.damyang[0].address') }]
   }
 ])
-
-const copyAddress = () => {
-  addressClipboard.copy(t('wedding-hall-direction'))
-  toast.success(t('copy-address'))
-}
 
 const getLocaleTime = (_locale: typeof locale.value, time: number) => {
   switch (_locale) {
