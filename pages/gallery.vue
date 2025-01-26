@@ -6,7 +6,10 @@
       :initial-index="dialog.initialIndex"
       :images="GALLERY_IMAGES[currentGallery]" />
     <div
-      class="flex gap-3 overflow-x-auto bg-[#FFFAFB] px-4 [-ms-overflow-style:none] [scrollbar-width:none] lg:gap-4 [&::-webkit-scrollbar]:hidden">
+      ref="scrollContainer"
+      class="flex cursor-grab select-none gap-3 overflow-x-auto bg-[#FFFAFB] px-4 [-ms-overflow-style:none] [-webkit-user-drag:none] [scrollbar-width:none] [user-drag:none] active:cursor-grabbing lg:gap-4 [&::-webkit-scrollbar]:hidden"
+      @mousedown="onMouseDown"
+      @mouseleave="isDragging = false">
       <div
         v-for="(value, key, index) in GALLERY_IMAGES"
         :key="key"
@@ -16,11 +19,13 @@
           :src="value[0]"
           :class="
             cn(
-              'h-12 w-12 lg:h-14 lg:w-14',
+              'pointer-events-none h-12 w-12 [-webkit-user-drag:none] [user-drag:none] lg:h-14 lg:w-14',
               currentGallery === key && 'border-2 border-white outline outline-2 outline-[#E58AAB]'
             )
-          " />
+          "
+          @dragstart.prevent />
         <span
+          class="pointer-events-none"
           :class="
             cn('whitespace-nowrap text-xs text-[#777777] lg:text-sm', currentGallery === key && 'text-[#E58AAB]')
           ">
@@ -92,4 +97,43 @@ const galleryOrder = computed(() => [
   $t('count.eighth')
 ])
 const currentGallery = ref<keyof typeof GALLERY_IMAGES>('CONCEPT_1')
+
+// 마우스 드래그 관련 상태 추가
+const isDragging = ref(false)
+const startX = ref(0)
+const scrollLeft = ref(0)
+const scrollContainer = ref<HTMLElement | null>(null)
+
+// 마우스 이벤트 핸들러
+const onMouseDown = (e: MouseEvent) => {
+  isDragging.value = true
+  if (!scrollContainer.value) return
+
+  startX.value = e.pageX - scrollContainer.value.offsetLeft
+  scrollLeft.value = scrollContainer.value.scrollLeft
+}
+
+const onMouseMove = (e: MouseEvent) => {
+  if (!isDragging.value || !scrollContainer.value) return
+
+  const x = e.pageX - scrollContainer.value.offsetLeft
+  const walk = (x - startX.value) * 1 // 스크롤 속도 조절
+  scrollContainer.value.scrollLeft = scrollLeft.value - walk
+}
+
+const onMouseUp = () => {
+  isDragging.value = false
+}
+
+// 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+onUnmounted(() => {
+  window.removeEventListener('mouseup', onMouseUp)
+  window.removeEventListener('mousemove', onMouseMove)
+})
+
+// 전역 이벤트 리스너 등록
+onMounted(() => {
+  window.addEventListener('mouseup', onMouseUp)
+  window.addEventListener('mousemove', onMouseMove)
+})
 </script>
