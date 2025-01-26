@@ -3,12 +3,12 @@
     <slot />
     <template #content>
       <Carousel class="relative flex h-full w-full items-center justify-center" @init-api="setApi">
-        <DialogClose
-          class="absolute right-4 top-0 z-10 -translate-y-1/2 rounded-lg bg-black/50 p-1 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-          <Icon name="heroicons:x-mark" class="h-6 w-6 text-white" />
-        </DialogClose>
-        <div class="absolute left-4 top-0 z-10 -translate-y-1/2 rounded-lg bg-black/50 px-3 py-1 text-white">
-          {{ current }} / {{ totalCount }}
+        <div class="fixed left-0 right-0 top-0 z-10 flex justify-between px-4 py-2">
+          <div class="rounded-lg bg-black/50 px-3 py-1 text-white">{{ current }} / {{ totalCount }}</div>
+          <DialogClose
+            class="rounded-lg bg-black/50 p-1 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+            <Icon name="heroicons:x-mark" class="h-6 w-6 text-white" />
+          </DialogClose>
         </div>
         <div class="absolute left-0 z-10 flex w-full justify-between px-3">
           <CarouselPrevious>
