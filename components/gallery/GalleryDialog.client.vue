@@ -4,10 +4,10 @@
     <template #content>
       <Carousel class="relative flex h-full w-full items-center justify-center" @init-api="setApi">
         <DialogClose
-          class="absolute right-4 top-2 z-10 rounded-lg bg-black/50 p-1 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground extra:-translate-y-1/2">
+          class="absolute right-4 top-0 z-10 -translate-y-1/2 rounded-lg bg-black/50 p-1 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
           <Icon name="heroicons:x-mark" class="h-6 w-6 text-white" />
         </DialogClose>
-        <div class="absolute left-4 top-2 z-10 rounded-lg bg-black/50 px-3 py-1 text-white extra:-translate-y-1/2">
+        <div class="absolute left-4 top-0 z-10 -translate-y-1/2 rounded-lg bg-black/50 px-3 py-1 text-white">
           {{ current }} / {{ totalCount }}
         </div>
         <div class="absolute left-0 z-10 flex w-full justify-between px-3">
