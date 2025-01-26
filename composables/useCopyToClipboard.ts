@@ -1,13 +1,11 @@
 import { useClipboard } from '@vueuse/core'
-import { toast } from 'vue-sonner'
 
-export const useCopyToClipboard = (text: string) => {
-  const { t } = useI18n({ useScope: 'global' })
+export const useCopyToClipboard = (text: string, callbackOnCopy?: () => void) => {
   const clipboard = useClipboard({ source: text })
 
   const copy = () => {
     clipboard.copy()
-    toast.success(t('copy-account'))
+    callbackOnCopy?.()
   }
 
   return {
