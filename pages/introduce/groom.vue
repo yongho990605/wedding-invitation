@@ -57,8 +57,6 @@
 </template>
 
 <script setup lang="ts">
-import { useClipboard } from '@vueuse/core'
-import { toast } from 'vue-sonner'
 import { GROOM } from '~/constants/contact'
 
 definePageMeta({ introdution: 'groom' })
@@ -66,12 +64,7 @@ definePageMeta({ introdution: 'groom' })
 const { rt, tm, t } = useI18n({ useScope: 'local' })
 const { t: $t } = useI18n({ useScope: 'global' })
 
-const accountClipboard = useClipboard({ source: GROOM.ACCOUNT_NUMBER })
-
-const copyAccount = () => {
-  accountClipboard.copy()
-  toast.success($t('copy-account'))
-}
+const { copy: copyAccount } = useCopyToClipboard(GROOM.ACCOUNT_NUMBER)
 
 const images: string[] = [
   '/images/groom/image1.jpg',
