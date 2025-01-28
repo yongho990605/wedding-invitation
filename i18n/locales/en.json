@@ -5,8 +5,6 @@
   "gallery": "Gallery",
   "directions": "Directions", 
   "and": "and", 
-  "yongho": "Yongho Jang",
-  "wonbi": "Wonbi Choi",  
   "groom": "Groom",
   "bride": "Bride",
   "contact": "Contact",
@@ -17,8 +15,12 @@
   "parking-info": "Parking Information",  
   "copy-account": "Account number has been copied.",
   "send-your-kind-blessing": "Where to Send your kind blessing💕",
-  "toss-bank": "Toss Bank",
-  "hana-bank": "KEB Hana",
+  "bank": {
+    "toss": "Toss Bank",
+    "hana": "KEB Hana",
+    "kb": "KB Bank",  
+    "nh": "NH Bank"
+  },
   "region": { 
     "daejeon": "Daejeon",
     "damyang": "Damyang",
@@ -30,9 +32,15 @@
     "third": "Third",
     "fourth": "Fourth",
     "fifth": "Fifth",
-    "sixth": "Sixth",
+    "sixth": "Sixth", 
     "seventh": "Seventh",
     "eighth": "Eighth"
+  },
+  "person-name": {
+    "yongho": "Yongho Jang",
+    "wonbi": "Wonbi Choi",
+    "boksoon": "Boksoon Jin",
+    "jongmi": "Jongmi Park"
   }
 } 
  
