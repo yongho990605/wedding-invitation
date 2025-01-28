@@ -8,7 +8,7 @@
     </template>
     <template #title>
       <span class="lg:text-lg">{{ $t('bride') }}</span>
-      <span class="text-2xl font-bold lg:text-3xl">{{ $t('wonbi') }}</span>
+      <span class="text-2xl font-bold lg:text-3xl">{{ $t('person-name.wonbi') }}</span>
     </template>
     <template #hash-tags>
       <Badge
@@ -40,10 +40,18 @@
           </AccordionTrigger>
           <AccordionContent class="flex flex-row items-center justify-center gap-2 py-3">
             <p class="sm:text-base lg:text-lg">
-              <span class="font-bold">{{ $t('hana-bank') }}</span>
+              <span class="font-bold">{{ $t('bank.hana') }}</span>
               {{ BRIDE.ACCOUNT_NUMBER }}
             </p>
-            <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyAccount">
+            <Button
+              class="bg-[#E4E4E4] text-[0.8125rem] font-semibold"
+              rounded
+              @click="
+                () => {
+                  clipboard.copy(BRIDE.ACCOUNT_NUMBER)
+                  toast.success($t('copy-account'))
+                }
+              ">
               {{ $t('copy') }}
             </Button>
           </AccordionContent>
@@ -64,10 +72,7 @@ definePageMeta({ introdution: 'bride' })
 
 const { rt, tm } = useI18n({ useScope: 'local' })
 const { t: $t } = useI18n({ useScope: 'global' })
-
-const { copy: copyAccount } = useCopyToClipboard(BRIDE.ACCOUNT_NUMBER, () => {
-  toast.success($t('copy-account'))
-})
+const clipboard = useClipboard()
 
 const images: string[] = [
   '/images/bride/image1.jpg',

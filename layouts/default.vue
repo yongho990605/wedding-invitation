@@ -92,8 +92,8 @@ const isOpen = ref({ burgerMenu: false, accordion: true })
 const currentLocale = ref(locale.value)
 
 const accordionContents = computed(() => [
-  { label: `${$t('groom')} ${$t('yongho')}`, to: { name: 'introduce-groom' } },
-  { label: `${$t('bride')} ${$t('wonbi')}`, to: { name: 'introduce-bride' } }
+  { label: `${$t('groom')} ${$t('person-name.yongho')}`, to: { name: 'introduce-groom' } },
+  { label: `${$t('bride')} ${$t('person-name.wonbi')}`, to: { name: 'introduce-bride' } }
 ])
 
 const scrollToStart = () => {
