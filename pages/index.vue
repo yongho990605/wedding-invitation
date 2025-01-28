@@ -112,12 +112,12 @@
             class="mt-4 flex flex-col items-center justify-center rounded-xl border border-[#F9E6EC] bg-[#FFF3F7] py-3">
             <i18n-t keypath="youngsu-and-boksoon-third-son-yongho" tag="p" class="font-bold">
               <template #third-son>
-                <span class="text-sm font-normal">{{ $t('third-son') }}</span>
+                <span class="text-sm font-normal">{{ t('third-son') }}</span>
               </template>
             </i18n-t>
             <i18n-t keypath="yong-and-jongmi-eldest-daughter-wonbi" tag="p" class="mt-2 font-bold">
               <template #eldest-daughter>
-                <span class="text-sm font-normal">{{ $t('eldest-daughter') }}</span>
+                <span class="text-sm font-normal">{{ t('eldest-daughter') }}</span>
               </template>
             </i18n-t>
           </div>
@@ -221,13 +221,48 @@
       </div>
 
       <!-- 주차관련 정보 -->
-      <div class="flex w-full flex-col border-b border-[#EEEEEE] pb-4">
+      <div class="flex w-full flex-col pb-4">
         <div class="flex items-center gap-1 border-b border-dashed border-[#EEEEEE] py-3 text-lg lg:gap-1.5 lg:text-xl">
           <span class="w-fit rounded-full border px-2 text-center font-semibold lg:px-2">P</span>
           <span
             :class="getLocaleClass(locale, { ja: '!font-noto-serif-jp' })"
             class="font-gyeonggi-batang font-bold text-[#777777]">
             {{ $t('parking-info') }}
+          </span>
+        </div>
+        <ul class="list-disc space-y-2 py-3 pl-5">
+          <li>
+            <i18n-t keypath="free-parking" tag="p" class="lg:text-lg">
+              <template #parkingLot>
+                <span class="rounded bg-[#F9E6EC] px-1 font-bold">{{ t('la-boum-parking-lot') }}</span>
+              </template>
+            </i18n-t>
+          </li>
+          <li>
+            <i18n-t keypath="free-parking" tag="p" class="lg:text-lg">
+              <template #parkingLot>
+                <span class="rounded bg-[#F9E6EC] px-1 font-bold">{{ t('kim-dae-jung-convention-parking-lot') }}</span>
+              </template>
+            </i18n-t>
+          </li>
+          <li>
+            <i18n-t keypath="parking-spaces-accommodate" tag="p" class="lg:text-lg">
+              <template #concurrentParking>
+                <span class="font-bold">{{ t('concurrency-parking-thousand-vehicles') }}</span>
+              </template>
+            </i18n-t>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 식사시간 안내 -->
+      <div class="flex w-full flex-col border-b border-[#EEEEEE] pb-6">
+        <div class="flex items-center gap-1 border-b border-dashed border-[#EEEEEE] py-3 text-lg lg:gap-1.5 lg:text-xl">
+          <Icon name="uil:restaurant" class="h-6 w-6" />
+          <span
+            :class="getLocaleClass(locale, { ja: '!font-noto-serif-jp' })"
+            class="font-gyeonggi-batang font-bold text-[#777777]">
+            식사 안내
           </span>
         </div>
         <ul class="list-disc space-y-2 py-3 pl-5">
@@ -516,7 +551,11 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
             address: "(수북면 수북리 600)"
           }
         ]
-      }
+      },
+      "third-son": "의 삼남", 
+      "eldest-daughter": "의 장녀", 
+      "youngsu-and-boksoon-third-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{third-son} @:person-name.yongho", 
+      "yong-and-jongmi-eldest-daughter-wonbi": "@:person-name.yong{'·'}@:person-name.jongmi{eldest-daughter} @:person-name.wonbi",
     }, 
     en: {
       "free-parking": "Free parking available at {parkingLot}", 
@@ -556,10 +595,14 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
           { 
             name: "In front of Subuk-myeon Community Center",
             address: "(600, Subuk-ri, Subuk-myeon, Damyang-gun, Jeollanam-do)"
-          }
+          } 
         ]
-      }
-    }, 
+      },
+      "third-son": "'s third son",
+      "eldest-daughter": "'s eldest daughter",
+      "youngsu-and-boksoon-third-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{third-son} @:person-name.yongho", 
+      "yong-and-jongmi-eldest-daughter-wonbi": "@:person-name.yong{'·'}@:person-name.jongmi{eldest-daughter} @:person-name.wonbi",
+    },  
     ja: {
       "free-parking": "{parkingLot} 無料",  
       "copy-address": "住所がコピ-されました",
@@ -602,8 +645,12 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
             name: "スブク面事務所前",
             address: "(スブク面 スブクリ 600)"
           }
-        ]
-      }
+        ] 
+      },
+      "third-son": "の三男", 
+      "eldest-daughter": "の長女", 
+      "youngsu-and-boksoon-third-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{third-son} @:person-name.yongho", 
+      "yong-and-jongmi-eldest-daughter-wonbi": "@:person-name.yong{'·'}@:person-name.jongmi{eldest-daughter} @:person-name.wonbi",
     }
   } 
 </i18n>

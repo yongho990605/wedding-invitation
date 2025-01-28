@@ -16,10 +16,6 @@
   "groom-bride-introduction": "@:groom · @:bride @:introduction", 
   "copy-account": "계좌번호가 복사되었습니다",
   "send-your-kind-blessing": "마음 전하실 곳💕",
-  "third-son": "의 삼남", 
-  "eldest-daughter": "의 장녀", 
-  "youngsu-and-boksoon-third-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{third-son} @:person-name.yongho", 
-  "yong-and-jongmi-eldest-daughter-wonbi": "@:person-name.yong{'·'}@:person-name.jongmi{eldest-daughter} @:person-name.wonbi",
   "bank": {
     "toss": "토스",
     "hana": "KEB 하나",
