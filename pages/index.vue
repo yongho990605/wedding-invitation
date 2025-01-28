@@ -23,9 +23,9 @@
           class="absolute z-20 flex w-full flex-col"
           :class="getLocaleClass(locale, { en: 'top-[64%]', ko: 'top-[70%]' })">
           <div class="flex justify-center gap-3 font-gyeonggi-batang">
-            <span class="text-xl font-bold lg:text-2xl">{{ $t('yongho') }}</span>
+            <span class="text-xl font-bold lg:text-2xl">{{ $t('person-name.yongho') }}</span>
             <span class="mt-2 lg:text-lg">{{ $t('and') }}</span>
-            <span class="text-xl font-bold lg:text-2xl">{{ $t('wonbi') }}</span>
+            <span class="text-xl font-bold lg:text-2xl">{{ $t('person-name.wonbi') }}</span>
           </div>
           <div
             class="z-10 mt-3 text-center text-5xl lg:text-6xl"
@@ -160,7 +160,15 @@
             <p class="text-[#333333] sm:text-sm lg:text-lg">
               {{ t('wedding-hall-direction') }}
             </p>
-            <Button variant="ghost" class="p-0 hover:text-slate-500" @click="copyAddress">
+            <Button
+              variant="ghost"
+              class="p-0 hover:text-slate-500"
+              @click="
+                () => {
+                  clipboard.copy(t('wedding-hall-direction'))
+                  toast.success(t('copy-address'))
+                }
+              ">
               <Icon name="iconamoon:copy-duotone" />
             </Button>
           </div>
@@ -238,7 +246,7 @@
         </span>
         <Accordion type="single" collapsible class="w-full">
           <AccordionItem
-            v-for="({ departureFrom, pickupLocation }, i) in accordionItems"
+            v-for="({ departureFrom, pickupLocation }, i) in busInfoAccordionItems"
             :key="i"
             :value="`item-${i}`"
             class="border-b border-[#EEEEEE] py-6">
@@ -279,36 +287,47 @@
           :class="getLocaleClass(locale, { ja: '!font-noto-serif-jp' })">
           {{ $t('contact') }}
         </span>
-        <Accordion type="single" collapsible class="w-full">
+        <Accordion type="multiple" collapsible class="w-full">
           <AccordionItem value="phoneNumber" class="border-b border-[#EEEEEE] py-6">
             <AccordionTrigger class="flex justify-between p-3 font-semibold md:text-lg">Mobile</AccordionTrigger>
-            <AccordionContent class="flex flex-col gap-4 p-3 text-[0.9375rem] font-light lg:text-base">
+            <AccordionContent class="flex flex-col gap-4 p-3 text-[0.9375rem] font-semibold lg:text-base">
               <div class="flex gap-2">
-                <span class="font-semibold text-[#BBBBBB]">{{ $t('groom') }}</span>
+                <span class="text-[#BBBBBB]">{{ $t('groom') }}</span>
                 <p>{{ GROOM.PHONE_NUMBER }}</p>
               </div>
               <div class="flex gap-2">
-                <span class="font-semibold text-[#BBBBBB]">{{ $t('bride') }}</span>
+                <span class="text-[#BBBBBB]">{{ $t('bride') }}</span>
                 <p>{{ BRIDE.PHONE_NUMBER }}</p>
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="accountNumber" class="border-b border-[#EEEEEE] py-6">
-            <AccordionTrigger class="flex justify-between p-3 font-semibold md:text-lg">
+          <AccordionItem :open="isAccountAccodianOpen" value="accountNumber" class="border-b border-[#EEEEEE] py-6">
+            <AccordionTrigger
+              :data-state="isAccountAccodianOpen ? 'open' : 'closed'"
+              class="flex justify-between p-3 font-semibold md:text-lg"
+              @click="isAccountAccodianOpen = !isAccountAccodianOpen">
               {{ $t('send-your-kind-blessing') }}
             </AccordionTrigger>
-            <AccordionContent class="flex flex-col gap-2 p-3 text-[0.9375rem] font-light lg:text-base">
-              <span class="font-semibold text-[#BBBBBB]">신랑측</span>
-              <div class="flex items-center gap-2">
-                <p class="font-semibold">{{ $t('toss-bank') }} {{ GROOM.ACCOUNT_NUMBER }}</p>
-                <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyGroomAccount">
-                  {{ $t('copy') }}
-                </Button>
-              </div>
-              <span class="mt-2 font-semibold text-[#BBBBBB]">신부측</span>
-              <div class="flex items-center gap-2">
-                <p class="font-semibold">{{ $t('hana-bank') }} {{ BRIDE.ACCOUNT_NUMBER }}</p>
-                <Button class="bg-[#E4E4E4] text-[0.8125rem] font-semibold" rounded @click="copyBrideAccount">
+            <AccordionContent
+              v-for="protagonist in ['groom', 'bride']"
+              :key="protagonist"
+              class="flex flex-col gap-2 p-3 text-sm font-light lg:text-base">
+              <span class="font-semibold text-[#BBBBBB]">
+                {{ locale === 'ko' ? $t(protagonist) + '측' : $t(protagonist) }}
+              </span>
+              <div
+                v-for="item in accountAccordionItems.filter((item) => item.type === protagonist)"
+                :key="item.name"
+                class="flex items-center gap-2">
+                <p class="font-semibold">
+                  {{ item.name }}
+                  <span class="font-light text-[#999999]">|</span>
+                  {{ item.bank }} {{ item.accountNumber }}
+                </p>
+                <Button
+                  class="bg-[#E4E4E4] text-[0.8125rem] font-semibold"
+                  rounded
+                  @click="copyAccount(item.accountNumber)">
                   {{ $t('copy') }}
                 </Button>
               </div>
@@ -331,26 +350,38 @@ import { useGalleryDialog } from '~/components/gallery/useGalleryDialog'
 import { BRIDE, GROOM } from '~/constants/contact'
 import { GALLERY_IMAGES } from '~/constants/gallery'
 import { withDomain } from '~/utils/withDomain'
-interface AccordionItem {
+
+interface BusInfoAccordionItem {
   departureFrom: { region: string; time: number }
   pickupLocation: { name: string; address?: string; type?: 'badge' | 'text' }[]
+}
+
+interface AccountAccordionItem {
+  type: 'groom' | 'bride'
+  name: string
+  bank: string
+  accountNumber: string
 }
 
 const { locale, t: $t } = useI18n({ useScope: 'global' })
 const { t } = useI18n({ useScope: 'local' })
 const { dialog, open: openGalleryDialog } = useGalleryDialog()
+const clipboard = useClipboard()
 const now = useNow()
 
-const { copy: copyAddress } = useCopyToClipboard(t('wedding-hall-direction'), () => {
-  toast.success(t('copy-address'))
-})
+const isAccountAccodianOpen = ref(true)
 
-const handleSuccessedAccountCopy = () => toast.success($t('copy-account'))
+const copyAccount = (text: string) => {
+  clipboard.copy(text)
+  toast.success($t('copy-account'))
+}
 
-const [{ copy: copyGroomAccount }, { copy: copyBrideAccount }] = [
-  useCopyToClipboard(GROOM.ACCOUNT_NUMBER, handleSuccessedAccountCopy),
-  useCopyToClipboard(BRIDE.ACCOUNT_NUMBER, handleSuccessedAccountCopy)
-]
+const accountAccordionItems = computed<AccountAccordionItem[]>(() => [
+  { type: 'groom', name: $t('person-name.yongho'), bank: $t('bank.toss'), accountNumber: GROOM.ACCOUNT_NUMBER },
+  { type: 'groom', name: $t('person-name.boksoon'), bank: $t('bank.nh'), accountNumber: '603113-56-006146' },
+  { type: 'bride', name: $t('person-name.wonbi'), bank: $t('bank.hana'), accountNumber: BRIDE.ACCOUNT_NUMBER },
+  { type: 'bride', name: $t('person-name.jongmi'), bank: $t('bank.kb'), accountNumber: '786502-01-042532' }
+])
 
 const remainingDueDate = computed(() => {
   const diff = weddingDate.getTime() - now.value.getTime()
@@ -381,7 +412,7 @@ onUnmounted(() => {
 const carouselPlugin = Autoplay({ delay: 3000, stopOnMouseEnter: true, stopOnInteraction: false })
 const weddingDate = new Date('2025-02-22 14:00:00')
 const images = ['images/main1.jpg', 'images/main2.jpg', 'images/main3.jpg']
-const accordionItems = computed<AccordionItem[]>(() => [
+const busInfoAccordionItems = computed<BusInfoAccordionItem[]>(() => [
   {
     departureFrom: { region: $t('region.daejeon'), time: 11 },
     pickupLocation: [{ name: t('pickup-location.daejeon[0].name'), address: t('pickup-location.daejeon[0].address') }]
