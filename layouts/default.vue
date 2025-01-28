@@ -21,7 +21,7 @@
               class="w-full items-center justify-center gap-5 font-gyeonggi-batang text-lg"
               :open="isOpen.accordion">
               <AccordionTrigger class="mb-5 gap-5 !text-lg font-bold" @click="isOpen.accordion = !isOpen.accordion">
-                {{ $t('introduction') }}
+                {{ $t('groom-bride-introduction') }}
               </AccordionTrigger>
               <AccordionContent v-for="content in accordionContents" :key="content.label" class="text-[1.0625rem]">
                 <NuxtLink

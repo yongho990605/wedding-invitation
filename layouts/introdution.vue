@@ -10,7 +10,7 @@
           :value="trigger.value"
           :active="trigger.value === introdution"
           class="flex justify-center text-[#E58AAB] hover:bg-pink-50">
-          {{ trigger.label }}
+          {{ trigger.label }} {{ locale === 'ko' ? $t('introduction') : null }}
         </TabsTrigger>
       </TabsList>
     </Tabs>
@@ -48,7 +48,7 @@
 import { NuxtLink } from '#components'
 
 const route = useRoute()
-const { t: $t } = useI18n({ useScope: 'global' })
+const { t: $t, locale } = useI18n({ useScope: 'global' })
 const introdution = route.meta.introdution
 
 const tabsTriggers = computed(() => [

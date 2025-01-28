@@ -221,7 +221,7 @@
       </div>
 
       <!-- 주차관련 정보 -->
-      <div class="flex w-full flex-col border-b border-[#EEEEEE]">
+      <div class="flex w-full flex-col border-b border-[#EEEEEE] pb-4">
         <div class="flex items-center gap-1 border-b border-dashed border-[#EEEEEE] py-3 text-lg lg:gap-1.5 lg:text-xl">
           <span class="w-fit rounded-full border px-2 text-center font-semibold lg:px-2">P</span>
           <span
