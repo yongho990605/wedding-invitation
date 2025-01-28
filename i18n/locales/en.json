@@ -15,6 +15,10 @@
   "parking-info": "Parking Information",  
   "copy-account": "Account number has been copied.",
   "send-your-kind-blessing": "Where to Send your kind blessing💕",
+  "third-son": "'s third son",
+  "eldest-daughter": "'s eldest daughter",
+  "youngsu-and-boksoon-third-son-yongho": "Yeongsu Jang And Boksoon Jin{third-son}, Yongho Jang",
+  "yong-and-jongmi-eldest-daughter-wonbi": "Yong Choi And Jongmi Park{eldest-daughter}, Wonbi Choi",
   "bank": {
     "toss": "Toss Bank",
     "hana": "KEB Hana",
@@ -37,6 +41,8 @@
     "eighth": "Eighth"
   },
   "person-name": {
+    "yeongsu": "Yeongsu Jang",
+    "yong": "Yong Choi",
     "yongho": "Yongho Jang",
     "wonbi": "Wonbi Choi",
     "boksoon": "Boksoon Jin",

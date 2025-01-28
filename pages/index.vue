@@ -90,6 +90,7 @@
       </div>
     </div>
 
+    <!-- 초대 인사말 -->
     <div class="flex flex-col items-center justify-center bg-gradient-to-bl from-[#E8E3F5] to-[#F8E2DC] p-4">
       <Card class="w-full divide-y p-5 font-gyeonggi-batang">
         <CardHeader class="flex flex-col gap-1 pb-4 lg:gap-2">
@@ -101,14 +102,30 @@
           </p>
         </CardHeader>
         <CardContent class="py-4 lg:text-[1.0625rem]" :class="getLocaleClass(locale, { ja: '!text-base' })">
-          <div class="flex flex-col gap-2.5 whitespace-pre-wrap break-all">
+          <div
+            class="flex flex-col gap-2.5 whitespace-pre-wrap break-keep"
+            :class="getLocaleClass(locale, { ja: '!break-all' })">
             <p>{{ t('invitation-message-paragraph[0]') }}</p>
             <p>{{ t('invitation-message-paragraph[1]') }}</p>
+          </div>
+          <div
+            class="mt-4 flex flex-col items-center justify-center rounded-xl border border-[#F9E6EC] bg-[#FFF3F7] py-3">
+            <i18n-t keypath="youngsu-and-boksoon-third-son-yongho" tag="p" class="font-bold">
+              <template #third-son>
+                <span class="text-sm font-normal">{{ $t('third-son') }}</span>
+              </template>
+            </i18n-t>
+            <i18n-t keypath="yong-and-jongmi-eldest-daughter-wonbi" tag="p" class="mt-2 font-bold">
+              <template #eldest-daughter>
+                <span class="text-sm font-normal">{{ $t('eldest-daughter') }}</span>
+              </template>
+            </i18n-t>
           </div>
         </CardContent>
       </Card>
     </div>
 
+    <!-- 앨범 캐로셀 -->
     <Carousel
       class="flex flex-col items-center justify-center border-b border-[#EEEEEE] px-4 py-10 font-gyeonggi-batang text-xl lg:text-2xl"
       :plugins="[carouselPlugin]"
@@ -152,6 +169,7 @@
       </CarouselContent>
     </Carousel>
 
+    <!-- 오시는 길 -->
     <div class="flex flex-col items-center justify-center px-4 py-10">
       <div id="location" class="flex w-full flex-col items-center justify-center gap-4 pb-4">
         <span class="font-gyeonggi-batang text-xl lg:text-2xl">{{ $t('directions') }}</span>

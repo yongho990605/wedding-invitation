@@ -15,6 +15,10 @@
   "parking-info": "주차안내", 
   "copy-account": "계좌번호가 복사되었습니다",
   "send-your-kind-blessing": "마음 전하실 곳💕",
+  "third-son": "의 삼남",
+  "eldest-daughter": "의 장녀", 
+  "youngsu-and-boksoon-third-son-yongho": "장영수·진복순{third-son} 장용호", 
+  "yong-and-jongmi-eldest-daughter-wonbi": "최용·박종미{eldest-daughter} 최원비",
   "bank": {
     "toss": "토스",
     "hana": "KEB 하나",
@@ -37,6 +41,8 @@
     "eighth": "여덟 번째" 
   },
   "person-name": {
+    "yeongsu": "장영수",
+    "yong": "최용",
     "yongho": "장용호",
     "wonbi": "최원비",
     "boksoon": "진복순",
