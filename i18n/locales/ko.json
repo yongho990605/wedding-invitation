@@ -18,14 +18,14 @@
   "send-your-kind-blessing": "마음 전하실 곳💕",
   "third-son": "의 삼남", 
   "eldest-daughter": "의 장녀", 
-  "youngsu-and-boksoon-third-son-yongho": "@:person-name.yeongsu·@:person-name.boksoon{third-son} @:person-name.yongho", 
-  "yong-and-jongmi-eldest-daughter-wonbi": "@:person-name.yong·@:person-name.jongmi{eldest-daughter} @:person-name.wonbi",
+  "youngsu-and-boksoon-third-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{third-son} @:person-name.yongho", 
+  "yong-and-jongmi-eldest-daughter-wonbi": "@:person-name.yong{'·'}@:person-name.jongmi{eldest-daughter} @:person-name.wonbi",
   "bank": {
     "toss": "토스",
     "hana": "KEB 하나",
     "kb": "국민", 
     "nh": "농협"
-  },
+  }, 
   "region": {
     "daejeon": "대전",
     "damyang": "담양",
