@@ -110,9 +110,9 @@
           </div>
           <div
             class="mt-4 flex flex-col items-center justify-center rounded-xl border border-[#F9E6EC] bg-[#FFF3F7] py-3">
-            <i18n-t keypath="youngsu-and-boksoon-third-son-yongho" tag="p" class="font-bold">
-              <template #third-son>
-                <span class="text-sm font-normal">{{ t('third-son') }}</span>
+            <i18n-t keypath="youngsu-and-boksoon-youngest-son-yongho" tag="p" class="font-bold">
+              <template #youngest-son>
+                <span class="text-sm font-normal">{{ t('youngest-son') }}</span>
               </template>
             </i18n-t>
             <i18n-t keypath="yong-and-jongmi-eldest-daughter-wonbi" tag="p" class="mt-2 font-bold">
@@ -262,28 +262,28 @@
           <span
             :class="getLocaleClass(locale, { ja: '!font-noto-serif-jp' })"
             class="font-gyeonggi-batang font-bold text-[#777777]">
-            식사 안내
+            {{ t('meals-guide') }}
           </span>
         </div>
         <ul class="list-disc space-y-2 py-3 pl-5">
           <li>
-            <i18n-t keypath="free-parking" tag="p" class="lg:text-lg">
-              <template #parkingLot>
-                <span class="rounded bg-[#F9E6EC] px-1 font-bold">{{ t('la-boum-parking-lot') }}</span>
+            <i18n-t keypath="place-with-seating-capacity" tag="p" class="lg:text-lg">
+              <template #place>
+                <span class="rounded bg-[#F9E6EC] px-1 font-bold">{{ t('B1F-banquest-room') }}</span>
               </template>
             </i18n-t>
           </li>
           <li>
-            <i18n-t keypath="free-parking" tag="p" class="lg:text-lg">
-              <template #parkingLot>
-                <span class="rounded bg-[#F9E6EC] px-1 font-bold">{{ t('kim-dae-jung-convention-parking-lot') }}</span>
+            <i18n-t keypath="available-meal-time" tag="p" class="lg:text-lg">
+              <template #mealTime>
+                <span class="rounded bg-[#F9E6EC] px-1 font-bold">{{ t('at-1pm') }}</span>
               </template>
             </i18n-t>
           </li>
           <li>
-            <i18n-t keypath="parking-spaces-accommodate" tag="p" class="lg:text-lg">
-              <template #concurrentParking>
-                <span class="font-bold">{{ t('concurrency-parking-thousand-vehicles') }}</span>
+            <i18n-t keypath="meal-ticket-info" tag="p" class="w-5/6 break-keep lg:text-lg">
+              <template #receptionDesk>
+                <span class="font-bold">{{ t('parents-reception-desk') }}</span>
               </template>
             </i18n-t>
           </li>
@@ -552,10 +552,17 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
           }
         ]
       },
-      "third-son": "의 삼남", 
+      "youngest-son": "의 차남", 
       "eldest-daughter": "의 장녀", 
-      "youngsu-and-boksoon-third-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{third-son} @:person-name.yongho", 
+      "youngsu-and-boksoon-youngest-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{youngest-son} @:person-name.yongho", 
       "yong-and-jongmi-eldest-daughter-wonbi": "@:person-name.yong{'·'}@:person-name.jongmi{eldest-daughter} @:person-name.wonbi",
+      "meals-guide": "식사 안내",
+      "B1F-banquest-room": "지하 1층 연회장",
+      "place-with-seating-capacity": "장소: {place}(좌석 540석)",
+      "at-1pm": "오후 1시",
+      "available-meal-time": "식사시간: {mealTime}부터 가능합니다.", 
+      "meal-ticket-info": "결혼식 전에 식사를 원하시는 분께서는 {receptionDesk}에서 식권을 발급받으신 후 이용해 주시기 바랍니다.",
+      "parents-reception-desk": "혼주측 접수처"
     }, 
     en: {
       "free-parking": "Free parking available at {parkingLot}", 
@@ -598,10 +605,17 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
           } 
         ]
       },
-      "third-son": "'s third son",
+      "youngest-son": "'s youngest son",
       "eldest-daughter": "'s eldest daughter",
-      "youngsu-and-boksoon-third-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{third-son} @:person-name.yongho", 
+      "youngsu-and-boksoon-youngest-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{youngest-son} @:person-name.yongho", 
       "yong-and-jongmi-eldest-daughter-wonbi": "@:person-name.yong{'·'}@:person-name.jongmi{eldest-daughter} @:person-name.wonbi",
+      "meals-guide": "banquet",
+      "B1F-banquest-room": "B1F Banquet Room",
+      "place-with-seating-capacity": "Place: {place}(Seating Capacity 540)",
+      "at-1pm": "at 1 PM",   
+      "available-meal-time": "Mealtime: Available starting with {mealTime}.",   
+      "meal-ticket-info": "If you wish to eat before the ceremony, please obtain a meal ticket at the {receptionDesk}.",
+      "parents-reception-desk": "Parents' Reception Desk"
     },  
     ja: {
       "free-parking": "{parkingLot} 無料",  
@@ -647,10 +661,17 @@ const getLocaleTime = (_locale: typeof locale.value, time: number) => {
           }
         ] 
       },
-      "third-son": "の三男", 
+      "youngest-son": "の次男",
       "eldest-daughter": "の長女", 
-      "youngsu-and-boksoon-third-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{third-son} @:person-name.yongho", 
+      "youngsu-and-boksoon-youngest-son-yongho": "@:person-name.yeongsu{'·'}@:person-name.boksoon{youngest-son} @:person-name.yongho", 
       "yong-and-jongmi-eldest-daughter-wonbi": "@:person-name.yong{'·'}@:person-name.jongmi{eldest-daughter} @:person-name.wonbi",
+      "meals-guide": "お食事のご案内",
+      "B1F-banquest-room": "B1F 宴会室",
+      "place-with-seating-capacity": "場所: {place}(座席540席)", 
+      "at-1pm": "1時",
+      "available-meal-time": "食事時間: {mealTime}から可能です。",
+      "meal-ticket-info": "結婚式前に食事をお望みの方は、{receptionDesk}で食事券を取得してください。",
+      "parents-reception-desk": "親族側受付"
     }
   } 
 </i18n>
